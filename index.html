@@ -144,25 +144,13 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<section>
-							<form method="post" action="mailto:charlieevert@gmail.com">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
+							<form action="mailto:charlieevert@gmail.com?subject=Website Communication" method="post" enctype="text/plain">
+								<h3>Email Address</h3>
+								<input type="text" name="email_address" value="" maxlength="100" /><br />
+								<h3>Comment</h3>
+								<textarea rows="4" cols="20" name="comments"></textarea><br />
+								<input type="submit" value="Submit a Comment" />
+							</form> 
 						</section>
 						<section class="split contact">
 							<section class="alt">
