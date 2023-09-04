@@ -211,7 +211,7 @@
 				        guesses.textContent += userGuess + ' ';
 				
 				        if (userGuess === randomNumber) {
-				            lastResult.textContent = 'Congratulations! You got it right! The only prize you get is a pat on the back >:p';
+				            lastResult.textContent = 'Congratulations! You got it right! The only prize you get is a virtual pat on the back :p';
 				            lastResult.style.backgroundColor = 'lightgreen';
 				            lowOrHi.textContent = '';
 				            setGameOver();
@@ -220,7 +220,7 @@
 				            setGameOver();
 				        } else {
 				            lastResult.textContent = 'Wrong!';
-				            lastResult.style.backgroundColor = 'lightred';
+				            lastResult.style.backgroundColor = 'pink';
 				            if(userGuess < randomNumber) {
 				                lowOrHi.textContent = 'Last guess was too low!';
 				            } else if(userGuess > randomNumber) {
