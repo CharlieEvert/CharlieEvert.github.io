@@ -143,51 +143,126 @@
 
 
 				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form action="mailto:charlieevert@gmail.com?subject=Website Communication" method="post" enctype="text/plain">
-								<h3>Email Address</h3>
-								<input type="text" name="email_address" value="" maxlength="100" /><br />
-								<h3>Comment</h3>
-								<textarea rows="4" cols="20" name="comments"></textarea><br />
-								<input type="submit" value="Submit a Comment" />
-							</form> 
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Location</h3>
-								<p>Doylestown, PA 18901</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p>(215) 416-1737</p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p>charlieevert@gmail.com</p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.youtube.com/channel/UCdj3dgAxb3NmKsE9IbuphGA" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
-									<li><a href="https://github.com/CharlieEvert" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="https://www.kaggle.com/charlieevert" class="icon brands fa-kaggle"><span class="label">Kaggle</span></a></li>
-									<li><a href="https://www.linkedin.com/in/ralphcharlesevertiv/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
-			</div>
-
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
+				<footer id="footer">
+				    <section>
+				        <h3>Guess the Number Game</h3>
+				        <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+				        <div class="form">
+				            <label for="guessField">Enter a guess: </label>
+				            <input type="text" id="guessField" class="guessField">
+				            <input type="submit" value="Submit guess" class="guessSubmit">
+				        </div>
+				        <div class="resultParas">
+				            <p class="guesses"></p>
+				            <p class="lastResult"></p>
+				            <p class="lowOrHi"></p>
+				        </div>
+				    </section>
+				    <section class="split contact">
+				        <section class="alt">
+				            <h3>Location</h3>
+				            <p>Havertown, PA 19083</p>
+				        </section>
+				        <section>
+				            <h3>Phone</h3>
+				            <p>(215) 416-1737</p>
+				        </section>
+				        <section>
+				            <h3>Email</h3>
+				            <p>charlieevert@gmail.com</p>
+				        </section>
+				        <section>
+				            <h3>Social</h3>
+				            <ul class="icons alt">
+				                <li><a href="https://www.youtube.com/channel/UCdj3dgAxb3NmKsE9IbuphGA" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+				                <li><a href="https://github.com/CharlieEvert" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+				                <li><a href="https://www.kaggle.com/charlieevert" class="icon brands fa-kaggle"><span class="label">Kaggle</span></a></li>
+				                <li><a href="https://www.linkedin.com/in/ralphcharlesevertiv/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+				            </ul>
+				        </section>
+				    </section>
+				</footer>
+				
+				<!-- Scripts -->
+				<script src="assets/js/jquery.min.js"></script>
+				<script src="assets/js/jquery.scrollex.min.js"></script>
+				<script src="assets/js/jquery.scrolly.min.js"></script>
+				<script src="assets/js/browser.min.js"></script>
+				<script src="assets/js/breakpoints.min.js"></script>
+				<script src="assets/js/util.js"></script>
+				<script src="assets/js/main.js"></script>
+				<script>
+				    var randomNumber = Math.floor(Math.random() * 100) + 1;
+				    var guesses = document.querySelector('.guesses');
+				    var lastResult = document.querySelector('.lastResult');
+				    var lowOrHi = document.querySelector('.lowOrHi');
+				
+				    var guessSubmit = document.querySelector('.guessSubmit');
+				    var guessField = document.querySelector('.guessField');
+				
+				    var guessCount = 1;
+				    var resetButton;
+				
+				    function checkGuess() {
+				        var userGuess = Number(guessField.value);
+				        if (guessCount === 1) {
+				            guesses.textContent = 'Previous guesses: ';
+				        }
+				        guesses.textContent += userGuess + ' ';
+				
+				        if (userGuess === randomNumber) {
+				            lastResult.textContent = 'Congratulations! You got it right!';
+				            lastResult.style.backgroundColor = 'green';
+				            lowOrHi.textContent = '';
+				            setGameOver();
+				        } else if (guessCount === 10) {
+				            lastResult.textContent = '!!!GAME OVER!!!';
+				            setGameOver();
+				        } else {
+				            lastResult.textContent = 'Wrong!';
+				            lastResult.style.backgroundColor = 'red';
+				            if(userGuess < randomNumber) {
+				                lowOrHi.textContent = 'Last guess was too low!';
+				            } else if(userGuess > randomNumber) {
+				                lowOrHi.textContent = 'Last guess was too high!';
+				            }
+				        }
+				
+				        guessCount++;
+				        guessField.value = '';
+				        guessField.focus();
+				    }
+				
+				    guessSubmit.addEventListener('click', checkGuess);
+				
+				    function setGameOver() {
+				        guessField.disabled = true;
+				        guessSubmit.disabled = true;
+				        resetButton = document.createElement('button');
+				        resetButton.textContent = 'Start new game';
+				        document.body.appendChild(resetButton);
+				        resetButton.addEventListener('click', resetGame);
+				    }
+				
+				    function resetGame() {
+				        guessCount = 1;
+				
+				        var resetParas = document.querySelectorAll('.resultParas p');
+				        for (var i = 0 ; i < resetParas.length ; i++) {
+				            resetParas[i].textContent = '';
+				        }
+				
+				        resetButton.parentNode.removeChild(resetButton);
+				
+				        guessField.disabled = false;
+				        guessSubmit.disabled = false;
+				        guessField.value = '';
+				        guessField.focus();
+				
+				        lastResult.style.backgroundColor = 'white';
+				
+				        randomNumber = Math.floor(Math.random() * 100) + 1;
+				    }
+				</script>
 	</body>
 </html>
