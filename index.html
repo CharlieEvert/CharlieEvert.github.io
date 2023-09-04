@@ -55,6 +55,8 @@
 
 				<!-- Main --> 
 					<div id="main">
+						<!-- Play Button -->
+						<button id="playAudioButton">Add some ambiance...</button>
 
 						<!-- Featured Post -->
 							<article class="post featured">
@@ -181,17 +183,12 @@
 				            </ul>
 				        </section>
 				    </section>
-				</footer>
 
-				<audio autoplay loop>
-				    <source src="assets/Wave of Synergy.mp3" type="audio/mpeg">
-				    Your browser does not support the audio element.
+				<audio id="audioPlayer" loop>
+				<source src="assets/Wave of Synergy.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
 				</audio>
-				<script>
-				    var audio = document.querySelector('audio');
-				    audio.volume = 0.5; // Set volume to 50%
-				</script>
-
+				</footer>
 				
 				<!-- Scripts -->
 				<script src="assets/js/jquery.min.js"></script>
@@ -273,6 +270,14 @@
 				
 				        randomNumber = Math.floor(Math.random() * 100) + 1;
 				    }
+				</script>
+				<script>
+				var audio = document.getElementById('audioPlayer');
+				audio.volume = 0.5; // Set volume to 50%
+
+				document.getElementById('playAudioButton').addEventListener('click', function() {
+					audio.play();
+				});
 				</script>
 	</body>
 </html>
