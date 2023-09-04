@@ -194,9 +194,9 @@
 				        </section>
 				    </section>
 
-				<audio id="audioPlayer" loop>
-				<source src="assets/Wave of Synergy.mp3" type="audio/mpeg">
-				Your browser does not support the audio element.
+				<audio id="backgroundAudio" loop>
+				    <source src="assets/Wave of Synergy.mp3" type="audio/mpeg">
+				    Your browser does not support the audio element.
 				</audio>
 				</footer>
 				
@@ -280,14 +280,6 @@
 				
 				        randomNumber = Math.floor(Math.random() * 100) + 1;
 				    }
-				</script>
-				<script>
-				var audio = document.getElementById('audioPlayer');
-				audio.volume = 0.2; // Set volume to 20%
-
-				document.getElementById('playAudioButton').addEventListener('click', function() {
-					audio.play();
-				});
 				</script>
 
 				<script>
