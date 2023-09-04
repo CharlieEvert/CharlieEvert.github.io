@@ -1,3 +1,1 @@
-This project showcases my portfolio page, which I made from starting with a template from HTML5: https://html5up.net/
-
-index.html is where the code is :)
+This project showcases my portfolio page which was pretty cool to build. I'm most certainly not a web developer so go easy on me!
