@@ -212,7 +212,7 @@
 				
 				        if (userGuess === randomNumber) {
 				            lastResult.textContent = 'Congratulations! You got it right! The only prize you get is a pat on the back >:p';
-				            lastResult.style.backgroundColor = 'green';
+				            lastResult.style.backgroundColor = 'lightgreen';
 				            lowOrHi.textContent = '';
 				            setGameOver();
 				        } else if (guessCount === 10) {
@@ -220,7 +220,7 @@
 				            setGameOver();
 				        } else {
 				            lastResult.textContent = 'Wrong!';
-				            lastResult.style.backgroundColor = 'white';
+				            lastResult.style.backgroundColor = 'lightred';
 				            if(userGuess < randomNumber) {
 				                lowOrHi.textContent = 'Last guess was too low!';
 				            } else if(userGuess > randomNumber) {
