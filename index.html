@@ -60,9 +60,10 @@
 
 					    <!-- Play Button -->
 						    <div style="text-align: center; margin-bottom: 20px;">
-							<button id="playAudioButton" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-							    <i class="fas fa-play"></i> 🎶 Add some ambiance... 🎶
+							<button id="playAudioButton" onclick="togglePlay()"><i class="fas fa-play"></i> 
+								Add some ambiance...
 							</button>
+
 						    </div>
 
 						<!-- Featured Post -->
@@ -287,6 +288,20 @@
 				document.getElementById('playAudioButton').addEventListener('click', function() {
 					audio.play();
 				});
+				</script>
+
+				<script>
+				function togglePlay() {
+				    var audio = document.getElementById('backgroundAudio');
+				    var playButton = document.getElementById('playAudioButton');
+				    if (audio.paused) {
+					audio.play();
+					playButton.innerHTML = '<i class="fas fa-volume-up"></i> Turn up your audio!';
+				    } else {
+					audio.pause();
+					playButton.innerHTML = '<i class="fas fa-play"></i> Add some ambiance...';
+				    }
+				}
 				</script>
 	</body>
 </html>
