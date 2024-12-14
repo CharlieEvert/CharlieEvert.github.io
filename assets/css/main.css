@@ -4687,3 +4687,27 @@ input, select, textarea {
 		}
 
 	}
+
+.video-section {
+  padding: 20px;
+  background-color: #f9f9f9; /* Optional styling */
+}
+
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between videos */
+  justify-content: center; /* Center the videos */
+}
+
+.video-wrapper {
+  flex: 1 1 calc(50% - 20px); /* Two videos per row */
+  max-width: calc(50% - 20px); /* Ensure they don't exceed 50% of the container width */
+}
+
+video {
+  width: 100%; /* Make videos responsive */
+  height: auto; /* Maintain aspect ratio */
+  border: 1px solid #ccc; /* Optional border styling */
+  border-radius: 8px; /* Optional border radius for rounded corners */
+}
