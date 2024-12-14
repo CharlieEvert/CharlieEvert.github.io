@@ -68,6 +68,14 @@
 			            <li><a href="https://www.youtube.com/@PromptHubOfficial" class="button">Watch Prompt Hub</a></li>
 			        </ul>
 			    </article>
+				
+			<!-- Blockchain -->
+			<section id="blockchain-section" style="text-align: center; margin: 2rem 0;">
+			    <h3>Get Your Charlie Coin</h3>
+			    <p>Click the button below to receive a unique Charlie Coin that may become valuable one day!</p>
+			    <button id="charlieCoinButton" class="button">Get My Charlie Coin</button>
+			    <div id="coinResponse" style="margin-top: 1rem; font-weight: bold;"></div>
+			</section>
 			
 			    <!-- Posts -->
 			    <section class="posts">
@@ -168,6 +176,19 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script>
+		    document.getElementById('charlieCoinButton').addEventListener('click', function() {
+		        // Simulate generating a unique Charlie Coin
+		        const coinId = 'CHARLIE-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+		        const responseElement = document.getElementById('coinResponse');
+		        
+		        // Display the generated coin
+		        responseElement.textContent = `🎉 Congratulations! You've received your unique Charlie Coin: ${coinId}`;
+		        
+		        // Optionally log to a server or blockchain system here
+		        // Example: Call an API to save this transaction on a blockchain
+		    });
+		</script>
 		<script>
 		    let randomNumber = Math.floor(Math.random() * 100) + 1;
 		    const guesses = document.querySelector('.guesses');
