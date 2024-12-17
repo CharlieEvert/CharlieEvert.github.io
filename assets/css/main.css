@@ -33,8 +33,10 @@ footer, header, hgroup, menu, nav, section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    justify-content: center;
+    justify-items: center; /* centers each item within its column */
     align-items: center;
+    max-width: 900px; /* set a max-width to center within the page */
+    margin: 0 auto; /* horizontally center the entire grid */
     padding: 1rem;
 }
 
@@ -43,11 +45,11 @@ footer, header, hgroup, menu, nav, section {
 }
 
 .video-grid iframe {
-    max-width: 100%;
+    width: 100%;
     height: auto;
+    max-width: 400px; /* limit iframe width if desired */
 }
 
-/* On smaller screens, switch to a single column layout */
 @media (max-width: 600px) {
     .video-grid {
         grid-template-columns: 1fr;
