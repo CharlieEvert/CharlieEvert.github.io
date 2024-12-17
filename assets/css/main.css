@@ -29,37 +29,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
-.video-container {
-  max-width: 1200px; /* Adjust to taste */
-  margin: 0 auto;    /* Centers the container on the page */
-  padding: 1rem;
-}
-
-.video-grid {
-  display: grid;
-  gap: 1rem;
-  /* This creates responsive columns that wrap and remain centered */
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  justify-content: center;
-  align-items: start;
-}
-
-.video-grid article {
-  text-align: center;
-}
-
-.video-grid iframe {
-  width: 100%;
-  height: auto;
-  /* Optional: constrain the max-width of each video */
-  max-width: 400px; 
-}
-
-@media (max-width: 600px) {
-  .video-grid {
-    grid-template-columns: 1fr; /* single column on small screens */
-  }
-}
 
 body {
 	line-height: 1;
