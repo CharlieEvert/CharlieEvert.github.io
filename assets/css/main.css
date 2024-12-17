@@ -29,6 +29,31 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.video-grid article {
+    text-align: center;
+}
+
+.video-grid iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* On smaller screens, switch to a single column layout */
+@media (max-width: 600px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 body {
 	line-height: 1;
 }
