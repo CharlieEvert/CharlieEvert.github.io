@@ -1,335 +1,1663 @@
 <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Charlie Evert — AI Leader & Builder</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" crossorigin="anonymous" />
 
-<html>
-	<head>
-		<title>Charlie Evert's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRR3DZ2JKE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZRR3DZ2JKE');
+  </script>
 
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRR3DZ2JKE"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-ZRR3DZ2JKE');
-		</script>
-	</head>
+  <style>
+    :root {
+      --forest-deep: #0a1a0f;
+      --forest-dark: #0f2318;
+      --forest-mid: #1a3d24;
+      --forest-green: #2d6a3f;
+      --moss: #3d8b50;
+      --sage: #5aab6d;
+      --leaf: #7ec98a;
+      --glow: #a8e6b4;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f0ead8;
+      --off-white: #e8e4d8;
+      --muted: #8a9e8f;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Crimson Pro', serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
 
-	<body class="is-preload">
-	
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-		<!-- Wrapper -->
-		<div id="wrapper" class="fade-in">
+    html { scroll-behavior: smooth; }
 
-			<!-- Intro -->
-			<div id="intro">
-				<h1>Charlie Evert's Portfolio</h1>
-				<p>Welcome to my portfolio! Explore my work in <strong>Generative AI</strong>, <strong>Software Engineering</strong>, and my writing adventures. Discover how creativity and memes meet cutting-edge technology through my publications, patent, music and YouTube channel.<br><br> BONUS: Try the game at the bottom of the page 👀 </p>
-				<ul class="actions">
-					<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-				</ul>
-			</div>
+    body {
+      background: var(--forest-deep);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-			<!-- Header -->
-			<header id="header">
-				<a href="https://www.linkedin.com/in/ralphcharlesevertiv/details/featured/" class="logo">Resumé</a>
-			</header>
+    .cursor, .cursor-ring { display: none !important; }
 
-			<!-- Nav -->
-			<nav id="nav">
-			    <ul class="links">
-			        <li class="active"><a href="index.html">Portfolio</a></li>
-			    </ul>
-			    <ul class="icons">
-			        <li><a href="https://www.youtube.com/@PromptHubOfficial" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
-			        <li><a href="https://github.com/CharlieEvert" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-			        <li><a href="https://www.kaggle.com/charlieevert" class="icon brands fa-kaggle"><span class="label">Kaggle</span></a></li>
-			        <li><a href="https://www.linkedin.com/in/ralphcharlesevertiv/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-			        <li><a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=8EMpu2EAAAAJ" class="icon brands fa-google"><span class="label">Google Scholar</span></a></li>
-				<li><a href="https://www.amazon.com/s?i=digital-text&rh=p_27%3ACharlie%2BEvert&s=relevancerank&text=Charlie+Evert&ref=dp_byline_sr_ebooks_1" class="icon brands fa-amazon"><span class="label">Amazon</span></a></li>
-			    </ul>
-			</nav>
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
 
-			<!-- Main -->
-			<div id="main">
-			
-			    <!-- Featured Post -->
-				<article class="post featured">
-				    <header class="major">
-				        <h2><a href="https://www.linkedin.com/in/ralphcharlesevertiv/" target="_blank">About Me</a></h2>
-				        <p>
-				            Hi, I’m Charlie Evert, an AI & Data Engineering Consultant, author, and tech enthusiast. 
-				            I’ve deployed Generative AI, data, and analytics applications at scale—serving up to 1 million monthly users—as a technical lead.
-				            I grew up in <strong>St. Thomas, US Virgin Islands</strong>, served as an infantry paratrooper, and eventually found my way to tech.
-					    I enjoy leading teams to build cutting edge, art of the possible apps in record time and then putting those into production.
-				        </p>
-				        <p>
-				            I love creating—whether it’s writing children’s books, publishing research, developing iOS apps, or tackling new projects. 
-				            When I’m not building, my Westie and Maltese keep me company.
-				        </p>
-				        <p>
-				            Check out my latest work and thoughts on my <a href="https://www.youtube.com/@PromptHubOfficial" target="_blank">YouTube channel, Prompt Hub</a>, 
-				            where I explore Generative AI and other tech curiosities. See below for my publications, projects, articles that mention my projects, and other passions.
-				        </p>
-				    </header>
-				</article>
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      position: relative;
+      overflow: hidden;
+      padding: 0 6vw;
+    }
 
-				<!-- Videos -->
-				<section class="posts" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; justify-content: center; align-items: center;">
-				    <article style="text-align: center;">
-				        <iframe width="400" height="225" src="https://www.youtube.com/embed/htwO9ooegNU" frameborder="0" allowfullscreen></iframe>
-				    </article>
-				    <article style="text-align: center;">
-				        <iframe width="400" height="225" src="https://www.youtube.com/embed/29PYXId7I04" frameborder="0" allowfullscreen></iframe>
-				    </article>
-				    <article style="text-align: center;">
-				        <iframe width="400" height="225" src="https://www.youtube.com/embed/8mgObntOWb4" frameborder="0" allowfullscreen></iframe>
-				    </article>
-				    <article style="text-align: center;">
-				        <iframe width="400" height="225" src="https://www.youtube.com/embed/g1-XGhahUXk" frameborder="0" allowfullscreen></iframe>
-				    </article>
-				    <article style="text-align: center;">
-				        <iframe width="400" height="225" src="https://www.youtube.com/embed/GNATGT6H1r4" frameborder="0" allowfullscreen></iframe>
-				    </article>
-				    <article style="text-align: center;">
-				        <iframe width="400" height="225" src="https://www.youtube.com/embed/h2U4jlMqRCc" frameborder="0" allowfullscreen></iframe>
-				    </article>
-				</section>
-				
-			    <!-- Blockchain Feature -->
-				<article class="post featured">
-				    <section id="blockchain-section" style="margin-top: 2rem;">
-				        <h2>Get Your Charlie Coin</h2>
-				        <p>Click the button below to receive your unique Charlie Coin—it might become valuable one day!</p>
-				        <button id="charlieCoinButton" class="button">Get Your Unique Charlie Coin</button>
-				        <div id="coinResponse" style="margin-top: 1rem; font-weight: bold;"></div>
-				    </section>
-				</article>
-			
-			    <!-- Posts -->
-				<section class="posts">
-				    <article>
-				        <header>
-				            <h2><a href="https://www.researchgate.net/publication/377032400_Exploring_the_impact_of_COVID-19_Pandemic_and_Vaccine_Dissemination_on_Airbnb's_Popularity_and_Sentiment_on_Twitter">Impact of COVID-19 on Airbnb Sentiment</a></h2>
-				        </header>
-				        <p>
-				            This study examines how the COVID-19 pandemic and vaccine rollout affected Airbnb's popularity and public sentiment, as reflected in Twitter discussions.
-				        </p>
-				    </article>
-				
-				    <article>
-				        <header>
-				            <h2><a href="https://www.amazon.com/Whiskers-Quantum-Box-Computing-Ages-ebook/dp/B0DPD98B66" target="_blank">Whiskers and the Quantum Box</a></h2>
-				        </header>
-				        <p>
-				            A whimsical dive into quantum computing through the eyes of a curious cat named Whiskers. This book simplifies complex concepts, making them accessible to all ages and was written with ChatGPT.
-				        </p>
-				    </article>
-				
-				    <article>
-				        <header>
-				            <h2><a href="https://www2.deloitte.com/us/en/pages/consulting/articles/generative-ai-agents-multiagent-systems.html" target="_blank">AI Agents: Reshaping Workflows</a></h2>
-				        </header>
-				        <p>
-				            This Deloitte article explores how AI agents and multiagent systems automate workflows, improve productivity, and enable self-learning. I contributed as a coauthor.
-				        </p>
-				    </article>
-				
-				    <article>
-				        <header>
-				            <h2><a href="https://www.amazon.com/Ella-Digital-Adventure-Charlie-Evert-ebook/dp/B0CXYDNK29" target="_blank">Ella and the Digital Adventure</a></h2>
-				        </header>
-				        <p>
-				            Follow Ella on an exciting journey into digital technology. This engaging book fosters curiosity and introduces young readers to the digital world. Written with ChatGPT.
-				        </p>
-				    </article>
-				
-				    <article>
-				        <header>
-				            <h2><a href="https://sk.sagepub.com/cases/auto-repossession-agencies-they-leaving-the-industry-remain-business">Challenges for Auto Repossession Agencies</a></h2>
-				        </header>
-				        <p>
-				            This case study analyzes challenges faced by auto repossession agencies, exploring key factors driving decisions to remain in or exit the industry.
-				        </p>
-				    </article>
-				
-				    <article>
-				        <header>
-				            <h2><a href="https://sk.sagepub.com/cases/is-there-a-case-for-a-global-covid-19-marshall-plan">A Global COVID-19 Marshall Plan</a></h2>
-				        </header>
-				        <p>
-				            This analysis explores the potential for a global initiative, similar to the Marshall Plan, to address widespread challenges posed by the COVID-19 pandemic.
-				        </p>
-				    </article>
-				
-				    <article>
-				        <header>
-				            <h2><a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082">Kenvue’s AI-Powered HR Tool</a></h2>
-				        </header>
-				        <p>
-				            This article highlights an AI-driven HR tool mentioned by Kenvue's CIO. While I did not write the article, I led the team that built this innovative tool with 22,000 annual users.
-				        </p>
-				    </article>
-				    <article>
-				        <header>
-					    <h2><a href="https://www.armytimes.com/news/your-army/2024/09/25/army-enlists-ai-to-identify-prospective-new-recruits/" target="_blank">Army Enlists AI to Identify New Recruits</a></h2>
-				        </header>
-				        <p>
-					This article highlights the U.S. Army's adoption of AI with the "Recruit 360" tool, designed to refine recruiting efforts and identify prospective enlistees more effectively. I led the team that built the Generative AI component of this.
-				        </p>
-				    </article>
-				</section>
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(45,106,63,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 80% at 10% 80%, rgba(29,74,44,0.25) 0%, transparent 55%),
+        linear-gradient(160deg, #0a1a0f 0%, #0d2015 40%, #0a1a0f 100%);
+    }
 
-				<!-- AI-Generated Music Playlist -->
-				<section id="ai-music" style="margin-top: 2rem; text-align: center;">
-				    <h2>AI-Generated Music Playlist</h2>
-				    <p>I decided to create some AI-themed metal music. Click the button below to listen to the playlist and experience AI-generated brutality!</p>
-				    <a href="https://suno.com/playlist/b91f796f-6d3c-41d7-b753-0f2ca9b4abae" target="_blank" class="button">Listen to Playlist</a>
-				</section>
+    /* Animated forest lines */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          175deg,
+          transparent,
+          transparent 80px,
+          rgba(45,106,63,0.04) 80px,
+          rgba(45,106,63,0.04) 81px
+        );
+      animation: sway 12s ease-in-out infinite alternate;
+    }
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section>
-					<h3>Guess the Number Game</h3>
-					<p>I've picked a random number between 1 and 100. Can you guess it in 10 turns or fewer? Good luck!</p>
-					<div class="form">
-						<label for="guessField">Enter a guess: </label>
-						<input type="text" id="guessField" class="guessField"> <br>
-						<input type="submit" value="Submit guess" class="guessSubmit">
-					</div>
-					<div class="resultParas">
-						<p class="guesses"></p>
-						<p class="lastResult"></p>
-						<p class="lowOrHi"></p>
-					</div>
-				</section>
+    @keyframes sway {
+      from { transform: skewX(-1deg); }
+      to { transform: skewX(1deg); }
+    }
 
-				<section class="split contact">
-					<section class="alt">
-						<h3>Location</h3>
-						<p>Miami Beach, FL</p>
-					</section>
-					<section>
-						<h3>Phone</h3>
-						<p>(215) 416-1737</p>
-					</section>
-					<section>
-						<h3>Email</h3>
-						<p>charlieevert@gmail.com</p>
-					</section>
-					<section>
-						<h3>Social</h3>
-						<ul class="icons alt">
-							<li><a href="https://www.youtube.com/@PromptHubOfficial" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
-							<li><a href="https://github.com/CharlieEvert" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="https://www.linkedin.com/in/ralphcharlesevertiv/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=8EMpu2EAAAAJ" class="icon brands fa-google"><span class="label">Google Scholar</span></a></li>
-							<li><a href="https://www.amazon.com/s?i=digital-text&rh=p_27%3ACharlie%2BEvert&s=relevancerank&text=Charlie+Evert&ref=dp_byline_sr_ebooks_1" class="icon brands fa-amazon"><span class="label">Amazon</span></a></li>
-						    </ul>
-					</section>
-				</section>
-			</footer>
-		</div>
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      padding-top: 15vh;
+    }
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script>
-		    document.getElementById('charlieCoinButton').addEventListener('click', function() {
-		        // Simulate generating a unique Charlie Coin
-		        const coinId = 'CHARLIE-' + Array.from({ length: 20 }, () => Math.floor(Math.random() * 36).toString(36)).join('').toUpperCase();
-		        const responseElement = document.getElementById('coinResponse');
-		        
-		        // Display the generated coin
-		        responseElement.textContent = `🎉 Congratulations! You've received your unique Charlie Coin: ${coinId}`;
-		        
-		        // Optionally log to a server or blockchain system here
-		        // Example: Call an API to save this transaction on a blockchain
-		    });
-		</script>
-		<script>
-		    let randomNumber = Math.floor(Math.random() * 100) + 1;
-		    const guesses = document.querySelector('.guesses');
-		    const lastResult = document.querySelector('.lastResult');
-		    const lowOrHi = document.querySelector('.lowOrHi');
-		    const guessSubmit = document.querySelector('.guessSubmit');
-		    const guessField = document.querySelector('.guessField');
-		    let guessCount = 1;
-		    let resetButton;
-		
-		    function checkGuess() {
-		        const userGuess = Number(guessField.value);
-		        if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
-		            lastResult.textContent = 'Please enter a number between 1 and 100!';
-		            lastResult.style.backgroundColor = 'orange';
-		            guessField.value = '';
-		            guessField.focus();
-		            return;
-		        }
-		
-		        if (guessCount === 1) {
-		            guesses.textContent = 'Previous guesses: ';
-		        }
-		        guesses.textContent += `${userGuess} `;
-		
-		        if (userGuess === randomNumber) {
-		            lastResult.textContent = '🎉 Congratulations! You guessed the number! Email me at charlieevert@gmail.com with a job offer to claim your prize. 🎉';
-		            lastResult.style.backgroundColor = 'lightgreen';
-		            lowOrHi.textContent = '';
-		            setGameOver();
-		        } else if (guessCount === 10) {
-		            lastResult.textContent = '💀 Game Over! You used all 10 guesses.';
-		            setGameOver();
-		        } else {
-		            lastResult.textContent = '❌ Wrong guess!';
-		            lastResult.style.backgroundColor = 'pink';
-		            if (userGuess < randomNumber) {
-		                lowOrHi.textContent = 'Your guess was too low!';
-		            } else {
-		                lowOrHi.textContent = 'Your guess was too high!';
-		            }
-		        }
-		
-		        guessCount++;
-		        guessField.value = '';
-		        guessField.focus();
-		    }
-		
-		    function setGameOver() {
-		        guessField.disabled = true;
-		        guessSubmit.disabled = true;
-		        resetButton = document.createElement('button');
-		        resetButton.textContent = 'Start New Game';
-		        document.body.appendChild(resetButton);
-		        resetButton.addEventListener('click', resetGame);
-		    }
-		
-		    function resetGame() {
-		        guessCount = 1;
-		        const resetParas = document.querySelectorAll('.resultParas p');
-		        resetParas.forEach(para => (para.textContent = ''));
-		
-		        resetButton.parentNode.removeChild(resetButton);
-		
-		        guessField.disabled = false;
-		        guessSubmit.disabled = false;
-		        guessField.value = '';
-		        guessField.focus();
-		
-		        lastResult.style.backgroundColor = 'white';
-		        randomNumber = Math.floor(Math.random() * 100) + 1;
-		    }
-		
-		    guessSubmit.addEventListener('click', checkGuess);
-		</script>
-	</body>
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 14vw, 13rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+    }
+
+    .hero-name span {
+      color: var(--moss);
+      display: block;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-body);
+      font-size: clamp(1.15rem, 2.3vw, 1.6rem);
+      font-weight: 300;
+      color: var(--sage);
+      margin-top: 2rem;
+      min-height: 2.2em;
+      display: flex;
+      align-items: center;
+    }
+    #typed-cursor { color: var(--gold); animation: blink 0.75s step-end infinite; margin-left: 2px; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border: 1px solid currentColor;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-primary {
+      background: var(--forest-green);
+      color: var(--glow);
+      border-color: var(--forest-green);
+    }
+    .btn-primary:hover {
+      background: var(--moss);
+      border-color: var(--moss);
+      color: var(--cream);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(61,139,80,0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border-color: rgba(90,171,109,0.3);
+    }
+    .btn-ghost:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+      transform: translateY(-2px);
+    }
+
+    /* Stats strip */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid rgba(45,106,63,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid rgba(45,106,63,0.2);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .stat:last-child { border-right: none; }
+    .stat:hover { background: rgba(45,106,63,0.06); }
+    .stat:hover .stat-num { color: var(--leaf); }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: var(--sage);
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6vw;
+      background: rgba(6,14,9,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(45,106,63,0.2);
+      transition: all 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(10,26,15,0.92);
+      backdrop-filter: blur(20px);
+      padding: 1rem 6vw;
+      border-bottom: 1px solid rgba(45,106,63,0.2);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--sage); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+
+    .nav-icons {
+      display: flex;
+      gap: 1.2rem;
+      list-style: none;
+    }
+    .nav-icons a {
+      color: var(--muted);
+      font-size: 1rem;
+      transition: color 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+    .nav-icons a:hover { color: var(--sage); transform: translateY(-2px); }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 8rem 6vw;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--forest-green);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 4rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--forest-dark);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .about-text p strong { color: var(--off-white); font-weight: 600; }
+    .about-text p em { color: var(--sage); font-style: italic; }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid rgba(45,106,63,0.4);
+      color: var(--sage);
+      background: rgba(45,106,63,0.08);
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .highlight-item {
+      padding: 1.8rem 0;
+      border-bottom: 1px solid rgba(45,106,63,0.15);
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      transition: padding-left 0.3s;
+    }
+    .highlight-item:hover { padding-left: 0.5rem; }
+    .highlight-item:first-child { border-top: 1px solid rgba(45,106,63,0.15); }
+
+    .highlight-icon {
+      font-size: 1.3rem;
+      color: var(--forest-green);
+      width: 28px;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    .highlight-content h4 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--off-white);
+      margin-bottom: 0.3rem;
+    }
+    .highlight-content p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience {
+      background: var(--forest-deep);
+    }
+
+    .exp-timeline {
+      position: relative;
+    }
+
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--forest-green) 10%, var(--forest-green) 90%, transparent);
+    }
+
+    .exp-item {
+      padding: 0 0 5rem 3.5rem;
+      position: relative;
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 11px; height: 11px;
+      background: var(--forest-green);
+      border: 2px solid var(--forest-deep);
+      border-radius: 50%;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .exp-item:hover::before {
+      background: var(--sage);
+      transform: scale(1.4);
+    }
+
+    .exp-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-company {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+    }
+
+    .exp-date {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--forest-green);
+      text-transform: uppercase;
+      padding: 0.2rem 0.7rem;
+      border: 1px solid rgba(45,106,63,0.3);
+    }
+
+    .exp-role {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .exp-bullets { display: flex; flex-direction: column; gap: 0.8rem; }
+    .exp-bullets .eb { display: flex; gap: 0.9rem; color: var(--muted); font-size: 0.97rem; line-height: 1.65; }
+    .exp-bullets .eb-dash { color: var(--forest-green); flex-shrink: 0; padding-top: 0.22rem; line-height: 1; font-size: 0.8rem; }
+    .exp-bullets .eb strong { color: var(--off-white); }
+    .exp-bullets .eb a { color: var(--sage); text-decoration: none; border-bottom: 1px solid rgba(90,171,109,0.3); transition: border-color 0.2s, color 0.2s; }
+    .exp-bullets .eb a:hover { color: var(--leaf); border-color: var(--leaf); }
+
+    /* ── SKILLS ── */
+    #skills {
+      background: var(--forest-dark);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px;
+      background: rgba(45,106,63,0.15);
+      border: 1px solid rgba(45,106,63,0.15);
+    }
+
+    .skill-group {
+      background: var(--forest-dark);
+      padding: 2.5rem;
+      transition: background 0.3s;
+    }
+    .skill-group:hover { background: rgba(45,106,63,0.06); }
+
+    .skill-group-title {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(45,106,63,0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      background: rgba(45,106,63,0.1);
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(45,106,63,0.2);
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .chip:hover {
+      color: var(--leaf);
+      border-color: var(--sage);
+      background: rgba(45,106,63,0.18);
+    }
+
+    /* ── WORK / PROJECTS ── */
+    #work {
+      background: var(--forest-deep);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2px;
+      background: rgba(45,106,63,0.1);
+    }
+
+    .work-card {
+      background: var(--forest-deep);
+      padding: 3rem 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--sage);
+      transition: height 0.4s;
+    }
+    .work-card:hover::before { height: 100%; }
+    .work-card:hover { background: rgba(45,106,63,0.05); }
+
+    .work-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--forest-green);
+      margin-bottom: 1rem;
+    }
+
+    .work-card h3 {
+      font-family: var(--font-body);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--off-white);
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .work-card h3 a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .work-card h3 a:hover { color: var(--sage); }
+
+    .work-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .work-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      text-decoration: none;
+      margin-top: 1.5rem;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .work-card-link:hover { gap: 0.8rem; color: var(--leaf); }
+
+    /* ── VIDEOS ── */
+    #videos {
+      background: var(--forest-dark);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(45,106,63,0.1);
+    }
+
+    .video-wrapper {
+      position: relative;
+      background: var(--forest-dark);
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      width: 100%; height: 100%;
+      border: none;
+      transition: transform 0.4s;
+    }
+
+
+    .yt-list { display: flex; flex-direction: column; gap: 2px; background: rgba(45,106,63,0.1); }
+    .yt-row { display: flex; align-items: center; gap: 1.5rem; padding: 1.4rem 2rem; background: var(--forest-deep); text-decoration: none; transition: background 0.2s; }
+    .yt-row:hover { background: rgba(45,106,63,0.07); }
+    .yt-icon { color: #ff4444; font-size: 1.3rem; flex-shrink: 0; width: 24px; }
+    .yt-info { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
+    .yt-title { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; color: var(--off-white); }
+    .yt-desc { font-family: var(--font-body); font-size: 0.88rem; color: var(--muted); }
+    .yt-arrow { font-size: 1rem; color: var(--sage); flex-shrink: 0; opacity: 0; transition: opacity 0.2s; }
+    .yt-row:hover .yt-arrow { opacity: 1; }
+
+    /* ── AWARDS ── */
+    #awards {
+      background: var(--forest-deep);
+    }
+
+    .awards-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      background: rgba(45,106,63,0.1);
+    }
+
+    .award-item {
+      background: var(--forest-deep);
+      padding: 2rem 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      transition: background 0.3s;
+    }
+    .award-item:hover { background: rgba(45,106,63,0.06); }
+
+    .award-icon {
+      color: var(--gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    .award-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .award-text strong { color: var(--cream); display: block; margin-bottom: 0.2rem; }
+
+    /* ── CERTS ── */
+    #certs {
+      background: var(--forest-dark);
+      padding-top: 0;
+    }
+
+    .certs-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .cert-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.2s;
+    }
+    .cert-badge:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.1);
+    }
+    .cert-badge::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.5rem;
+    }
+
+    /* ── RESEARCH ── */
+    #research {
+      background: var(--forest-deep);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2px;
+      background: rgba(45,106,63,0.1);
+    }
+
+    .research-item {
+      background: var(--forest-deep);
+      padding: 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .research-item:hover { background: rgba(45,106,63,0.05); }
+
+    .research-item h3 {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--off-white);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    .research-item h3 a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .research-item h3 a:hover { color: var(--sage); }
+
+    .research-item p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .research-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── PATENT ── */
+    .patent-box {
+      margin-top: 4rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 3rem;
+      background: rgba(201,168,76,0.03);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .patent-icon {
+      font-size: 3rem;
+      color: var(--gold);
+    }
+
+    .patent-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .patent-box p { color: var(--muted); font-size: 1rem; }
+
+    /* ── GAME ── */
+    #game {
+      background: var(--forest-dark);
+    }
+
+    .game-container {
+      max-width: 500px;
+      border: 1px solid rgba(45,106,63,0.3);
+      padding: 3rem;
+      background: rgba(10,26,15,0.8);
+    }
+
+    .game-container h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .game-container p {
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .game-input-row {
+      display: flex;
+      gap: 0;
+    }
+
+    #guessField {
+      flex: 1;
+      background: rgba(45,106,63,0.1);
+      border: 1px solid rgba(45,106,63,0.3);
+      border-right: none;
+      color: var(--cream);
+      padding: 0.8rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    #guessField:focus { border-color: var(--sage); }
+
+    #guessSubmit {
+      background: var(--forest-green);
+      color: var(--glow);
+      border: 1px solid var(--forest-green);
+      padding: 0.8rem 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    #guessSubmit:hover { background: var(--moss); color: var(--cream); }
+
+    .game-result {
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .guesses { color: var(--muted); margin-bottom: 0.5rem; }
+    .lastResult { padding: 0.6rem 1rem; margin-bottom: 0.4rem; }
+    .lowOrHi { color: var(--sage); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest-deep);
+      border-top: 1px solid rgba(45,106,63,0.2);
+      padding: 5rem 6vw 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand .nav-logo {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--sage); }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-btn {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(45,106,63,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .social-btn:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+      background: rgba(45,106,63,0.1);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(45,106,63,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: rgba(138,158,143,0.5);
+      text-transform: uppercase;
+    }
+
+    /* ── CHARLIE COIN ── */
+    #coin-section {
+      background: var(--forest-deep);
+      text-align: center;
+      padding: 6rem 6vw;
+    }
+
+    .coin-btn {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold-light);
+      padding: 1.2rem 3rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .coin-btn:hover { background: var(--gold); color: var(--forest-deep); border-color: var(--gold); }
+
+    #coinResponse {
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-light);
+      min-height: 1.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { opacity: 1; transform: none; transition: opacity 0.7s, transform 0.7s; }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--forest-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--forest-green); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .research-grid, .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(3, 1fr); }
+      .video-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      section { padding: 5rem 5vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">CE<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#awards">Awards</a></li>
+    </ul>
+    <ul class="nav-icons">
+      <li><a href="https://www.youtube.com/@PromptHubOfficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a></li>
+      <li><a href="https://github.com/CharlieEvert" target="_blank" title="GitHub"><i class="fab fa-github"></i></a></li>
+      <li><a href="https://www.kaggle.com/charlieevert" target="_blank" title="Kaggle"><i class="fab fa-kaggle"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/ralphcharlesevertiv/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+      <li><a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=8EMpu2EAAAAJ" target="_blank" title="Scholar"><i class="fab fa-google"></i></a></li>
+      <li><a href="https://www.amazon.com/s?i=digital-text&rh=p_27%3ACharlie%2BEvert&s=relevancerank&text=Charlie+Evert&ref=dp_byline_sr_ebooks_1" target="_blank" title="Books"><i class="fab fa-amazon"></i></a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">// AI Leader · Builder · Miami Beach, FL</p>
+      <h1 class="hero-name">
+        Charlie
+        <span>Evert</span>
+      </h1>
+      <div class="hero-tagline"><span id="typed-role"></span><span id="typed-cursor">|</span></div>
+      <div class="hero-cta">
+        <a href="https://www.linkedin.com/in/ralphcharlesevertiv/details/featured/" class="btn btn-primary" target="_blank">
+          <i class="fas fa-file-alt"></i> View Résumé
+        </a>
+        <a href="mailto:charlieevert@gmail.com" class="btn btn-ghost">
+          <i class="fas fa-envelope"></i> Get in Touch
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">$150M+</div>
+        <div class="stat-label">Managed Revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$1.35B+</div>
+        <div class="stat-label">Pipeline Driven</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Engineers Led</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1M+</div>
+        <div class="stat-label">Monthly Users</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">AI Deployments</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">01 — About</div>
+    <h2 class="section-title reveal">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm <strong>Charlie Evert</strong> — an AI leader, engineer, and former Army paratrooper who jumped out of planes and then jumped headfirst into building the future of enterprise AI.</p>
+        <p>I grew up in <em>St. Thomas, US Virgin Islands</em>, earned my stripes as an Airborne Infantryman, then went on to lead AI engineering at <strong>J&J, Deloitte, and PwC</strong> — deploying production systems at a scale most people only whiteboard about.</p>
+        <p>My specialty: <strong>agentic AI systems that replace human labor at scale</strong> for Fortune 500 and federal clients. I've shipped contact center AI, military recruiting AI, nonprofit chatbots with 1M+ monthly users, and GenAI platforms serving 22,000 enterprise users.</p>
+        <p>I'm also a <em>published author</em>, US Patent holder, peer-reviewed researcher, and I make <strong>AI-themed metal music</strong> because why not.</p>
+        <div class="about-badges">
+          <span class="badge">MBA + MS BI & Analytics</span>
+          <span class="badge">US Patent Holder</span>
+          <span class="badge">Army Veteran</span>
+          <span class="badge">Published Author</span>
+          <span class="badge">Miami Beach, FL</span>
+        </div>
+      </div>
+      <div class="about-highlights reveal">
+        <div class="highlight-item">
+          <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+          <div class="highlight-content">
+            <h4>Full-Stack AI Architect</h4>
+            <p>From RAG pipelines to agentic multi-model systems — I design and ship production AI, not demos.</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="highlight-content">
+            <h4>Revenue Driver</h4>
+            <p>Supported $1B+ in proposals at Deloitte. Unearthed $3M+ in sole-source deals at PwC. Delivery that sells itself.</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon"><i class="fas fa-users"></i></div>
+          <div class="highlight-content">
+            <h4>Team Builder</h4>
+            <p>Built PwC's AI Factory from scratch. Directed 95 engineers across 20+ concurrent Deloitte projects.</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="highlight-content">
+            <h4>Army Veteran</h4>
+            <p>Airborne Infantryman, Fort Benning, GA. Operates under pressure with incomplete information. Has jumped out of planes.</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon"><i class="fas fa-pen-nib"></i></div>
+          <div class="highlight-content">
+            <h4>Creator</h4>
+            <p>Author of 3 published books. 5 peer-reviewed papers. YouTube channel. AI-generated metal. US Patent pending.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">02 — Experience</div>
+    <h2 class="section-title reveal">Career</h2>
+    <div class="exp-timeline">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">PwC</div>
+          <div class="exp-date">Sep 2025 – Present</div>
+        </div>
+        <div class="exp-role">Manager — AI & Digital Contact Center · Miami, FL</div>
+        <div class="exp-bullets">
+          <div class="eb"><span class="eb-dash">—</span><span>Built PwC's first-ever <strong>AI Factory tiger team</strong> from scratch — 45+ practitioners across 4 workstreams (GTM, Build, Eminence, CoP), driving $350M+ in RFP responses and 15+ production assets in 6 months</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Unearthed <strong>3 sole-sourced deals totaling $3M+</strong> post-RFP win; led SOW development and over-delivery that opened new client opportunities</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Built PwC's <strong>first agent-first contact center app</strong> with native CCaaS exit paths — designed to replace 95%+ of contact center labor — on Azure ACS, Azure AI Foundry & Azure App Service</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Advised C-Suite at F500 FinTech to automate <strong>70%+ of service center operations</strong> through Generative and Agentic AI</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Authored the <strong>Agentic AI Delivery Standards</strong> for a 200+ practitioner practice · 3× PwC Praise Awards</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Deloitte</div>
+          <div class="exp-date">Sep 2023 – Sep 2025</div>
+        </div>
+        <div class="exp-role">Senior Consultant — AI & Engineering (GenAI Tech Lead) · Arlington, VA</div>
+        <div class="exp-bullets">
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Anthropic Alliance Lead</strong> — directed 95 engineers across 20+ projects worth $150M+; co-led joint LLM research with Anthropic & UVA</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>PM & Tech Lead for <a href="https://www.amazon.com" target="_blank">$1B+ nonprofit chatbot</a> with <strong>1M+ monthly users</strong> — secured $200M contract extension through delivery excellence</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Engagement Manager for <a href="https://www.armytimes.com/news/your-army/2024/09/25/army-enlists-ai-to-identify-prospective-new-recruits/" target="_blank">military recruiting AI (Recruit360)</a> — shipped in 12 weeks with team of 20, <strong>saving 1M labor hours/year</strong></span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Supported <strong>$1B+ in proposals</strong> as Lead Writer, PM & Contributor; prepared demos, PowerPoints and staffing plans</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>S&A STAR Award 2024</strong> (top 5 of 5,000+ practitioners) · 3× Outstanding Performance Awards · 2× Applause Awards</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Led 7 CPE workshops to 180+ practitioners on Agentic AI, LLM Evaluations, Claude, vibe coding and software dev</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">J&J — Kenvue</div>
+          <div class="exp-date">Sep 2022 – Sep 2023</div>
+        </div>
+        <div class="exp-role">Senior AI & Data Engineer · Skillman, NJ</div>
+        <div class="exp-bullets">
+          <div class="eb"><span class="eb-dash">—</span><span>Just 2 months after ChatGPT launched, <strong>built J&J's first enterprise GenAI platform over Christmas Break 2022</strong> — first-of-its-kind agentic text-to-SQL, Wolfram and RAG chatbot on React, Python, and Azure</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Created <strong>GenAI Goal Setting Assistant</strong> serving 22,000 users enterprise-wide — <a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082" target="_blank">featured in Authority Magazine</a></span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Engineered <strong>6.3B-record AI embeddings pipeline</strong> saving $18M/year vs. originally scoped service</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Co-authored enterprise GenAI policy with CIO, SVP of Data, Head of AI, General Counsel & CISO</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Co-Invented <strong>Personal Profile Generator & Recommendation Engine — US Patent Pending</strong></span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Saint Joseph's University</div>
+          <div class="exp-date">Aug 2021 – Nov 2022</div>
+        </div>
+        <div class="exp-role">Graduate Research Assistant · Philadelphia, PA</div>
+        <div class="exp-bullets">
+          <div class="eb"><span class="eb-dash">—</span><span>Co-authored 4 peer-reviewed papers; presented at conferences with 100+ attendees</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>NLP sentiment analysis of 100k+ tweets using NLTK, VADER, Sci-Kit Learn, Pandas</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">US Army</div>
+          <div class="exp-date">Jul 2015 – Nov 2016</div>
+        </div>
+        <div class="exp-role">Airborne Infantryman · Fort Benning, GA · Honorable Discharge</div>
+        <div class="exp-bullets">
+          <div class="eb"><span class="eb-dash">—</span><span>Operated under pressure with incomplete information. Jumped out of planes.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="padding-top: 0;">
+    <div class="section-label">03 — Technical Skills</div>
+    <h2 class="section-title reveal">Capabilities</h2>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fas fa-brain"></i> AI / GenAI</div>
+        <div class="skill-chips">
+          <span class="chip">Anthropic</span><span class="chip">OpenAI</span><span class="chip">GCP Vertex</span>
+          <span class="chip">AWS Bedrock</span><span class="chip">CrewAI</span><span class="chip">LangChain</span>
+          <span class="chip">Strands</span><span class="chip">Agentic AI</span><span class="chip">RAG</span>
+          <span class="chip">LLM Eval</span><span class="chip">RAGAS</span><span class="chip">LangFuse</span>
+          <span class="chip">MLOps</span><span class="chip">Amazon Connect</span><span class="chip">Azure ACS</span>
+          <span class="chip">NICE CXOne</span><span class="chip">Salesforce</span><span class="chip">ServiceNow</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fas fa-cloud"></i> Cloud / Data</div>
+        <div class="skill-chips">
+          <span class="chip">Azure</span><span class="chip">AWS</span><span class="chip">GCP</span>
+          <span class="chip">Databricks</span><span class="chip">Snowflake</span><span class="chip">MongoDB</span>
+          <span class="chip">Pinecone</span><span class="chip">Weaviate</span><span class="chip">Power BI</span>
+          <span class="chip">Tableau</span><span class="chip">Dataiku</span><span class="chip">SQL Server</span>
+          <span class="chip">MySQL</span><span class="chip">Milvus</span><span class="chip">CDK</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fas fa-code"></i> Engineering</div>
+        <div class="skill-chips">
+          <span class="chip">Python</span><span class="chip">C#/.NET</span><span class="chip">JS/React</span>
+          <span class="chip">Node.js</span><span class="chip">FastAPI</span><span class="chip">HTML/CSS</span>
+          <span class="chip">SQL</span><span class="chip">NoSQL</span><span class="chip">Terraform</span>
+          <span class="chip">R</span><span class="chip">SAS</span><span class="chip">VBA</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fas fa-chess-king"></i> Leadership</div>
+        <div class="skill-chips">
+          <span class="chip">Product Strategy</span><span class="chip">Biz Dev</span><span class="chip">Proposal Writing</span>
+          <span class="chip">Team Building</span><span class="chip">Coaching</span><span class="chip">P&L Ownership</span>
+          <span class="chip">C-Suite Advisory</span><span class="chip">Enterprise AI Architecture</span>
+          <span class="chip">Stakeholder Mgmt</span><span class="chip">Sales</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-label">04 — Published Work</div>
+    <h2 class="section-title reveal">Work & Writing</h2>
+    <div class="work-grid reveal">
+      <div class="work-card">
+        <div class="work-card-tag">Book · AI/ML</div>
+        <h3><a href="https://www.amazon.com/s?i=digital-text&rh=p_27%3ACharlie%2BEvert&s=relevancerank&text=Charlie+Evert&ref=dp_byline_sr_ebooks_1" target="_blank">GenAI in Production</a></h3>
+        <p>Practitioner guide on LLM evaluation, optimization, and enterprise-scale deployment. Top 5 in "Machine Theory" within the month of publication.</p>
+        <a href="https://www.amazon.com/s?i=digital-text&rh=p_27%3ACharlie%2BEvert&s=relevancerank&text=Charlie+Evert&ref=dp_byline_sr_ebooks_1" target="_blank" class="work-card-link">Read on Amazon <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="work-card">
+        <div class="work-card-tag">Book · Children's</div>
+        <h3><a href="https://www.amazon.com/Whiskers-Quantum-Box-Computing-Ages-ebook/dp/B0DPD98B66" target="_blank">Whiskers and the Quantum Box</a></h3>
+        <p>Quantum computing for ages 6–8. A whimsical dive through the eyes of a curious cat named Whiskers, making complex concepts accessible to all ages.</p>
+        <a href="https://www.amazon.com/Whiskers-Quantum-Box-Computing-Ages-ebook/dp/B0DPD98B66" target="_blank" class="work-card-link">Read on Amazon <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="work-card">
+        <div class="work-card-tag">Book · Children's</div>
+        <h3><a href="https://www.amazon.com/Ella-Digital-Adventure-Charlie-Evert-ebook/dp/B0CXYDNK29" target="_blank">Ella and the Digital Adventure</a></h3>
+        <p>AI literacy for kids. Follow Ella on an exciting journey into the digital world — the message is to go outside and touch grass.</p>
+        <a href="https://www.amazon.com/Ella-Digital-Adventure-Charlie-Evert-ebook/dp/B0CXYDNK29" target="_blank" class="work-card-link">Read on Amazon <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="work-card">
+        <div class="work-card-tag">Article · Deloitte</div>
+        <h3><a href="https://www2.deloitte.com/us/en/pages/consulting/articles/generative-ai-agents-multiagent-systems.html" target="_blank">AI Agents: Reshaping Workflows</a></h3>
+        <p>How AI agents and multiagent systems automate workflows, improve productivity, and enable self-learning. Co-authored for Deloitte.</p>
+        <a href="https://www2.deloitte.com/us/en/pages/consulting/articles/generative-ai-agents-multiagent-systems.html" target="_blank" class="work-card-link">Read Article <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="work-card">
+        <div class="work-card-tag">Press · Army Times</div>
+        <h3><a href="https://www.armytimes.com/news/your-army/2024/09/25/army-enlists-ai-to-identify-prospective-new-recruits/" target="_blank">Army Enlists AI to Identify New Recruits</a></h3>
+        <p>Army Times coverage of Recruit360 — the AI recruiting tool I led the team that built, shipping in 12 weeks and saving 1M labor hours/year.</p>
+        <a href="https://www.armytimes.com/news/your-army/2024/09/25/army-enlists-ai-to-identify-prospective-new-recruits/" target="_blank" class="work-card-link">Read Article <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="work-card">
+        <div class="work-card-tag">Press · Authority Magazine</div>
+        <h3><a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082" target="_blank">Kenvue's AI-Powered HR Tool</a></h3>
+        <p>Kenvue's CIO discusses the AI-driven HR tool — I led the team that built it, serving 22,000 users across the enterprise.</p>
+        <a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082" target="_blank" class="work-card-link">Read Article <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="work-card">
+        <div class="work-card-tag">Music · Suno AI</div>
+        <h3><a href="https://suno.com/playlist/b91f796f-6d3c-41d7-b753-0f2ca9b4abae" target="_blank">AI-Generated Metal Playlist</a></h3>
+        <p>AI-themed metal music because why not. Experience AI-generated brutality and sonic chaos.</p>
+        <a href="https://suno.com/playlist/b91f796f-6d3c-41d7-b753-0f2ca9b4abae" target="_blank" class="work-card-link">Listen <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <div class="section-label">05 — YouTube</div>
+    <h2 class="section-title reveal">Prompt Hub</h2>
+    <p class="reveal" style="color: var(--muted); max-width: 560px; margin-bottom: 3rem; font-size: 1.05rem;">
+      I run <a href="https://www.youtube.com/@PromptHubOfficial" target="_blank" style="color: var(--sage);">@PromptHubOfficial</a> — exploring Generative AI, vibe coding, LLM evals, and other tech curiosities.
+    </p>
+    <a href="https://www.youtube.com/@PromptHubOfficial" target="_blank" class="btn btn-ghost reveal" style="display:inline-flex;margin-top:1rem;"><i class="fab fa-youtube" style="color:#ff4444;margin-right:.5rem;"></i> View All Videos on YouTube</a>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-label">06 — Research</div>
+    <h2 class="section-title reveal">Peer-Reviewed Papers</h2>
+    <div class="research-grid reveal">
+      <div class="research-item">
+        <div class="research-tag">UVA × Deloitte</div>
+        <h3><a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=8EMpu2EAAAAJ" target="_blank">Comparative Study of LLM Eval Frameworks: NLP vs LLM-As-A-Judge</a></h3>
+        <p>Supervised and funded by Deloitte. Co-led with Anthropic & UVA. Benchmarking evaluation methodologies for large language models in production.</p>
+      </div>
+      <div class="research-item">
+        <div class="research-tag">NLP · Sentiment Analysis · IJWBC 2025</div>
+        <h3><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8EMpu2EAAAAJ&citation_for_view=8EMpu2EAAAAJ:9yKSN-GCB0IC" target="_blank">Exploring the Impact of COVID-19 & Vaccine Dissemination on Airbnb's Popularity and Sentiment on Twitter</a></h3>
+        <p>344,705 tweets analyzed across pre-COVID, pre-vaccine, and post-vaccine periods. Sentiment, topic mining, and voice analytics reveal inverse correlations between COVID-19 cases and positive Airbnb sentiment. <em>International Journal of Web Based Communities</em>, Vol. 21, 2025. Co-authored with Shokoohyar, Ghomi, Gorizi & Liang.</p>
+      </div>
+      <div class="research-item">
+        <div class="research-tag">SAGE · Workforce</div>
+        <h3><a href="https://sk.sagepub.com/cases/auto-repossession-agencies-they-leaving-the-industry-remain-business" target="_blank">Auto Repossession Agencies: Attrition & Retention Strategies</a></h3>
+        <p>Workforce exit patterns and survival strategies in the auto repossession industry. Published via SAGE Business Cases.</p>
+      </div>
+      <div class="research-item">
+        <div class="research-tag">SAGE · Economic Policy · 2022</div>
+        <h3><a href="https://sk.sagepub.com/cases/is-there-a-case-for-a-global-covid-19-marshall-plan" target="_blank">Would a Global Response Analogous to the Marshall Plan Be the Most Ethical, Effective, and Rational Way to Address the COVID-19 Pandemic?</a></h3>
+        <p>Case study arguing for a coordinated global vaccination response modeled on the post-WWII Marshall Plan. Co-authored with Shokoohyar, Sillup, Riordan, DeMento & McTague. Published via SAGE Business Cases.</p>
+      </div>
+      <div class="research-item">
+        <div class="research-tag">SAGE · Economic Policy · 2023</div>
+        <h3><a href="https://sk.sagepub.com/cases/how-could-a-global-response-analogous-to-the-marshall-plan-to-disseminate-covid-19-vaccinations-be-implemented-throughout-africa" target="_blank">How Could a Global Response Analogous to the Marshall Plan to Disseminate COVID-19 Vaccinations Be Implemented Throughout Africa?</a></h3>
+        <p>Follow-up case examining the logistical and humanitarian challenges of implementing a Marshall Plan-style vaccination rollout across Africa's least developed nations. Co-authored with Shokoohyar, Sillup, Riordan, DeMento & McTague. SAGE Business Cases, 2023.</p>
+      </div>
+    </div>
+    <div class="patent-box reveal">
+      <div class="patent-icon">⚖️</div>
+      <div>
+        <h3>US Patent Pending</h3>
+        <p>Personal Profile Generator & Recommendation Engine — AI system for personalized user profiles and intelligent product recommendations using machine learning. Invented and filed during tenure at Johnson & Johnson / Kenvue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <div class="section-label">07 — Recognition</div>
+    <h2 class="section-title reveal">Awards</h2>
+    <div class="awards-list reveal">
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-trophy"></i></div>
+        <div class="award-text"><strong>PwC Praise Award</strong>Closing $1.2M deal</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-trophy"></i></div>
+        <div class="award-text"><strong>PwC Praise Award</strong>AI Factory creation</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-trophy"></i></div>
+        <div class="award-text"><strong>PwC Praise Award</strong>Closing $900K deal</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-star"></i></div>
+        <div class="award-text"><strong>Deloitte S&A STAR Award 2024</strong>Top 5 of 5,000+ practitioners — selected by partners</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-medal"></i></div>
+        <div class="award-text"><strong>Deloitte 3× Outstanding Performance Awards</strong>Recognized across multiple engagements</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-lightbulb"></i></div>
+        <div class="award-text"><strong>Deloitte Workday GenAI Ideathon Winner</strong>GoalAssist — enterprise AI hackathon champion</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-award"></i></div>
+        <div class="award-text"><strong>Deloitte Fed Health AI App Applause Award</strong>Azure AI Agent with 5 post-sales wins</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="award-text"><strong>AP Scholar with Distinction</strong>Academic excellence recognition</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS -->
+  <section id="certs">
+    <div class="section-label">08 — Certifications</div>
+    <h2 class="section-title reveal">Credentials</h2>
+    <div class="certs-grid reveal">
+      <span class="cert-badge">Azure Cloud Fundamentals</span>
+      <span class="cert-badge">AWS Cloud Practitioner</span>
+      <span class="cert-badge">AWS AI Practitioner</span>
+      <span class="cert-badge">Salesforce AI Associate</span>
+      <span class="cert-badge">Databricks GenAI & LLM — Healthcare & Life Sciences</span>
+      <span class="cert-badge">Databricks GenAI & LLM — Retail & Consumer Goods</span>
+      <span class="cert-badge">Multi-Agent Systems with CrewAI</span>
+      <span class="cert-badge">SAS BI + Analytics</span>
+      <span class="cert-badge">Google Data Analytics</span>
+      <span class="cert-badge">Google UX Design</span>
+      <span class="cert-badge">Deloitte Advanced Prompt Engineering</span>
+    </div>
+  </section>
+
+  <!-- CHARLIE COIN -->
+  <section id="coin-section">
+    <div class="section-label" style="justify-content: center;">09 — Blockchain Corner</div>
+    <h2 class="section-title reveal" style="text-align: center;">Get Your Charlie Coin</h2>
+    <p class="reveal" style="color: var(--muted); max-width: 420px; margin: 0 auto 2.5rem; text-align: center; font-size: 1rem;">It might become valuable one day. No guarantees.</p>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+      <button class="coin-btn reveal" id="charlieCoinButton">⚡ Claim Your Coin</button>
+      <div id="coinResponse"></div>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="game">
+    <div class="section-label">10 — Easter Egg</div>
+    <h2 class="section-title reveal">Guess the Number</h2>
+    <div class="game-container reveal">
+      <h3>1 – 100</h3>
+      <p>10 guesses. Win and something good happens. 👀</p>
+      <div class="game-input-row">
+        <input type="number" id="guessField" min="1" max="100" placeholder="Your guess..." />
+        <button id="guessSubmit">Submit</button>
+      </div>
+      <div class="game-result">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">Charlie Evert<span>.</span></a>
+        <p>AI architect, Army veteran, and builder based in Miami Beach, FL. Building enterprise AI that ships to production — not just the whiteboard.</p>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@PromptHubOfficial" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="https://github.com/CharlieEvert" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+          <a href="https://www.kaggle.com/charlieevert" target="_blank" class="social-btn"><i class="fab fa-kaggle"></i></a>
+          <a href="https://www.linkedin.com/in/ralphcharlesevertiv/" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=8EMpu2EAAAAJ" target="_blank" class="social-btn"><i class="fab fa-google"></i></a>
+          <a href="https://www.amazon.com/s?i=digital-text&rh=p_27%3ACharlie%2BEvert&s=relevancerank&text=Charlie+Evert&ref=dp_byline_sr_ebooks_1" target="_blank" class="social-btn"><i class="fab fa-amazon"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#awards">Awards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:charlieevert@gmail.com">charlieevert@gmail.com</a></li>
+          <li><a href="tel:2154161737">(215) 416-1737</a></li>
+          <li><a href="https://charlieevert.github.io" target="_blank">charlieevert.github.io</a></li>
+          <li><span style="color: var(--muted);">Miami Beach, FL</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Ralph Charles Evert IV — All rights reserved</p>
+      <p>References available upon request</p>
+    </div>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+        ring.style.width = '50px';
+        ring.style.height = '50px';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '12px';
+        cursor.style.height = '12px';
+        ring.style.width = '36px';
+        ring.style.height = '36px';
+      });
+    });
+
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // Intersection observer for reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal, .exp-item').forEach(el => observer.observe(el));
+
+    // Charlie Coin
+    document.getElementById('charlieCoinButton').addEventListener('click', function() {
+      const coinId = 'CHARLIE-' + Array.from({ length: 20 }, () =>
+        Math.floor(Math.random() * 36).toString(36)).join('').toUpperCase();
+      document.getElementById('coinResponse').textContent =
+        `🎉 Your unique Charlie Coin: ${coinId}`;
+    });
+
+    // Guess the number game
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    const guessesEl = document.querySelector('.guesses');
+    const lastResultEl = document.querySelector('.lastResult');
+    const lowOrHiEl = document.querySelector('.lowOrHi');
+    const guessSubmitEl = document.getElementById('guessSubmit');
+    const guessFieldEl = document.getElementById('guessField');
+    let guessCount = 1;
+
+    function checkGuess() {
+      const userGuess = Number(guessFieldEl.value);
+      if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+        lastResultEl.textContent = 'Enter a number between 1 and 100.';
+        lastResultEl.style.background = 'rgba(200,100,50,0.15)';
+        lastResultEl.style.color = '#f4a261';
+        guessFieldEl.value = '';
+        return;
+      }
+      if (guessCount === 1) guessesEl.textContent = 'Guesses: ';
+      guessesEl.textContent += `${userGuess} `;
+
+      if (userGuess === randomNumber) {
+        lastResultEl.textContent = '🎉 Correct! Email me at charlieevert@gmail.com with a job offer to claim your prize.';
+        lastResultEl.style.background = 'rgba(45,106,63,0.2)';
+        lastResultEl.style.color = 'var(--leaf)';
+        lowOrHiEl.textContent = '';
+        setGameOver();
+      } else if (guessCount === 10) {
+        lastResultEl.textContent = `💀 Game over. The number was ${randomNumber}.`;
+        lastResultEl.style.background = 'rgba(180,50,50,0.15)';
+        lastResultEl.style.color = '#e07070';
+        setGameOver();
+      } else {
+        lastResultEl.textContent = '✗ Wrong.';
+        lastResultEl.style.background = 'rgba(180,50,50,0.1)';
+        lastResultEl.style.color = '#e07070';
+        lowOrHiEl.textContent = userGuess < randomNumber ? '↑ Too low' : '↓ Too high';
+        lowOrHiEl.style.color = 'var(--sage)';
+      }
+      guessCount++;
+      guessFieldEl.value = '';
+    }
+
+    function setGameOver() {
+      guessFieldEl.disabled = true;
+      guessSubmitEl.disabled = true;
+      const resetBtn = document.createElement('button');
+      resetBtn.textContent = 'New Game';
+      resetBtn.style.cssText = 'margin-top:1rem; background:transparent; border:1px solid rgba(45,106,63,0.4); color:var(--sage); font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.6rem 1.2rem; cursor:none;';
+      guessFieldEl.parentNode.parentNode.appendChild(resetBtn);
+      resetBtn.addEventListener('click', () => {
+        guessCount = 1;
+        randomNumber = Math.floor(Math.random() * 100) + 1;
+        guessesEl.textContent = '';
+        lastResultEl.textContent = '';
+        lowOrHiEl.textContent = '';
+        guessFieldEl.disabled = false;
+        guessSubmitEl.disabled = false;
+        guessFieldEl.value = '';
+        resetBtn.remove();
+      });
+    }
+
+    guessSubmitEl.addEventListener('click', checkGuess);
+    guessFieldEl.addEventListener('keydown', e => { if (e.key === 'Enter') checkGuess(); });
+  </script>
+<script>
+(function() {
+  var roles = [
+    "Revenue Driver & AI Strategist",
+    "Builder of High-Performing Technical Teams",
+    "AI Architect & Engineering Leader",
+    "Enterprise AI Deployment Expert",
+    "GenAI Product Builder"
+  ];
+  var el = document.getElementById('typed-role');
+  if (!el) return;
+  var rIdx = 0, cIdx = 0, isDeleting = false;
+  function tick() {
+    var full = roles[rIdx];
+    if (isDeleting) {
+      cIdx--;
+      el.textContent = full.substring(0, cIdx);
+      if (cIdx <= 0) { isDeleting = false; rIdx = (rIdx + 1) % roles.length; setTimeout(tick, 400); return; }
+      setTimeout(tick, 40);
+    } else {
+      cIdx++;
+      el.textContent = full.substring(0, cIdx);
+      if (cIdx >= full.length) { setTimeout(function(){ isDeleting = true; tick(); }, 2000); return; }
+      setTimeout(tick, 70);
+    }
+  }
+  tick();
+})();
+</script>
+</body>
 </html>
