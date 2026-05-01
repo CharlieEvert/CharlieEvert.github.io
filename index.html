@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <title>Charlie Evert — AI Leader & Builder</title>
+  <title>Charlie Evert — AI Product Leader & Builder</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="description" content="Charlie Evert (Ralph Charles Evert IV) — AI Product Leader, Group PM, and engineer building compliant Generative AI products for regulated healthcare and R&D environments." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" crossorigin="anonymous" />
@@ -40,9 +41,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--forest-deep);
       color: var(--off-white);
@@ -51,8 +50,19 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
-
     .cursor, .cursor-ring { display: none !important; }
+
+    /* ── SCROLL PROGRESS ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, var(--forest-green), var(--sage), var(--leaf), var(--gold));
+      z-index: 10000;
+      transition: width 0.05s linear;
+      box-shadow: 0 0 8px rgba(126,201,138,0.4);
+    }
 
     /* Noise overlay */
     body::before {
@@ -74,7 +84,6 @@
       overflow: hidden;
       padding: 0 6vw;
     }
-
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -83,26 +92,58 @@
         radial-gradient(ellipse 40% 80% at 10% 80%, rgba(29,74,44,0.25) 0%, transparent 55%),
         linear-gradient(160deg, #0a1a0f 0%, #0d2015 40%, #0a1a0f 100%);
     }
-
-    /* Animated forest lines */
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        repeating-linear-gradient(
-          175deg,
-          transparent,
-          transparent 80px,
-          rgba(45,106,63,0.04) 80px,
-          rgba(45,106,63,0.04) 81px
-        );
+        repeating-linear-gradient(175deg, transparent, transparent 80px, rgba(45,106,63,0.04) 80px, rgba(45,106,63,0.04) 81px);
       animation: sway 12s ease-in-out infinite alternate;
     }
+    @keyframes sway { from { transform: skewX(-1deg); } to { transform: skewX(1deg); } }
 
-    @keyframes sway {
-      from { transform: skewX(-1deg); }
-      to { transform: skewX(1deg); }
+    /* Drifting glow orbs */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+    }
+    .hero-orb.o1 {
+      width: 520px; height: 520px;
+      top: -120px; left: -100px;
+      background: radial-gradient(circle, rgba(61,139,80,0.5), transparent 70%);
+      animation: drift1 22s ease-in-out infinite alternate;
+    }
+    .hero-orb.o2 {
+      width: 420px; height: 420px;
+      top: 30%; right: -120px;
+      background: radial-gradient(circle, rgba(126,201,138,0.32), transparent 70%);
+      animation: drift2 28s ease-in-out infinite alternate;
+    }
+    .hero-orb.o3 {
+      width: 360px; height: 360px;
+      bottom: 8%; left: 35%;
+      background: radial-gradient(circle, rgba(201,168,76,0.18), transparent 70%);
+      animation: drift3 32s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 {
+      0%   { transform: translate(0, 0) scale(1); }
+      50%  { transform: translate(60px, 80px) scale(1.08); }
+      100% { transform: translate(-40px, 40px) scale(0.95); }
+    }
+    @keyframes drift2 {
+      0%   { transform: translate(0, 0) scale(1); }
+      50%  { transform: translate(-80px, 60px) scale(1.1); }
+      100% { transform: translate(50px, -30px) scale(0.92); }
+    }
+    @keyframes drift3 {
+      0%   { transform: translate(0, 0) scale(1); }
+      50%  { transform: translate(40px, -60px) scale(1.05); }
+      100% { transform: translate(-60px, 20px) scale(0.95); }
     }
 
     .hero-content {
@@ -113,7 +154,6 @@
       z-index: 2;
       padding-top: 15vh;
     }
-
     .hero-eyebrow {
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -122,20 +162,36 @@
       text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
-
     .hero-name {
       font-family: var(--font-display);
       font-size: clamp(5rem, 14vw, 13rem);
       line-height: 0.9;
       letter-spacing: 0.02em;
       color: var(--cream);
+      text-shadow: 0 0 60px rgba(168,230,180,0.08);
     }
-
     .hero-name span {
       color: var(--moss);
       display: block;
+      background: linear-gradient(120deg, var(--moss) 0%, var(--leaf) 50%, var(--moss) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 100%;
+      animation: shimmer 8s ease-in-out infinite;
     }
-
+    @keyframes shimmer {
+      0%,100% { background-position: 0% 50%; }
+      50%     { background-position: 100% 50%; }
+    }
+    .hero-fullname {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
     .hero-tagline {
       font-family: var(--font-body);
       font-size: clamp(1.15rem, 2.3vw, 1.6rem);
@@ -149,13 +205,7 @@
     #typed-cursor { color: var(--gold); animation: blink 0.75s step-end infinite; margin-left: 2px; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-    .hero-cta {
-      display: flex;
-      gap: 1.2rem;
-      margin-top: 3rem;
-      flex-wrap: wrap;
-    }
-
+    .hero-cta { display: flex; gap: 1.2rem; margin-top: 3rem; flex-wrap: wrap; }
     .btn {
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -168,317 +218,275 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
     }
-
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
+      transition: left 0.6s;
+    }
+    .btn:hover::after { left: 100%; }
     .btn-primary {
       background: var(--forest-green);
       color: var(--glow);
       border-color: var(--forest-green);
     }
     .btn-primary:hover {
-      background: var(--moss);
-      border-color: var(--moss);
-      color: var(--cream);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(61,139,80,0.3);
+      background: var(--moss); border-color: var(--moss); color: var(--cream);
+      transform: translateY(-2px); box-shadow: 0 8px 30px rgba(61,139,80,0.4);
     }
-
     .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      border-color: rgba(90,171,109,0.3);
+      background: transparent; color: var(--muted); border-color: rgba(90,171,109,0.3);
     }
-    .btn-ghost:hover {
-      border-color: var(--sage);
-      color: var(--sage);
-      transform: translateY(-2px);
+    .btn-ghost:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-2px); }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.5rem; right: 6vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      z-index: 3;
+      transition: color 0.3s;
+    }
+    .scroll-cue:hover { color: var(--sage); }
+    .scroll-cue-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, transparent, var(--sage));
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-cue-line::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: 0;
+      width: 100%; height: 50%;
+      background: linear-gradient(to bottom, transparent, var(--leaf));
+      animation: scrollDot 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollDot {
+      0%   { top: -50%; }
+      100% { top: 100%; }
+    }
+    .scroll-cue-text {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
     }
 
     /* Stats strip */
     .hero-stats {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid rgba(45,106,63,0.3);
       position: relative;
       z-index: 2;
     }
-
     .stat {
-      padding: 2rem 1.5rem;
+      padding: 2.2rem 1.5rem;
       border-right: 1px solid rgba(45,106,63,0.2);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
       transition: background 0.3s;
     }
     .stat:last-child { border-right: none; }
-    .stat:hover { background: rgba(45,106,63,0.06); }
-    .stat:hover .stat-num { color: var(--leaf); }
-
+    .stat::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 0;
+      background: linear-gradient(to bottom, rgba(45,106,63,0.18), transparent);
+      transition: height 0.4s;
+      pointer-events: none;
+    }
+    .stat:hover::before { height: 100%; }
+    .stat:hover .stat-num { color: var(--leaf); transform: translateX(4px); }
     .stat-num {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-size: clamp(2rem, 3.2vw, 3rem);
       color: var(--sage);
       line-height: 1;
-      transition: color 0.3s;
+      transition: color 0.3s, transform 0.3s;
+      position: relative;
     }
-
     .stat-label {
       font-family: var(--font-mono);
       font-size: 0.62rem;
       letter-spacing: 0.15em;
       color: var(--muted);
       text-transform: uppercase;
-      margin-top: 0.4rem;
+      margin-top: 0.5rem;
     }
 
     /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 6vw;
-      background: rgba(6,14,9,0.97);
-      backdrop-filter: blur(20px);
+      background: rgba(6,14,9,0.97); backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(45,106,63,0.2);
       transition: all 0.3s;
     }
-
-    nav.scrolled {
-      background: rgba(10,26,15,0.92);
-      backdrop-filter: blur(20px);
-      padding: 1rem 6vw;
-      border-bottom: 1px solid rgba(45,106,63,0.2);
-    }
-
+    nav.scrolled { background: rgba(10,26,15,0.92); backdrop-filter: blur(20px); padding: 1rem 6vw; border-bottom: 1px solid rgba(45,106,63,0.2); }
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: 0.1em;
-      color: var(--cream);
-      text-decoration: none;
+      font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.1em;
+      color: var(--cream); text-decoration: none;
     }
     .nav-logo span { color: var(--sage); }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--sage); }
-
-    .nav-icons {
-      display: flex;
-      gap: 1.2rem;
-      list-style: none;
-    }
+    .nav-icons { display: flex; gap: 1.2rem; list-style: none; }
     .nav-icons a {
-      color: var(--muted);
-      font-size: 1rem;
-      transition: color 0.2s, transform 0.2s;
-      text-decoration: none;
+      color: var(--muted); font-size: 1rem; transition: color 0.2s, transform 0.2s; text-decoration: none;
     }
     .nav-icons a:hover { color: var(--sage); transform: translateY(-2px); }
 
     /* ── SECTIONS ── */
-    section {
-      padding: 8rem 6vw;
-      position: relative;
-    }
-
+    section { padding: 8rem 6vw; position: relative; }
     .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.35em;
-      color: var(--sage);
-      text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.35em;
+      color: var(--sage); text-transform: uppercase;
       margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      display: flex; align-items: center; gap: 1rem;
     }
     .section-label::after {
-      content: '';
-      flex: 1;
-      max-width: 60px;
-      height: 1px;
-      background: var(--forest-green);
+      content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--forest-green);
     }
-
     .section-title {
       font-family: var(--font-display);
       font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 0.95;
-      color: var(--cream);
+      line-height: 0.95; color: var(--cream);
       margin-bottom: 4rem;
+      position: relative;
+      display: inline-block;
     }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--forest-green), var(--sage));
+      margin-top: 1.2rem;
+      border-radius: 2px;
+    }
+    .section-intro {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin-top: -2.5rem;
+      margin-bottom: 3.5rem;
+      line-height: 1.7;
+    }
+    .section-intro strong { color: var(--off-white); font-weight: 600; }
 
     /* ── ABOUT ── */
-    #about {
-      background: var(--forest-dark);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      font-size: 1.15rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
+    #about { background: var(--forest-dark); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { color: var(--muted); font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem; }
     .about-text p strong { color: var(--off-white); font-weight: 600; }
     .about-text p em { color: var(--sage); font-style: italic; }
-
-    .about-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 2rem;
-    }
-
+    .about-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
     .badge {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.45rem 0.9rem;
-      border: 1px solid rgba(45,106,63,0.4);
-      color: var(--sage);
-      background: rgba(45,106,63,0.08);
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.45rem 0.9rem;
+      border: 1px solid rgba(45,106,63,0.4); color: var(--sage); background: rgba(45,106,63,0.08);
     }
 
-    .about-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
+    .about-highlights { display: flex; flex-direction: column; gap: 0; }
     .highlight-item {
-      padding: 1.8rem 0;
+      padding: 1.6rem 0;
       border-bottom: 1px solid rgba(45,106,63,0.15);
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
+      display: flex; gap: 1.5rem; align-items: flex-start;
       transition: padding-left 0.3s;
     }
     .highlight-item:hover { padding-left: 0.5rem; }
     .highlight-item:first-child { border-top: 1px solid rgba(45,106,63,0.15); }
-
     .highlight-icon {
-      font-size: 1.3rem;
-      color: var(--forest-green);
-      width: 28px;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
+      font-size: 1.3rem; color: var(--forest-green);
+      width: 28px; flex-shrink: 0; margin-top: 0.2rem;
     }
-
     .highlight-content h4 {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--off-white);
-      margin-bottom: 0.3rem;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+      color: var(--off-white); margin-bottom: 0.3rem;
     }
-    .highlight-content p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.5;
+    .highlight-content p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── HOW I WORK ── */
+    #approach { background: var(--forest-deep); }
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(45,106,63,0.1);
     }
+    .approach-step {
+      background: var(--forest-deep);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .approach-step:hover { background: rgba(45,106,63,0.06); }
+    .approach-num {
+      font-family: var(--font-display); font-size: 3.5rem; line-height: 1;
+      color: var(--forest-green); margin-bottom: 1rem;
+    }
+    .approach-step:hover .approach-num { color: var(--sage); }
+    .approach-step h3 {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem; border-bottom: 1px solid rgba(45,106,63,0.2);
+    }
+    .approach-step p { color: var(--muted); font-size: 0.95rem; line-height: 1.65; }
+    .approach-step p strong { color: var(--off-white); font-weight: 600; }
 
     /* ── EXPERIENCE ── */
-    #experience {
-      background: var(--forest-deep);
-    }
-
-    .exp-timeline {
-      position: relative;
-    }
-
+    #experience { background: var(--forest-dark); }
+    .exp-timeline { position: relative; }
     .exp-timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0; bottom: 0;
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
       width: 1px;
       background: linear-gradient(to bottom, transparent, var(--forest-green) 10%, var(--forest-green) 90%, transparent);
     }
-
     .exp-item {
       padding: 0 0 5rem 3.5rem;
-      position: relative;
-      opacity: 1;
-      transform: none;
+      position: relative; opacity: 1; transform: none;
       transition: opacity 0.6s, transform 0.6s;
     }
-
-
     .exp-item::before {
-      content: '';
-      position: absolute;
-      left: -5px;
-      top: 6px;
+      content: ''; position: absolute; left: -5px; top: 6px;
       width: 11px; height: 11px;
-      background: var(--forest-green);
-      border: 2px solid var(--forest-deep);
-      border-radius: 50%;
+      background: var(--forest-green); border: 2px solid var(--forest-deep); border-radius: 50%;
       transition: background 0.3s, transform 0.3s;
     }
-    .exp-item:hover::before {
-      background: var(--sage);
-      transform: scale(1.4);
-    }
-
+    .exp-item:hover::before { background: var(--sage); transform: scale(1.4); }
     .exp-meta {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
+      display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;
     }
-
-    .exp-company {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      color: var(--cream);
-      letter-spacing: 0.05em;
-    }
-
+    .exp-company { font-family: var(--font-display); font-size: 1.8rem; color: var(--cream); letter-spacing: 0.05em; }
     .exp-date {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: var(--forest-green);
-      text-transform: uppercase;
-      padding: 0.2rem 0.7rem;
-      border: 1px solid rgba(45,106,63,0.3);
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em;
+      color: var(--forest-green); text-transform: uppercase;
+      padding: 0.2rem 0.7rem; border: 1px solid rgba(45,106,63,0.3);
     }
-
     .exp-role {
-      font-family: var(--font-body);
-      font-size: 1.05rem;
-      font-style: italic;
-      color: var(--sage);
-      margin-bottom: 1.5rem;
-      font-weight: 300;
+      font-family: var(--font-body); font-size: 1.05rem; font-style: italic;
+      color: var(--sage); margin-bottom: 1.5rem; font-weight: 300;
     }
-
     .exp-bullets { display: flex; flex-direction: column; gap: 0.8rem; }
     .exp-bullets .eb { display: flex; gap: 0.9rem; color: var(--muted); font-size: 0.97rem; line-height: 1.65; }
     .exp-bullets .eb-dash { color: var(--forest-green); flex-shrink: 0; padding-top: 0.22rem; line-height: 1; font-size: 0.8rem; }
@@ -486,552 +494,413 @@
     .exp-bullets .eb a { color: var(--sage); text-decoration: none; border-bottom: 1px solid rgba(90,171,109,0.3); transition: border-color 0.2s, color 0.2s; }
     .exp-bullets .eb a:hover { color: var(--leaf); border-color: var(--leaf); }
 
-    /* ── SKILLS ── */
-    #skills {
-      background: var(--forest-dark);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5px;
-      background: rgba(45,106,63,0.15);
-      border: 1px solid rgba(45,106,63,0.15);
-    }
-
-    .skill-group {
-      background: var(--forest-dark);
-      padding: 2.5rem;
-      transition: background 0.3s;
-    }
-    .skill-group:hover { background: rgba(45,106,63,0.06); }
-
-    .skill-group-title {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(45,106,63,0.2);
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .skill-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .chip {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      background: rgba(45,106,63,0.1);
-      padding: 0.35rem 0.75rem;
-      border: 1px solid rgba(45,106,63,0.2);
-      transition: all 0.2s;
-      cursor: default;
-    }
-    .chip:hover {
-      color: var(--leaf);
-      border-color: var(--sage);
-      background: rgba(45,106,63,0.18);
-    }
-
-    /* ── WORK / PROJECTS ── */
-    #work {
-      background: var(--forest-deep);
-    }
-
-    .work-grid {
+    /* ── PRODUCTS ── */
+    #products { background: var(--forest-deep); }
+    .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 2px;
-      background: rgba(45,106,63,0.1);
+      background: rgba(45,106,63,0.12);
+      border: 1px solid rgba(45,106,63,0.12);
     }
-
-    .work-card {
+    .product-card {
       background: var(--forest-deep);
-      padding: 3rem 2.5rem;
-      transition: background 0.3s;
-      position: relative;
-      overflow: hidden;
+      padding: 2.5rem 2rem;
       display: flex;
       flex-direction: column;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
     }
-
-    .work-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px;
-      height: 0;
+    .product-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 0;
       background: var(--sage);
       transition: height 0.4s;
     }
-    .work-card:hover::before { height: 100%; }
-    .work-card:hover { background: rgba(45,106,63,0.05); }
-
-    .work-card-tag {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--forest-green);
+    .product-card:hover::before { height: 100%; }
+    .product-card:hover {
+      background: rgba(45,106,63,0.06);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5), 0 0 30px rgba(61,139,80,0.08);
+    }
+    .product-tag {
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--forest-green);
       margin-bottom: 1rem;
     }
+    .product-card h3 {
+      font-family: var(--font-body); font-size: 1.2rem; font-weight: 600;
+      color: var(--off-white); margin-bottom: 0.6rem; line-height: 1.3;
+    }
+    .product-role {
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+      color: var(--sage); margin-bottom: 0.9rem; text-transform: uppercase;
+    }
+    .product-card p { color: var(--muted); font-size: 0.93rem; line-height: 1.6; flex: 1; }
+    .product-metrics {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1.2rem; padding-top: 1rem;
+      border-top: 1px solid rgba(45,106,63,0.15);
+    }
+    .product-metric {
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em;
+      color: var(--leaf); background: rgba(45,106,63,0.12);
+      padding: 0.3rem 0.65rem; border: 1px solid rgba(45,106,63,0.25);
+    }
 
+    /* ── SKILLS ── */
+    #skills { background: var(--forest-dark); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px; background: rgba(45,106,63,0.15);
+      border: 1px solid rgba(45,106,63,0.15);
+    }
+    .skill-group {
+      background: var(--forest-dark); padding: 2.5rem; transition: background 0.3s;
+    }
+    .skill-group:hover { background: rgba(45,106,63,0.06); }
+    .skill-group-title {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--sage);
+      margin-bottom: 1.5rem; padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(45,106,63,0.2);
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .chip {
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.05em;
+      color: var(--muted); background: rgba(45,106,63,0.1);
+      padding: 0.35rem 0.75rem; border: 1px solid rgba(45,106,63,0.2);
+      transition: all 0.2s; cursor: default;
+    }
+    .chip:hover { color: var(--leaf); border-color: var(--sage); background: rgba(45,106,63,0.18); }
+
+    /* ── WORK / WRITING ── */
+    #work { background: var(--forest-deep); }
+    .work-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2px; background: rgba(45,106,63,0.1);
+    }
+    .work-card {
+      background: var(--forest-deep); padding: 3rem 2.5rem;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .work-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 0; background: var(--sage); transition: height 0.4s;
+    }
+    .work-card:hover::before { height: 100%; }
+    .work-card:hover {
+      background: rgba(45,106,63,0.05);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5), 0 0 30px rgba(61,139,80,0.08);
+    }
+    .work-card-tag {
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--forest-green); margin-bottom: 1rem;
+    }
     .work-card h3 {
-      font-family: var(--font-body);
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--off-white);
-      margin-bottom: 0.8rem;
-      line-height: 1.3;
+      font-family: var(--font-body); font-size: 1.3rem; font-weight: 600;
+      color: var(--off-white); margin-bottom: 0.8rem; line-height: 1.3;
     }
-    .work-card h3 a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .work-card h3 a { color: inherit; text-decoration: none; transition: color 0.2s; }
     .work-card h3 a:hover { color: var(--sage); }
-
-    .work-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.65;
-      flex: 1;
-    }
-
+    .work-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.65; flex: 1; }
     .work-card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.63rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--sage);
-      text-decoration: none;
-      margin-top: 1.5rem;
-      transition: gap 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sage); text-decoration: none;
+      margin-top: 1.5rem; transition: gap 0.2s, color 0.2s;
     }
     .work-card-link:hover { gap: 0.8rem; color: var(--leaf); }
 
-    /* ── VIDEOS ── */
-    #videos {
-      background: var(--forest-dark);
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: rgba(45,106,63,0.1);
-    }
-
-    .video-wrapper {
-      position: relative;
-      background: var(--forest-dark);
-      aspect-ratio: 16/9;
-      overflow: hidden;
-    }
-
-    .video-wrapper iframe {
-      width: 100%; height: 100%;
-      border: none;
-      transition: transform 0.4s;
-    }
-
-
-    .yt-list { display: flex; flex-direction: column; gap: 2px; background: rgba(45,106,63,0.1); }
-    .yt-row { display: flex; align-items: center; gap: 1.5rem; padding: 1.4rem 2rem; background: var(--forest-deep); text-decoration: none; transition: background 0.2s; }
-    .yt-row:hover { background: rgba(45,106,63,0.07); }
-    .yt-icon { color: #ff4444; font-size: 1.3rem; flex-shrink: 0; width: 24px; }
-    .yt-info { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
-    .yt-title { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; color: var(--off-white); }
-    .yt-desc { font-family: var(--font-body); font-size: 0.88rem; color: var(--muted); }
-    .yt-arrow { font-size: 1rem; color: var(--sage); flex-shrink: 0; opacity: 0; transition: opacity 0.2s; }
-    .yt-row:hover .yt-arrow { opacity: 1; }
-
     /* ── AWARDS ── */
-    #awards {
-      background: var(--forest-deep);
-    }
-
+    #awards { background: var(--forest-deep); }
     .awards-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1px;
-      background: rgba(45,106,63,0.1);
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px; background: rgba(45,106,63,0.1);
     }
-
     .award-item {
-      background: var(--forest-deep);
-      padding: 2rem 2.5rem;
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      transition: background 0.3s;
+      background: var(--forest-deep); padding: 2rem 2.5rem;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      transition: background 0.3s, transform 0.3s;
     }
-    .award-item:hover { background: rgba(45,106,63,0.06); }
-
-    .award-icon {
-      color: var(--gold);
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
-    }
-
-    .award-text {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .award-item:hover { background: rgba(45,106,63,0.06); transform: translateY(-2px); }
+    .award-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; margin-top: 0.2rem; }
+    .award-text { font-size: 0.95rem; color: var(--muted); line-height: 1.5; }
     .award-text strong { color: var(--cream); display: block; margin-bottom: 0.2rem; }
 
     /* ── CERTS ── */
-    #certs {
-      background: var(--forest-dark);
-      padding-top: 0;
-    }
-
-    .certs-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
+    #certs { background: var(--forest-dark); padding-top: 0; }
+    .certs-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
     .cert-badge {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em;
       padding: 0.6rem 1.2rem;
       border: 1px solid rgba(201,168,76,0.3);
-      color: var(--gold-light);
-      background: rgba(201,168,76,0.05);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      color: var(--gold-light); background: rgba(201,168,76,0.05);
+      display: flex; align-items: center; gap: 0.6rem;
       transition: all 0.2s;
     }
-    .cert-badge:hover {
-      border-color: var(--gold);
-      background: rgba(201,168,76,0.1);
-    }
-    .cert-badge::before {
-      content: '✦';
-      color: var(--gold);
-      font-size: 0.5rem;
-    }
+    .cert-badge:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+    .cert-badge::before { content: '✦'; color: var(--gold); font-size: 0.5rem; }
 
     /* ── RESEARCH ── */
-    #research {
-      background: var(--forest-deep);
-    }
-
+    #research { background: var(--forest-deep); }
     .research-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2px;
-      background: rgba(45,106,63,0.1);
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2px; background: rgba(45,106,63,0.1);
     }
-
     .research-item {
-      background: var(--forest-deep);
-      padding: 2.5rem;
-      transition: background 0.3s;
+      background: var(--forest-deep); padding: 2.5rem;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
       position: relative;
     }
-    .research-item:hover { background: rgba(45,106,63,0.05); }
-
+    .research-item:hover {
+      background: rgba(45,106,63,0.05);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px -20px rgba(0,0,0,0.5), 0 0 24px rgba(61,139,80,0.06);
+    }
     .research-item h3 {
-      font-family: var(--font-body);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--off-white);
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
+      font-family: var(--font-body); font-size: 1.1rem; font-weight: 600;
+      color: var(--off-white); margin-bottom: 0.75rem; line-height: 1.4;
     }
-    .research-item h3 a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .research-item h3 a { color: inherit; text-decoration: none; transition: color 0.2s; }
     .research-item h3 a:hover { color: var(--sage); }
-
-    .research-item p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.6;
-    }
-
+    .research-item p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
     .research-tag {
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 0.75rem;
+      font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 0.75rem;
     }
 
-    /* ── PATENT ── */
     .patent-box {
       margin-top: 4rem;
       border: 1px solid rgba(201,168,76,0.3);
-      padding: 3rem;
-      background: rgba(201,168,76,0.03);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2rem;
-      align-items: center;
+      padding: 3rem; background: rgba(201,168,76,0.03);
+      display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center;
     }
-
-    .patent-icon {
-      font-size: 3rem;
-      color: var(--gold);
-    }
-
+    .patent-icon { font-size: 3rem; color: var(--gold); }
     .patent-box h3 {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      color: var(--gold-light);
+      font-family: var(--font-display); font-size: 1.6rem; color: var(--gold-light);
       margin-bottom: 0.5rem;
     }
-
     .patent-box p { color: var(--muted); font-size: 1rem; }
 
     /* ── GAME ── */
-    #game {
-      background: var(--forest-dark);
-    }
-
+    #game { background: var(--forest-dark); }
     .game-container {
-      max-width: 500px;
-      border: 1px solid rgba(45,106,63,0.3);
-      padding: 3rem;
-      background: rgba(10,26,15,0.8);
+      max-width: 500px; border: 1px solid rgba(45,106,63,0.3);
+      padding: 3rem; background: rgba(10,26,15,0.8);
     }
-
     .game-container h3 {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--cream);
-      margin-bottom: 0.5rem;
+      font-family: var(--font-display); font-size: 2rem; color: var(--cream); margin-bottom: 0.5rem;
     }
-
-    .game-container p {
-      color: var(--muted);
-      margin-bottom: 2rem;
-      font-size: 1rem;
-    }
-
-    .game-input-row {
-      display: flex;
-      gap: 0;
-    }
-
+    .game-container p { color: var(--muted); margin-bottom: 2rem; font-size: 1rem; }
+    .game-input-row { display: flex; gap: 0; }
     #guessField {
-      flex: 1;
-      background: rgba(45,106,63,0.1);
-      border: 1px solid rgba(45,106,63,0.3);
-      border-right: none;
-      color: var(--cream);
-      padding: 0.8rem 1rem;
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.2s;
+      flex: 1; background: rgba(45,106,63,0.1);
+      border: 1px solid rgba(45,106,63,0.3); border-right: none;
+      color: var(--cream); padding: 0.8rem 1rem;
+      font-family: var(--font-mono); font-size: 1rem;
+      outline: none; transition: border-color 0.2s;
     }
     #guessField:focus { border-color: var(--sage); }
-
     #guessSubmit {
-      background: var(--forest-green);
-      color: var(--glow);
-      border: 1px solid var(--forest-green);
-      padding: 0.8rem 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+      background: var(--forest-green); color: var(--glow);
+      border: 1px solid var(--forest-green); padding: 0.8rem 1.5rem;
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.15em;
+      text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s;
     }
     #guessSubmit:hover { background: var(--moss); color: var(--cream); }
-
-    .game-result {
-      margin-top: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-    }
-
+    .game-result { margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.85rem; }
     .guesses { color: var(--muted); margin-bottom: 0.5rem; }
     .lastResult { padding: 0.6rem 1rem; margin-bottom: 0.4rem; }
     .lowOrHi { color: var(--sage); }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--forest-deep);
-      border-top: 1px solid rgba(45,106,63,0.2);
+      background: var(--forest-deep); border-top: 1px solid rgba(45,106,63,0.2);
       padding: 5rem 6vw 3rem;
     }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 4rem;
-      margin-bottom: 4rem;
-    }
-
-    .footer-brand .nav-logo {
-      display: block;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-brand p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      max-width: 320px;
-    }
-
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-brand .nav-logo { display: block; font-size: 2rem; margin-bottom: 1rem; }
+    .footer-brand p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; max-width: 320px; }
     .footer-col h4 {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 1.5rem;
     }
-
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
     .footer-col a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.92rem;
-      transition: color 0.2s;
+      color: var(--muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s;
     }
     .footer-col a:hover { color: var(--sage); }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
+    .footer-social { display: flex; gap: 1rem; margin-top: 2rem; }
     .social-btn {
       width: 40px; height: 40px;
       border: 1px solid rgba(45,106,63,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
       transition: all 0.2s;
     }
-    .social-btn:hover {
-      border-color: var(--sage);
-      color: var(--sage);
-      background: rgba(45,106,63,0.1);
-      transform: translateY(-2px);
-    }
-
+    .social-btn:hover { border-color: var(--sage); color: var(--sage); background: rgba(45,106,63,0.1); transform: translateY(-2px); }
     .footer-bottom {
       padding-top: 2rem;
       border-top: 1px solid rgba(45,106,63,0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
     }
-
     .footer-bottom p {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      color: rgba(138,158,143,0.5);
-      text-transform: uppercase;
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+      color: rgba(138,158,143,0.5); text-transform: uppercase;
     }
 
     /* ── CHARLIE COIN ── */
-    #coin-section {
-      background: var(--forest-deep);
-      text-align: center;
-      padding: 6rem 6vw;
-    }
-
+    #coin-section { background: var(--forest-deep); text-align: center; padding: 6rem 6vw; }
     .coin-btn {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      letter-spacing: 0.1em;
-      background: transparent;
-      border: 2px solid var(--gold);
-      color: var(--gold-light);
-      padding: 1.2rem 3rem;
-      cursor: pointer;
+      font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.1em;
+      background: transparent; border: 2px solid var(--gold); color: var(--gold-light);
+      padding: 1.2rem 3rem; cursor: pointer;
       transition: background 0.3s, color 0.3s, border-color 0.3s;
     }
     .coin-btn:hover { background: var(--gold); color: var(--forest-deep); border-color: var(--gold); }
-
     #coinResponse {
-      margin-top: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
+      margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem;
+      letter-spacing: 0.05em; color: var(--gold-light); min-height: 1.5rem;
+    }
+
+    /* ── GAME CTA BADGE ── */
+    .game-cta {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      z-index: 998;
+      background: rgba(10, 26, 15, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(201,168,76,0.45);
       color: var(--gold-light);
-      min-height: 1.5rem;
+      padding: 0.7rem 0.9rem 0.7rem 1.1rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      box-shadow: 0 10px 36px rgba(0,0,0,0.55), 0 0 22px rgba(201,168,76,0.14);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.4s;
+      animation: gameCtaPulse 3.6s ease-in-out infinite;
+      max-width: 340px;
+    }
+    .game-cta:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+      box-shadow: 0 14px 44px rgba(0,0,0,0.6), 0 0 32px rgba(201,168,76,0.32);
+    }
+    .game-cta-icon { font-size: 1.35rem; flex-shrink: 0; }
+    .game-cta-body { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1.2; }
+    .game-cta-text {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .game-cta-sub {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .game-cta-close {
+      background: rgba(201,168,76,0.14);
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--gold);
+      margin-left: 0.4rem;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+      border: 0;
+    }
+    .game-cta-close:hover { background: rgba(201,168,76,0.32); color: var(--cream); }
+    .game-cta.hidden { opacity: 0; pointer-events: none; transform: translateY(20px); }
+    @keyframes gameCtaPulse {
+      0%, 100% { box-shadow: 0 10px 36px rgba(0,0,0,0.55), 0 0 22px rgba(201,168,76,0.14); }
+      50%      { box-shadow: 0 10px 36px rgba(0,0,0,0.55), 0 0 38px rgba(201,168,76,0.36); }
+    }
+    @media (max-width: 600px) {
+      .game-cta { bottom: 1rem; right: 1rem; left: 1rem; max-width: none; padding: 0.6rem 0.7rem 0.6rem 0.9rem; }
+      .game-cta-sub { font-size: 0.75rem; }
     }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.delay-1 { transition-delay: 0.08s; }
+    .reveal.delay-2 { transition-delay: 0.16s; }
+    .reveal.delay-3 { transition-delay: 0.24s; }
+    .reveal.delay-4 { transition-delay: 0.32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-orb, .hero-bg::after, .hero-name span { animation: none; }
     }
 
-    .reveal { opacity: 1; transform: none; transition: opacity 0.7s, transform 0.7s; }
-
-    /* scrollbar */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--forest-deep); }
     ::-webkit-scrollbar-thumb { background: var(--forest-green); }
 
-    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .approach-grid { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 900px) {
       .about-grid, .research-grid, .footer-grid { grid-template-columns: 1fr; }
-      .hero-stats { grid-template-columns: repeat(3, 1fr); }
-      .video-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none; }
+      .scroll-cue { display: none; }
       body { cursor: auto; }
       .cursor, .cursor-ring { display: none; }
     }
     @media (max-width: 600px) {
       .hero-stats { grid-template-columns: 1fr 1fr; }
-      .video-grid { grid-template-columns: 1fr; }
+      .approach-grid { grid-template-columns: 1fr; }
       section { padding: 5rem 5vw; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Custom Cursor -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <a href="#game" class="game-cta" id="gameCta" aria-label="Easter egg — scroll to bottom for the game">
+    <span class="game-cta-icon">🎮</span>
+    <span class="game-cta-body">
+      <span class="game-cta-text">Scroll to the bottom</span>
+      <span class="game-cta-sub">Play the game · win a surprise</span>
+    </span>
+    <button type="button" class="game-cta-close" id="gameCtaClose" aria-label="Dismiss">×</button>
+  </a>
 
   <!-- NAV -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo">CE<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#approach">Approach</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#work">Work</a></li>
+      <li><a href="#products">Products</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#awards">Awards</a></li>
     </ul>
@@ -1048,12 +917,16 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
+    <div class="hero-orb o1"></div>
+    <div class="hero-orb o2"></div>
+    <div class="hero-orb o3"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">// AI Leader · Builder · Miami Beach, FL</p>
+      <p class="hero-eyebrow">// AI Product Leader · Group PM · Builder · Miami Beach, FL</p>
       <h1 class="hero-name">
         Charlie
         <span>Evert</span>
       </h1>
+      <p class="hero-fullname">Ralph Charles Evert IV</p>
       <div class="hero-tagline"><span id="typed-role"></span><span id="typed-cursor">|</span></div>
       <div class="hero-cta">
         <a href="https://www.linkedin.com/in/ralphcharlesevertiv/details/featured/" class="btn btn-primary" target="_blank">
@@ -1066,26 +939,26 @@
     </div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">$150M+</div>
-        <div class="stat-label">Managed Revenue</div>
+        <div class="stat-num">$100M+</div>
+        <div class="stat-label">P&L Impact Driven</div>
       </div>
       <div class="stat">
-        <div class="stat-num">$1.35B+</div>
-        <div class="stat-label">Pipeline Driven</div>
+        <div class="stat-num">$3M+</div>
+        <div class="stat-label">Largest Project Budget</div>
       </div>
       <div class="stat">
-        <div class="stat-num">100+</div>
-        <div class="stat-label">Engineers Led</div>
+        <div class="stat-num">20+</div>
+        <div class="stat-label">GenAI Products Shipped</div>
       </div>
       <div class="stat">
         <div class="stat-num">1M+</div>
         <div class="stat-label">Monthly Users</div>
       </div>
-      <div class="stat">
-        <div class="stat-num">20+</div>
-        <div class="stat-label">AI Deployments</div>
-      </div>
     </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll to next section">
+      <span class="scroll-cue-line"></span>
+      <span class="scroll-cue-text">Scroll</span>
+    </a>
   </section>
 
   <!-- ABOUT -->
@@ -1094,12 +967,14 @@
     <h2 class="section-title reveal">Who I Am</h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm <strong>Charlie Evert</strong> — an AI leader, engineer, and former Army paratrooper who jumped out of planes and then jumped headfirst into building the future of enterprise AI.</p>
-        <p>I grew up in <em>St. Thomas, US Virgin Islands</em>, earned my stripes as an Airborne Infantryman, then went on to lead AI engineering at <strong>J&J, Deloitte, and PwC</strong> — deploying production systems at a scale most people only whiteboard about.</p>
-        <p>My specialty: <strong>agentic AI systems that replace human labor at scale</strong> for Fortune 500 and federal clients. I've shipped contact center AI, military recruiting AI, nonprofit chatbots with 1M+ monthly users, and GenAI platforms serving 22,000 enterprise users.</p>
-        <p>I'm also a <em>published author</em>, US Patent holder, peer-reviewed researcher, and I make <strong>AI-themed metal music</strong> because why not.</p>
+        <p>I'm <strong>Charlie Evert</strong> — an AI product leader and engineering builder who'd rather ship than pitch. Equally comfortable <em>owning a roadmap, writing production code, leading a 50-person delivery team, or sitting in front of a C-suite</em> to defend the tradeoffs. <strong>6+ years spanning product management, engineering leadership, and AI strategy</strong> across healthcare, life sciences, federal, and Fortune 500. MBA + MS in Data Science.</p>
+        <p>What I actually do: identify high-value opportunities, <strong>translate complex workflows into scalable AI products</strong>, and deliver measurable business impact. End-to-end development of knowledge retrieval systems, document automation tools, multichannel agentic platforms, and decision-support systems — used by 1M+ users and driving $100M+ in value. Comfortable partnering with R&amp;D, regulatory, scientific, and data science stakeholders to ship compliant production-grade GenAI.</p>
+        <p>My background as a <em>developer, tech lead, group product manager, program manager, and strategy consultant</em> lets me move fluidly between code, requirements, roadmaps, and stakeholder rooms — going from <strong>interview → real problem → tech fix → measurable business outcome</strong>. <em>Always open to connect.</em></p>
+        <p>Also a <em>published author</em>, US Patent holder, peer-reviewed LLM-evaluation researcher (Anthropic × UVA), and <strong>AI-themed metal music</strong> producer because why not.</p>
         <div class="about-badges">
-          <span class="badge">MBA + MS BI & Analytics</span>
+          <span class="badge">MBA + MS Data Science</span>
+          <span class="badge">Group Product Manager</span>
+          <span class="badge">GenAI Tech Lead</span>
           <span class="badge">US Patent Holder</span>
           <span class="badge">Army Veteran</span>
           <span class="badge">Published Author</span>
@@ -1108,24 +983,31 @@
       </div>
       <div class="about-highlights reveal">
         <div class="highlight-item">
-          <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+          <div class="highlight-icon"><i class="fas fa-code"></i></div>
           <div class="highlight-content">
-            <h4>Full-Stack AI Architect</h4>
-            <p>From RAG pipelines to agentic multi-model systems — I design and ship production AI, not demos.</p>
+            <h4>Full-Stack AI Builder</h4>
+            <p>I came up writing production code and still ship it. Architect systems on RAG, knowledge graphs, agentic workflows, multi-channel orchestration, and LLM eval — and lead the engineers who build them.</p>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="highlight-icon"><i class="fas fa-route"></i></div>
           <div class="highlight-content">
-            <h4>Revenue Driver</h4>
-            <p>Supported $1B+ in proposals at Deloitte. Unearthed $3M+ in sole-source deals at PwC. Delivery that sells itself.</p>
+            <h4>Product Roadmap Owner</h4>
+            <p>Define and execute roadmaps for portfolios of GenAI products — currently 15+ at PwC. Previously Group PM for a 5-product Human Capital AI Suite at Deloitte ($300M+ pipeline).</p>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon"><i class="fas fa-users"></i></div>
+          <div class="highlight-icon"><i class="fas fa-chess-king"></i></div>
           <div class="highlight-content">
-            <h4>Team Builder</h4>
-            <p>Built PwC's AI Factory from scratch. Directed 95 engineers across 20+ concurrent Deloitte projects.</p>
+            <h4>Strategy Consultant</h4>
+            <p>Identify high-value opportunities, translate complex workflows into AI products, and defend technical tradeoffs to C-suite stakeholders without losing the engineering thread.</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon"><i class="fas fa-users-cog"></i></div>
+          <div class="highlight-content">
+            <h4>Cross-Functional Leader</h4>
+            <p>Directed 100+ engineers, designers, and PMs across 20+ concurrent AI projects in matrixed environments. Fluent translating tech tradeoffs to scientific, clinical, and operational stakeholders.</p>
           </div>
         </div>
         <div class="highlight-item">
@@ -1138,17 +1020,46 @@
         <div class="highlight-item">
           <div class="highlight-icon"><i class="fas fa-pen-nib"></i></div>
           <div class="highlight-content">
-            <h4>Creator</h4>
-            <p>Author of 3 published books. 5 peer-reviewed papers. YouTube channel. AI-generated metal. US Patent pending.</p>
+            <h4>Researcher &amp; Creator</h4>
+            <p>Author of 3 published books, 5 peer-reviewed papers (incl. UVA × Deloitte LLM evaluation research with Anthropic), US Patent Pending, YouTube channel.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- APPROACH / HOW I WORK -->
+  <section id="approach">
+    <div class="section-label">02 — How I Work</div>
+    <h2 class="section-title reveal">Approach</h2>
+    <p class="section-intro reveal">Most AI products fail not because the model was wrong, but because nobody framed the right problem, defined the right metrics, or made the tradeoffs explicit. I run product end-to-end — <strong>discovery through measurement</strong> — and I'm comfortable picking up code, slides, or stakeholder maps depending on what the moment needs.</p>
+    <div class="approach-grid reveal">
+      <div class="approach-step">
+        <div class="approach-num">01</div>
+        <h3>Discover</h3>
+        <p>Interview scientific, clinical, and operational stakeholders. Frame the <strong>actual</strong> problem — not the feature anyone asked for. Size the opportunity and surface unstated compliance, traceability, and risk constraints.</p>
+      </div>
+      <div class="approach-step">
+        <div class="approach-num">02</div>
+        <h3>Design</h3>
+        <p>Translate workflows into roadmaps, user stories, requirements, ROI models, and adoption KPIs. Sequence programs against value cases. Choose <strong>agile, waterfall, or a hybrid</strong> based on regulatory posture and engineering reality.</p>
+      </div>
+      <div class="approach-step">
+        <div class="approach-num">03</div>
+        <h3>Deliver</h3>
+        <p>Lead engineering hands-on as tech lead and group PM. Make architecture decisions on RAG, knowledge graphs, agentic workflows, and evaluation. Ship to production in regulated environments — not the whiteboard.</p>
+      </div>
+      <div class="approach-step">
+        <div class="approach-num">04</div>
+        <h3>Measure</h3>
+        <p>Track adoption, P&amp;L impact, and quality against the ROI model from step 2. Iterate. Kill what isn't working. Communicate results to senior stakeholders so investment decisions stay aligned to outcomes.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="section-label">02 — Experience</div>
+    <div class="section-label">03 — Experience</div>
     <h2 class="section-title reveal">Career</h2>
     <div class="exp-timeline">
 
@@ -1157,13 +1068,15 @@
           <div class="exp-company">PwC</div>
           <div class="exp-date">Sep 2025 – Present</div>
         </div>
-        <div class="exp-role">Manager — AI & Digital Contact Center · Miami, FL</div>
+        <div class="exp-role">Manager — Agentic AI Advisory &amp; Implementation · Miami, FL</div>
         <div class="exp-bullets">
-          <div class="eb"><span class="eb-dash">—</span><span>Built PwC's first-ever <strong>AI Factory tiger team</strong> from scratch — 45+ practitioners across 4 workstreams (GTM, Build, Eminence, CoP), driving $350M+ in RFP responses and 15+ production assets in 6 months</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Unearthed <strong>3 sole-sourced deals totaling $3M+</strong> post-RFP win; led SOW development and over-delivery that opened new client opportunities</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Built PwC's <strong>first agent-first contact center app</strong> with native CCaaS exit paths — designed to replace 95%+ of contact center labor — on Azure ACS, Azure AI Foundry & Azure App Service</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Advised C-Suite at F500 FinTech to automate <strong>70%+ of service center operations</strong> through Generative and Agentic AI</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Authored the <strong>Agentic AI Delivery Standards</strong> for a 200+ practitioner practice · 3× PwC Praise Awards</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Defined and executed product strategy and roadmap</strong> for a portfolio of <strong>15+ Generative AI products</strong> spanning knowledge retrieval, agentic workflows, document automation, and decision support for F500 clients across life sciences, healthcare, and financial services</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Owned product lifecycle for internal AI products: <strong>complex sequencing of programs against value cases</strong>, discovery through delivery, mixing agile sprints with waterfall gating where regulatory posture required it</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Partnered with domain stakeholders to translate operational workflows into <strong>product requirements, user stories, and phased delivery plans</strong> tied to measurable business outcomes; led creation of executive-friendly visuals to communicate technical tradeoffs</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Drove <strong>$3M+ in P&amp;L value</strong> from 3 client engagements through product-led delivery and expanded mandates; influenced senior stakeholders to align roadmap investment with ROI</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Owned the product story for <strong>multichannel AI agent platforms</strong> at enterprise scale: <strong>contact-driver analytics</strong> surfaces high-volume drivers → <strong>knowledge-article generation</strong> closes the gaps → <strong>tool-use creation</strong> equips agents to act on workflows → deployment across <strong>voice, chat, SMS, and email</strong>, designed to absorb 70–95% of repetitive service work</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Authored the <strong>Agentic AI Delivery Standards</strong> for a 200+ practitioner practice — codifying evaluation, safety, traceability, and responsible AI for enterprise builds</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Mentored, coached, and upskilled <strong>45+ designers, engineers, and PMs</strong> on agentic AI delivery; <strong>6× PwC Praise Awards</strong> + Accelerating Impact Award for performance and delivery excellence</span></div>
         </div>
       </div>
 
@@ -1172,29 +1085,33 @@
           <div class="exp-company">Deloitte</div>
           <div class="exp-date">Sep 2023 – Sep 2025</div>
         </div>
-        <div class="exp-role">Senior Consultant — AI & Engineering (GenAI Tech Lead) · Arlington, VA</div>
+        <div class="exp-role">Senior Consultant — AI &amp; Engineering · GenAI Tech Lead &amp; Group Product Manager · Arlington, VA</div>
         <div class="exp-bullets">
-          <div class="eb"><span class="eb-dash">—</span><span><strong>Anthropic Alliance Lead</strong> — directed 95 engineers across 20+ projects worth $150M+; co-led joint LLM research with Anthropic & UVA</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>PM & Tech Lead for <a href="https://www.amazon.com" target="_blank">$1B+ nonprofit chatbot</a> with <strong>1M+ monthly users</strong> — secured $200M contract extension through delivery excellence</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Engagement Manager for <a href="https://www.armytimes.com/news/your-army/2024/09/25/army-enlists-ai-to-identify-prospective-new-recruits/" target="_blank">military recruiting AI (Recruit360)</a> — shipped in 12 weeks with team of 20, <strong>saving 1M labor hours/year</strong></span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Supported <strong>$1B+ in proposals</strong> as Lead Writer, PM & Contributor; prepared demos, PowerPoints and staffing plans</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span><strong>S&A STAR Award 2024</strong> (top 5 of 5,000+ practitioners) · 3× Outstanding Performance Awards · 2× Applause Awards</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Led 7 CPE workshops to 180+ practitioners on Agentic AI, LLM Evaluations, Claude, vibe coding and software dev</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Owned end-to-end product lifecycle</strong> for multiple AI-enabled products from concept and requirements through launch and iteration; defined success metrics, ROI models, and adoption KPIs aligning tech delivery to business outcomes</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Group Product Manager for the Human Capital AI Suite</strong> — 5+ AI automation products generating <strong>$300M+ in pipeline</strong>; coached, trained, and directed 100+ consultants across 20+ GenAI software projects delivering <strong>$100M+ total P&amp;L impact</strong></span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Anthropic Alliance Lead</strong> — owned the Deloitte–Anthropic relationship: trained 1,000+ practitioners on Claude, shipped 10+ products on Anthropic models, led <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=8EMpu2EAAAAJ" target="_blank">joint LLM evaluation research</a> with UVA</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Led product development of a <strong>large-scale AI knowledge retrieval and conversational system (1M+ MAU)</strong> for a $1B+ nonprofit — translated regulatory and user needs into requirements, roadmap milestones, and scalable RAG/vector architecture; the largest user base on AWS Bedrock at the time</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Led the <strong>FedHealth Regulatory Inspection Report Generator</strong> — agentic document-generation system replacing manual report compilation for federal regulatory submissions, saving <strong>1M+ labor hours/year</strong>; navigated FedRAMP, traceability, and audit-readiness requirements characteristic of regulated drug-development workflows</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Engagement Manager for <a href="https://www.armytimes.com/news/your-army/2024/09/25/army-enlists-ai-to-identify-prospective-new-recruits/" target="_blank">military recruiting AI (Recruit360)</a> — applied <strong>Scrum/Agile sprints</strong> to ship a 12-week MVP with a 20-person team, generating <strong>1M labor hours/year</strong> in cold-calling savings</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Provided executive advisory and defined product requirements across 5 high-impact GenAI deployments: a FedHealth AI &amp; Data platform, AI automation of a health system's financial management, and others</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>S&amp;A STAR Award 2024</strong> (top 5 of 5,000+ practitioners, partner-selected) · 3× Outstanding Performance Awards · 2× Applause Awards · led 7 CPE workshops for 180+ practitioners on Agentic AI, LLM Evals, and Claude</span></div>
         </div>
       </div>
 
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-company">J&J — Kenvue</div>
+          <div class="exp-company">Johnson &amp; Johnson Consumer Health</div>
           <div class="exp-date">Sep 2022 – Sep 2023</div>
         </div>
-        <div class="exp-role">Senior AI & Data Engineer · Skillman, NJ</div>
+        <div class="exp-role">Senior R&amp;D Product Innovation Analyst · Skillman, NJ &nbsp;<span style="color:var(--muted);">(business unit later became Kenvue)</span></div>
         <div class="exp-bullets">
-          <div class="eb"><span class="eb-dash">—</span><span>Just 2 months after ChatGPT launched, <strong>built J&J's first enterprise GenAI platform over Christmas Break 2022</strong> — first-of-its-kind agentic text-to-SQL, Wolfram and RAG chatbot on React, Python, and Azure</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Created <strong>GenAI Goal Setting Assistant</strong> serving 22,000 users enterprise-wide — <a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082" target="_blank">featured in Authority Magazine</a></span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Engineered <strong>6.3B-record AI embeddings pipeline</strong> saving $18M/year vs. originally scoped service</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Co-authored enterprise GenAI policy with CIO, SVP of Data, Head of AI, General Counsel & CISO</span></div>
-          <div class="eb"><span class="eb-dash">—</span><span>Co-Invented <strong>Personal Profile Generator & Recommendation Engine — US Patent Pending</strong></span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Owned the product roadmap for the first enterprise GenAI platform at J&amp;J Consumer Health</strong> — agentic text-to-SQL + Wolfram + RAG chatbot, originated within R&amp;D and scaled enterprise-wide to <strong>22,000 users</strong>; led the company's first GenAI tiger team of 5 engineers from concept to production two months after ChatGPT launched</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Owned the product roadmap for the Enterprise Goal Setting Platform (GenAI)</strong> serving 22,000 users — saved <strong>8+ hours/user/year</strong> in performance management cycles; <a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082" target="_blank">featured in Authority Magazine</a> as a flagship enterprise AI win</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Senior Engineer on the R&amp;D Search &amp; BI Platform</strong> — automated <strong>packaging compatibility checks and regulatory warnings</strong> for OTC formulations (saving 20+ FTEs); built predictive chemical-attribute models for OTC formulas using data scraped from <strong>PubChem and CAS.org</strong>; scraped competitor formulas and identified the 5 most similar to ours, mapping predicted costs against Amazon retail prices</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Engineered a <strong>6.3B-record AI embeddings pipeline</strong> saving <strong>$18M/year</strong> vs. originally scoped service; improved <strong>CAS RN ingredient linkage by 700%</strong>, enabling predictive formulation from clean data</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Built supplier-compliance data extraction with <strong>GenAI + RPA</strong> for R&amp;D scientists — yielded <strong>10,000 hours/year</strong> in savings and unblocked downstream regulatory workflows</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span><strong>Drove enterprise risk, infosec, and legal to whitelist Azure OpenAI in 2 months</strong> (typical 1-year process); authored the enterprise GenAI policy with CIO, SVP of Data, Head of AI, General Counsel, and CISO — direct precedent for J&amp;J Innovative Medicine's GenAI compliance bar</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Partnered with R&amp;D, regulatory, and data science stakeholders alongside Google, OpenAI, Pinecone, and AWS to ensure compliance, traceability, and data governance — invented the <strong>Personal Profile Generator &amp; Recommendation Engine — US Patent Pending</strong></span></div>
         </div>
       </div>
 
@@ -1205,7 +1122,7 @@
         </div>
         <div class="exp-role">Graduate Research Assistant · Philadelphia, PA</div>
         <div class="exp-bullets">
-          <div class="eb"><span class="eb-dash">—</span><span>Co-authored 4 peer-reviewed papers; presented at conferences with 100+ attendees</span></div>
+          <div class="eb"><span class="eb-dash">—</span><span>Authored 4 peer-reviewed papers; presented at conferences with 100+ attendees</span></div>
           <div class="eb"><span class="eb-dash">—</span><span>NLP sentiment analysis of 100k+ tweets using NLTK, VADER, Sci-Kit Learn, Pandas</span></div>
         </div>
       </div>
@@ -1224,20 +1141,162 @@
     </div>
   </section>
 
+  <!-- PRODUCTS / PORTFOLIO -->
+  <section id="products">
+    <div class="section-label">04 — Selected Products</div>
+    <h2 class="section-title reveal">GenAI Products Shipped</h2>
+    <p class="section-intro reveal">A sampler of the GenAI products I've owned, scoped, shipped, or led engineering on across <strong>regulated R&amp;D, federal health, and Fortune 500 enterprise</strong>. Where I was the PM, you'll see <em>Owned roadmap</em>; where I was the tech lead, <em>Led engineering</em>; where I led the team that built it, <em>Engagement lead</em>.</p>
+    <div class="products-grid reveal">
+
+      <div class="product-card">
+        <div class="product-tag">R&amp;D · J&amp;J Consumer Health</div>
+        <h3>Enterprise GenAI Platform</h3>
+        <div class="product-role">Owned roadmap · Tech lead</div>
+        <p>First enterprise GenAI platform at J&amp;J Consumer Health — agentic text-to-SQL + Wolfram + RAG chatbot. Originated inside R&amp;D and scaled enterprise-wide. Shipped 2 months after ChatGPT launch.</p>
+        <div class="product-metrics">
+          <span class="product-metric">22K users</span>
+          <span class="product-metric">React + Python + Azure OpenAI</span>
+          <span class="product-metric">Regulated</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">R&amp;D · J&amp;J Consumer Health</div>
+        <h3>R&amp;D Search &amp; BI Platform</h3>
+        <div class="product-role">Senior engineer</div>
+        <p>Scientific knowledge platform for OTC R&amp;D scientists: packaging compatibility checks, regulatory warnings, predictive chemical-attribute models, and competitor-formula similarity scoring. Data scraped from PubChem &amp; CAS.org; competitor cost-mapping vs. Amazon prices.</p>
+        <div class="product-metrics">
+          <span class="product-metric">20+ FTEs saved</span>
+          <span class="product-metric">CAS RN linkage +700%</span>
+          <span class="product-metric">Predictive formulation</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">HR · J&amp;J Consumer Health</div>
+        <h3>GenAI Goal Setting Assistant</h3>
+        <div class="product-role">Owned roadmap · Tech lead</div>
+        <p>Enterprise-wide GenAI assistant for performance management. <a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082" target="_blank" style="color:var(--sage);">Featured in Authority Magazine</a> as a flagship enterprise AI win.</p>
+        <div class="product-metrics">
+          <span class="product-metric">22K users</span>
+          <span class="product-metric">8 hrs/user/yr saved</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">FedHealth · Deloitte</div>
+        <h3>Regulatory Inspection Report Generator</h3>
+        <div class="product-role">Product lead</div>
+        <p>Agentic document-generation system replacing manual report compilation for federal regulatory submissions. Navigated FedRAMP, traceability, and audit-readiness requirements characteristic of regulated drug-development workflows.</p>
+        <div class="product-metrics">
+          <span class="product-metric">1M+ hrs/yr saved</span>
+          <span class="product-metric">FedRAMP</span>
+          <span class="product-metric">Document generation</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">Nonprofit · Deloitte</div>
+        <h3>Knowledge Retrieval &amp; Conversational System</h3>
+        <div class="product-role">PM &amp; tech lead</div>
+        <p>Large-scale AI knowledge platform for a $1B+ nonprofit, translating regulatory and user needs into a scalable RAG/vector architecture. Largest user base on AWS Bedrock at the time.</p>
+        <div class="product-metrics">
+          <span class="product-metric">1M+ MAU</span>
+          <span class="product-metric">RAG · AWS Bedrock</span>
+          <span class="product-metric">Regulated</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">DoD · Deloitte</div>
+        <h3>Recruit360 — Military Recruiting AI</h3>
+        <div class="product-role">Engagement manager</div>
+        <p>AI recruiting tool covered by <a href="https://www.armytimes.com/news/your-army/2024/09/25/army-enlists-ai-to-identify-prospective-new-recruits/" target="_blank" style="color:var(--sage);">Army Times</a>. Shipped MVP in 12 weeks via Scrum/Agile with a 20-person team.</p>
+        <div class="product-metrics">
+          <span class="product-metric">1M hrs/yr saved</span>
+          <span class="product-metric">12-week MVP</span>
+          <span class="product-metric">20-person team</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">Enterprise AI Suite · Deloitte</div>
+        <h3>Human Capital AI Suite</h3>
+        <div class="product-role">Group Product Manager</div>
+        <p>Group PM for a portfolio of 5+ AI automation products targeting talent and HR workflows — defined cross-product roadmap, prioritized investment, sequenced delivery against value cases.</p>
+        <div class="product-metrics">
+          <span class="product-metric">5+ products</span>
+          <span class="product-metric">$300M+ pipeline</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">Alliance · Deloitte × Anthropic × UVA</div>
+        <h3>LLM Evaluation Research &amp; Alliance</h3>
+        <div class="product-role">Anthropic Alliance Lead</div>
+        <p>Owned the Deloitte–Anthropic relationship. Trained 1,000+ practitioners on Claude. Led peer-reviewed LLM evaluation research with UVA — directly applicable to GenAI evaluation strategy in regulated R&amp;D.</p>
+        <div class="product-metrics">
+          <span class="product-metric">1,000+ trained</span>
+          <span class="product-metric">10+ products on Claude</span>
+          <span class="product-metric">Peer-reviewed</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">Practice Build · PwC</div>
+        <h3>AI Factory + Agentic AI Delivery Standards</h3>
+        <div class="product-role">Practice owner</div>
+        <p>Built PwC's AI Factory operating model from scratch — 45+ practitioners across 4 workstreams, 15+ production AI assets in 6 months. Authored the Agentic AI Delivery Standards adopted across a 200+ practitioner practice.</p>
+        <div class="product-metrics">
+          <span class="product-metric">45+ practitioners</span>
+          <span class="product-metric">15+ assets / 6 months</span>
+          <span class="product-metric">200+ adopters</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-tag">Enterprise · PwC</div>
+        <h3>Multichannel AI Agent Platform</h3>
+        <div class="product-role">Owned roadmap · Tech lead</div>
+        <p>End-to-end agentic automation for enterprise customer operations: <strong>contact-driver analytics</strong> identifies high-volume drivers → <strong>knowledge-article generation</strong> closes coverage gaps → <strong>tool-use creation</strong> equips AI agents to act on workflows → deployment across <strong>voice, chat, SMS, and email</strong>. Built to absorb 70–95% of repetitive service work.</p>
+        <div class="product-metrics">
+          <span class="product-metric">Voice · Chat · SMS · Email</span>
+          <span class="product-metric">Azure ACS · AI Foundry</span>
+          <span class="product-metric">Agentic tool-use</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- SKILLS -->
   <section id="skills" style="padding-top: 0;">
-    <div class="section-label">03 — Technical Skills</div>
-    <h2 class="section-title reveal">Capabilities</h2>
+    <div class="section-label">05 — Capabilities</div>
+    <h2 class="section-title reveal">Skills Inventory</h2>
     <div class="skills-grid reveal">
+      <div class="skill-group">
+        <div class="skill-group-title"><i class="fas fa-route"></i> Product Management</div>
+        <div class="skill-chips">
+          <span class="chip">Product Strategy</span><span class="chip">Roadmapping</span><span class="chip">Lifecycle Mgmt</span>
+          <span class="chip">Discovery</span><span class="chip">Requirements</span><span class="chip">User Stories</span>
+          <span class="chip">ROI Modeling</span><span class="chip">OKRs &amp; KPIs</span><span class="chip">Group PM</span>
+          <span class="chip">Program Mgmt</span><span class="chip">Agile / Scrum</span><span class="chip">Waterfall</span>
+          <span class="chip">Hybrid Delivery</span><span class="chip">Stakeholder Mgmt</span><span class="chip">Cross-Functional</span>
+          <span class="chip">Regulated Delivery</span><span class="chip">Compliance</span><span class="chip">AI Governance</span>
+        </div>
+      </div>
       <div class="skill-group">
         <div class="skill-group-title"><i class="fas fa-brain"></i> AI / GenAI</div>
         <div class="skill-chips">
           <span class="chip">Anthropic</span><span class="chip">OpenAI</span><span class="chip">GCP Vertex</span>
           <span class="chip">AWS Bedrock</span><span class="chip">CrewAI</span><span class="chip">LangChain</span>
           <span class="chip">Strands</span><span class="chip">Agentic AI</span><span class="chip">RAG</span>
+          <span class="chip">Knowledge Graphs</span><span class="chip">Tool-Use Generation</span><span class="chip">Knowledge Article Gen</span>
+          <span class="chip">Contact Driver Analytics</span><span class="chip">Multichannel AI</span>
           <span class="chip">LLM Eval</span><span class="chip">RAGAS</span><span class="chip">LangFuse</span>
-          <span class="chip">MLOps</span><span class="chip">Amazon Connect</span><span class="chip">Azure ACS</span>
-          <span class="chip">NICE CXOne</span><span class="chip">Salesforce</span><span class="chip">ServiceNow</span>
+          <span class="chip">MLOps</span><span class="chip">Responsible AI</span>
+          <span class="chip">Azure ACS</span><span class="chip">Amazon Connect</span><span class="chip">NICE CXOne</span>
+          <span class="chip">CCaaS</span><span class="chip">Salesforce</span><span class="chip">ServiceNow</span>
         </div>
       </div>
       <div class="skill-group">
@@ -1259,22 +1318,13 @@
           <span class="chip">R</span><span class="chip">SAS</span><span class="chip">VBA</span>
         </div>
       </div>
-      <div class="skill-group">
-        <div class="skill-group-title"><i class="fas fa-chess-king"></i> Leadership</div>
-        <div class="skill-chips">
-          <span class="chip">Product Strategy</span><span class="chip">Biz Dev</span><span class="chip">Proposal Writing</span>
-          <span class="chip">Team Building</span><span class="chip">Coaching</span><span class="chip">P&L Ownership</span>
-          <span class="chip">C-Suite Advisory</span><span class="chip">Enterprise AI Architecture</span>
-          <span class="chip">Stakeholder Mgmt</span><span class="chip">Sales</span>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- WORK -->
+  <!-- WORK / WRITING -->
   <section id="work">
-    <div class="section-label">04 — Published Work</div>
-    <h2 class="section-title reveal">Work & Writing</h2>
+    <div class="section-label">06 — Published Work</div>
+    <h2 class="section-title reveal">Books, Press &amp; Writing</h2>
     <div class="work-grid reveal">
       <div class="work-card">
         <div class="work-card-tag">Book · AI/ML</div>
@@ -1297,7 +1347,7 @@
       <div class="work-card">
         <div class="work-card-tag">Article · Deloitte</div>
         <h3><a href="https://www2.deloitte.com/us/en/pages/consulting/articles/generative-ai-agents-multiagent-systems.html" target="_blank">AI Agents: Reshaping Workflows</a></h3>
-        <p>How AI agents and multiagent systems automate workflows, improve productivity, and enable self-learning. Co-authored for Deloitte.</p>
+        <p>How AI agents and multiagent systems automate workflows, improve productivity, and enable self-learning. Authored for Deloitte.</p>
         <a href="https://www2.deloitte.com/us/en/pages/consulting/articles/generative-ai-agents-multiagent-systems.html" target="_blank" class="work-card-link">Read Article <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="work-card">
@@ -1309,7 +1359,7 @@
       <div class="work-card">
         <div class="work-card-tag">Press · Authority Magazine</div>
         <h3><a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082" target="_blank">Kenvue's AI-Powered HR Tool</a></h3>
-        <p>Kenvue's CIO discusses the AI-driven HR tool — I led the team that built it, serving 22,000 users across the enterprise.</p>
+        <p>Coverage of the AI-driven HR tool I led the team that built, serving 22,000 users across J&amp;J Consumer Health (now Kenvue).</p>
         <a href="https://medium.com/authority-magazine/bernardo-tavares-of-kenvue-how-we-leveraged-ai-to-take-our-company-to-the-next-level-1a697c06b082" target="_blank" class="work-card-link">Read Article <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="work-card">
@@ -1318,13 +1368,12 @@
         <p>AI-themed metal music because why not. Experience AI-generated brutality and sonic chaos.</p>
         <a href="https://suno.com/playlist/b91f796f-6d3c-41d7-b753-0f2ca9b4abae" target="_blank" class="work-card-link">Listen <i class="fas fa-arrow-right"></i></a>
       </div>
-
     </div>
   </section>
 
   <!-- VIDEOS -->
-  <section id="videos">
-    <div class="section-label">05 — YouTube</div>
+  <section id="videos" style="background: var(--forest-dark);">
+    <div class="section-label">07 — YouTube</div>
     <h2 class="section-title reveal">Prompt Hub</h2>
     <p class="reveal" style="color: var(--muted); max-width: 560px; margin-bottom: 3rem; font-size: 1.05rem;">
       I run <a href="https://www.youtube.com/@PromptHubOfficial" target="_blank" style="color: var(--sage);">@PromptHubOfficial</a> — exploring Generative AI, vibe coding, LLM evals, and other tech curiosities.
@@ -1334,68 +1383,64 @@
 
   <!-- RESEARCH -->
   <section id="research">
-    <div class="section-label">06 — Research</div>
+    <div class="section-label">08 — Research</div>
     <h2 class="section-title reveal">Peer-Reviewed Papers</h2>
     <div class="research-grid reveal">
       <div class="research-item">
-        <div class="research-tag">UVA × Deloitte</div>
+        <div class="research-tag">UVA × Deloitte · Anthropic-supported</div>
         <h3><a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=8EMpu2EAAAAJ" target="_blank">Comparative Study of LLM Eval Frameworks: NLP vs LLM-As-A-Judge</a></h3>
-        <p>Supervised and funded by Deloitte. Co-led with Anthropic & UVA. Benchmarking evaluation methodologies for large language models in production.</p>
+        <p>Supervised and funded by Deloitte. Led with Anthropic &amp; UVA. Benchmarking evaluation methodologies for large language models in production — directly applicable to GenAI evaluation strategy in regulated R&amp;D.</p>
       </div>
       <div class="research-item">
         <div class="research-tag">NLP · Sentiment Analysis · IJWBC 2025</div>
-        <h3><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8EMpu2EAAAAJ&citation_for_view=8EMpu2EAAAAJ:9yKSN-GCB0IC" target="_blank">Exploring the Impact of COVID-19 & Vaccine Dissemination on Airbnb's Popularity and Sentiment on Twitter</a></h3>
-        <p>344,705 tweets analyzed across pre-COVID, pre-vaccine, and post-vaccine periods. Sentiment, topic mining, and voice analytics reveal inverse correlations between COVID-19 cases and positive Airbnb sentiment. <em>International Journal of Web Based Communities</em>, Vol. 21, 2025. Co-authored with Shokoohyar, Ghomi, Gorizi & Liang.</p>
+        <h3><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=8EMpu2EAAAAJ&citation_for_view=8EMpu2EAAAAJ:9yKSN-GCB0IC" target="_blank">Exploring the Impact of COVID-19 &amp; Vaccine Dissemination on Airbnb's Popularity and Sentiment on Twitter</a></h3>
+        <p>344,705 tweets analyzed across pre-COVID, pre-vaccine, and post-vaccine periods. Sentiment, topic mining, and voice analytics reveal inverse correlations between COVID-19 cases and positive Airbnb sentiment. <em>International Journal of Web Based Communities</em>, Vol. 21, 2025.</p>
       </div>
       <div class="research-item">
         <div class="research-tag">SAGE · Workforce</div>
-        <h3><a href="https://sk.sagepub.com/cases/auto-repossession-agencies-they-leaving-the-industry-remain-business" target="_blank">Auto Repossession Agencies: Attrition & Retention Strategies</a></h3>
+        <h3><a href="https://sk.sagepub.com/cases/auto-repossession-agencies-they-leaving-the-industry-remain-business" target="_blank">Auto Repossession Agencies: Attrition &amp; Retention Strategies</a></h3>
         <p>Workforce exit patterns and survival strategies in the auto repossession industry. Published via SAGE Business Cases.</p>
       </div>
       <div class="research-item">
         <div class="research-tag">SAGE · Economic Policy · 2022</div>
-        <h3><a href="https://sk.sagepub.com/cases/is-there-a-case-for-a-global-covid-19-marshall-plan" target="_blank">Would a Global Response Analogous to the Marshall Plan Be the Most Ethical, Effective, and Rational Way to Address the COVID-19 Pandemic?</a></h3>
-        <p>Case study arguing for a coordinated global vaccination response modeled on the post-WWII Marshall Plan. Co-authored with Shokoohyar, Sillup, Riordan, DeMento & McTague. Published via SAGE Business Cases.</p>
+        <h3><a href="https://sk.sagepub.com/cases/is-there-a-case-for-a-global-covid-19-marshall-plan" target="_blank">Is There a Case for a Global COVID-19 Marshall Plan?</a></h3>
+        <p>Case study arguing for a coordinated global vaccination response modeled on the post-WWII Marshall Plan. Published via SAGE Business Cases.</p>
       </div>
       <div class="research-item">
         <div class="research-tag">SAGE · Economic Policy · 2023</div>
-        <h3><a href="https://sk.sagepub.com/cases/how-could-a-global-response-analogous-to-the-marshall-plan-to-disseminate-covid-19-vaccinations-be-implemented-throughout-africa" target="_blank">How Could a Global Response Analogous to the Marshall Plan to Disseminate COVID-19 Vaccinations Be Implemented Throughout Africa?</a></h3>
-        <p>Follow-up case examining the logistical and humanitarian challenges of implementing a Marshall Plan-style vaccination rollout across Africa's least developed nations. Co-authored with Shokoohyar, Sillup, Riordan, DeMento & McTague. SAGE Business Cases, 2023.</p>
+        <h3><a href="https://sk.sagepub.com/cases/how-could-a-global-response-analogous-to-the-marshall-plan-to-disseminate-covid-19-vaccinations-be-implemented-throughout-africa" target="_blank">Marshall Plan to Disseminate COVID Vaccines in Africa</a></h3>
+        <p>Follow-up case examining the logistical and humanitarian challenges of implementing a Marshall Plan-style vaccination rollout across Africa's least developed nations. SAGE Business Cases, 2023.</p>
       </div>
     </div>
     <div class="patent-box reveal">
       <div class="patent-icon">⚖️</div>
       <div>
         <h3>US Patent Pending</h3>
-        <p>Personal Profile Generator & Recommendation Engine — AI system for personalized user profiles and intelligent product recommendations using machine learning. Invented and filed during tenure at Johnson & Johnson / Kenvue.</p>
+        <p>Personal Profile Generator &amp; Recommendation Engine — AI system for personalized user profiles and intelligent product recommendations using machine learning. Invented and filed during tenure at Johnson &amp; Johnson Consumer Health (later Kenvue). U.S. Provisional App. No. 63/539,865.</p>
       </div>
     </div>
   </section>
 
   <!-- AWARDS -->
   <section id="awards">
-    <div class="section-label">07 — Recognition</div>
+    <div class="section-label">09 — Recognition</div>
     <h2 class="section-title reveal">Awards</h2>
     <div class="awards-list reveal">
       <div class="award-item">
         <div class="award-icon"><i class="fas fa-trophy"></i></div>
-        <div class="award-text"><strong>PwC Praise Award</strong>Closing $1.2M deal</div>
+        <div class="award-text"><strong>6× PwC Praise Awards</strong>For performance and delivery excellence across client engagements</div>
       </div>
       <div class="award-item">
-        <div class="award-icon"><i class="fas fa-trophy"></i></div>
-        <div class="award-text"><strong>PwC Praise Award</strong>AI Factory creation</div>
-      </div>
-      <div class="award-item">
-        <div class="award-icon"><i class="fas fa-trophy"></i></div>
-        <div class="award-text"><strong>PwC Praise Award</strong>Closing $900K deal</div>
+        <div class="award-icon"><i class="fas fa-bolt"></i></div>
+        <div class="award-text"><strong>PwC Accelerating Impact Award</strong>Outstanding contribution to firm capability and growth</div>
       </div>
       <div class="award-item">
         <div class="award-icon"><i class="fas fa-star"></i></div>
-        <div class="award-text"><strong>Deloitte S&A STAR Award 2024</strong>Top 5 of 5,000+ practitioners — selected by partners</div>
+        <div class="award-text"><strong>Deloitte S&amp;A STAR Award 2024</strong>Top 5 of 5,000+ Strategy &amp; Analytics practitioners — partner-selected</div>
       </div>
       <div class="award-item">
         <div class="award-icon"><i class="fas fa-medal"></i></div>
-        <div class="award-text"><strong>Deloitte 3× Outstanding Performance Awards</strong>Recognized across multiple engagements</div>
+        <div class="award-text"><strong>Deloitte 3× Outstanding Performance Awards</strong>Recognized across multiple client engagements</div>
       </div>
       <div class="award-item">
         <div class="award-icon"><i class="fas fa-lightbulb"></i></div>
@@ -1403,37 +1448,41 @@
       </div>
       <div class="award-item">
         <div class="award-icon"><i class="fas fa-award"></i></div>
-        <div class="award-text"><strong>Deloitte Fed Health AI App Applause Award</strong>Azure AI Agent with 5 post-sales wins</div>
+        <div class="award-text"><strong>Deloitte Fed Health AI App Applause Award</strong>Azure AI agent with 5 post-sales wins</div>
       </div>
       <div class="award-item">
         <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
         <div class="award-text"><strong>AP Scholar with Distinction</strong>Academic excellence recognition</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="award-text"><strong>CMA Scholarship Recipient</strong>Saint Joseph's University</div>
       </div>
     </div>
   </section>
 
   <!-- CERTS -->
   <section id="certs">
-    <div class="section-label">08 — Certifications</div>
+    <div class="section-label">10 — Certifications</div>
     <h2 class="section-title reveal">Credentials</h2>
     <div class="certs-grid reveal">
-      <span class="cert-badge">Azure Cloud Fundamentals</span>
-      <span class="cert-badge">AWS Cloud Practitioner</span>
-      <span class="cert-badge">AWS AI Practitioner</span>
-      <span class="cert-badge">Salesforce AI Associate</span>
-      <span class="cert-badge">Databricks GenAI & LLM — Healthcare & Life Sciences</span>
-      <span class="cert-badge">Databricks GenAI & LLM — Retail & Consumer Goods</span>
+      <span class="cert-badge">Databricks GenAI &amp; LLM — Healthcare &amp; Life Sciences</span>
+      <span class="cert-badge">Databricks GenAI &amp; LLM — Retail &amp; Consumer Goods</span>
       <span class="cert-badge">Multi-Agent Systems with CrewAI</span>
-      <span class="cert-badge">SAS BI + Analytics</span>
+      <span class="cert-badge">AWS AI Practitioner</span>
+      <span class="cert-badge">AWS Cloud Practitioner</span>
+      <span class="cert-badge">Azure Cloud Fundamentals</span>
+      <span class="cert-badge">Salesforce AI Associate</span>
+      <span class="cert-badge">Deloitte Advanced Prompt Engineering</span>
       <span class="cert-badge">Google Data Analytics</span>
       <span class="cert-badge">Google UX Design</span>
-      <span class="cert-badge">Deloitte Advanced Prompt Engineering</span>
+      <span class="cert-badge">SAS BI + Analytics</span>
     </div>
   </section>
 
-  <!-- CHARLIE COIN -->
+  <!-- COIN -->
   <section id="coin-section">
-    <div class="section-label" style="justify-content: center;">09 — Blockchain Corner</div>
+    <div class="section-label" style="justify-content: center;">11 — Blockchain Corner</div>
     <h2 class="section-title reveal" style="text-align: center;">Get Your Charlie Coin</h2>
     <p class="reveal" style="color: var(--muted); max-width: 420px; margin: 0 auto 2.5rem; text-align: center; font-size: 1rem;">It might become valuable one day. No guarantees.</p>
     <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
@@ -1444,7 +1493,7 @@
 
   <!-- GAME -->
   <section id="game">
-    <div class="section-label">10 — Easter Egg</div>
+    <div class="section-label">12 — Easter Egg</div>
     <h2 class="section-title reveal">Guess the Number</h2>
     <div class="game-container reveal">
       <h3>1 – 100</h3>
@@ -1466,7 +1515,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#hero" class="nav-logo">Charlie Evert<span>.</span></a>
-        <p>AI architect, Army veteran, and builder based in Miami Beach, FL. Building enterprise AI that ships to production — not just the whiteboard.</p>
+        <p>AI Product Leader, Group PM, engineer, and Army veteran based in Miami Beach, FL. Building compliant Generative AI for regulated R&amp;D — not just the whiteboard. <em>Always open to connect.</em></p>
         <div class="footer-social">
           <a href="https://www.youtube.com/@PromptHubOfficial" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
           <a href="https://github.com/CharlieEvert" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
@@ -1480,9 +1529,9 @@
         <h4>Navigate</h4>
         <ul>
           <li><a href="#about">About</a></li>
+          <li><a href="#approach">Approach</a></li>
           <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#work">Work</a></li>
+          <li><a href="#products">Products</a></li>
           <li><a href="#research">Research</a></li>
           <li><a href="#awards">Awards</a></li>
         </ul>
@@ -1498,7 +1547,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Ralph Charles Evert IV — All rights reserved</p>
+      <p>© 2026 Ralph Charles Evert IV — All rights reserved</p>
       <p>References available upon request</p>
     </div>
   </footer>
@@ -1508,13 +1557,11 @@
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
     let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
     document.addEventListener('mousemove', e => {
       mouseX = e.clientX; mouseY = e.clientY;
       cursor.style.left = mouseX + 'px';
       cursor.style.top = mouseY + 'px';
     });
-
     function animateRing() {
       ringX += (mouseX - ringX) * 0.12;
       ringY += (mouseY - ringY) * 0.12;
@@ -1523,38 +1570,84 @@
       requestAnimationFrame(animateRing);
     }
     animateRing();
-
     document.querySelectorAll('a, button').forEach(el => {
       el.addEventListener('mouseenter', () => {
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        ring.style.width = '50px';
-        ring.style.height = '50px';
+        cursor.style.width = '20px'; cursor.style.height = '20px';
+        ring.style.width = '50px'; ring.style.height = '50px';
       });
       el.addEventListener('mouseleave', () => {
-        cursor.style.width = '12px';
-        cursor.style.height = '12px';
-        ring.style.width = '36px';
-        ring.style.height = '36px';
+        cursor.style.width = '12px'; cursor.style.height = '12px';
+        ring.style.width = '36px'; ring.style.height = '36px';
       });
     });
 
     // Navbar scroll
     const navbar = document.getElementById('navbar');
+    const scrollProgress = document.getElementById('scrollProgress');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 80);
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+      if (scrollProgress) scrollProgress.style.width = pct + '%';
     });
 
-    // Intersection observer for reveals
-    const observer = new IntersectionObserver((entries) => {
+    // Auto-tag elements that should fade in on scroll, then observe
+    const revealSelectors = [
+      '.section-title', '.section-intro',
+      '.about-text', '.about-highlights',
+      '.approach-step',
+      '.exp-item',
+      '.product-card',
+      '.skill-group',
+      '.work-card',
+      '.research-item', '.patent-box',
+      '.award-item',
+      '.cert-badge'
+    ];
+    document.querySelectorAll(revealSelectors.join(',')).forEach((el, i) => {
+      el.classList.add('reveal');
+    });
+    // Stagger product / work / approach / award children for a nicer wave effect
+    const staggerContainers = [
+      '.approach-grid', '.products-grid', '.work-grid', '.research-grid',
+      '.awards-list', '.certs-grid', '.skills-grid'
+    ];
+    staggerContainers.forEach(sel => {
+      document.querySelectorAll(sel).forEach(container => {
+        Array.from(container.children).forEach((child, idx) => {
+          const d = (idx % 4) + 1;
+          child.classList.add('delay-' + d);
+        });
+      });
+    });
+    const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
           e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-    document.querySelectorAll('.reveal, .exp-item').forEach(el => observer.observe(el));
+    // Game CTA: dismiss button + auto-hide when game section comes into view
+    (function() {
+      const cta = document.getElementById('gameCta');
+      const closeBtn = document.getElementById('gameCtaClose');
+      if (!cta || !closeBtn) return;
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        cta.classList.add('hidden');
+      });
+      const gameSection = document.getElementById('game');
+      if (gameSection && 'IntersectionObserver' in window) {
+        const gObs = new IntersectionObserver((entries) => {
+          entries.forEach(en => { if (en.isIntersecting) cta.classList.add('hidden'); });
+        }, { threshold: 0.25 });
+        gObs.observe(gameSection);
+      }
+    })();
 
     // Charlie Coin
     document.getElementById('charlieCoinButton').addEventListener('click', function() {
@@ -1564,7 +1657,7 @@
         `🎉 Your unique Charlie Coin: ${coinId}`;
     });
 
-    // Guess the number game
+    // Guess the number
     let randomNumber = Math.floor(Math.random() * 100) + 1;
     const guessesEl = document.querySelector('.guesses');
     const lastResultEl = document.querySelector('.lastResult');
@@ -1572,7 +1665,6 @@
     const guessSubmitEl = document.getElementById('guessSubmit');
     const guessFieldEl = document.getElementById('guessField');
     let guessCount = 1;
-
     function checkGuess() {
       const userGuess = Number(guessFieldEl.value);
       if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
@@ -1584,7 +1676,6 @@
       }
       if (guessCount === 1) guessesEl.textContent = 'Guesses: ';
       guessesEl.textContent += `${userGuess} `;
-
       if (userGuess === randomNumber) {
         lastResultEl.textContent = '🎉 Correct! Email me at charlieevert@gmail.com with a job offer to claim your prize.';
         lastResultEl.style.background = 'rgba(45,106,63,0.2)';
@@ -1606,58 +1697,53 @@
       guessCount++;
       guessFieldEl.value = '';
     }
-
     function setGameOver() {
       guessFieldEl.disabled = true;
       guessSubmitEl.disabled = true;
       const resetBtn = document.createElement('button');
       resetBtn.textContent = 'New Game';
-      resetBtn.style.cssText = 'margin-top:1rem; background:transparent; border:1px solid rgba(45,106,63,0.4); color:var(--sage); font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.6rem 1.2rem; cursor:none;';
+      resetBtn.style.cssText = 'margin-top:1rem; background:transparent; border:1px solid rgba(45,106,63,0.4); color:var(--sage); font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.6rem 1.2rem; cursor:pointer;';
       guessFieldEl.parentNode.parentNode.appendChild(resetBtn);
       resetBtn.addEventListener('click', () => {
         guessCount = 1;
         randomNumber = Math.floor(Math.random() * 100) + 1;
-        guessesEl.textContent = '';
-        lastResultEl.textContent = '';
-        lowOrHiEl.textContent = '';
-        guessFieldEl.disabled = false;
-        guessSubmitEl.disabled = false;
-        guessFieldEl.value = '';
-        resetBtn.remove();
+        guessesEl.textContent = ''; lastResultEl.textContent = ''; lowOrHiEl.textContent = '';
+        guessFieldEl.disabled = false; guessSubmitEl.disabled = false;
+        guessFieldEl.value = ''; resetBtn.remove();
       });
     }
-
     guessSubmitEl.addEventListener('click', checkGuess);
     guessFieldEl.addEventListener('keydown', e => { if (e.key === 'Enter') checkGuess(); });
   </script>
-<script>
-(function() {
-  var roles = [
-    "Revenue Driver & AI Strategist",
-    "Builder of High-Performing Technical Teams",
-    "AI Architect & Engineering Leader",
-    "Enterprise AI Deployment Expert",
-    "GenAI Product Builder"
-  ];
-  var el = document.getElementById('typed-role');
-  if (!el) return;
-  var rIdx = 0, cIdx = 0, isDeleting = false;
-  function tick() {
-    var full = roles[rIdx];
-    if (isDeleting) {
-      cIdx--;
-      el.textContent = full.substring(0, cIdx);
-      if (cIdx <= 0) { isDeleting = false; rIdx = (rIdx + 1) % roles.length; setTimeout(tick, 400); return; }
-      setTimeout(tick, 40);
-    } else {
-      cIdx++;
-      el.textContent = full.substring(0, cIdx);
-      if (cIdx >= full.length) { setTimeout(function(){ isDeleting = true; tick(); }, 2000); return; }
-      setTimeout(tick, 70);
+  <script>
+  (function() {
+    var roles = [
+      "AI Product Leader & Engineering Builder",
+      "Group PM · GenAI Tech Lead · Strategy Consultant",
+      "From Code Review to Roadmap to Boardroom",
+      "Discovery → Roadmap → Delivery → Outcome",
+      "Multichannel AI · Healthcare · Federal · F500",
+      "Always Open to Connect"
+    ];
+    var el = document.getElementById('typed-role');
+    if (!el) return;
+    var rIdx = 0, cIdx = 0, isDeleting = false;
+    function tick() {
+      var full = roles[rIdx];
+      if (isDeleting) {
+        cIdx--;
+        el.textContent = full.substring(0, cIdx);
+        if (cIdx <= 0) { isDeleting = false; rIdx = (rIdx + 1) % roles.length; setTimeout(tick, 400); return; }
+        setTimeout(tick, 40);
+      } else {
+        cIdx++;
+        el.textContent = full.substring(0, cIdx);
+        if (cIdx >= full.length) { setTimeout(function(){ isDeleting = true; tick(); }, 2000); return; }
+        setTimeout(tick, 70);
+      }
     }
-  }
-  tick();
-})();
-</script>
+    tick();
+  })();
+  </script>
 </body>
 </html>
