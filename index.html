@@ -777,6 +777,62 @@ body.modal-open { overflow:hidden; }
       .produce-card{min-height:310px;}
     }
 
+  
+    /* v19 performance-management slide */
+    .perf-v19 { display:grid !important; place-items:center !important; }
+    .perf-stack { width:100%; display:grid; gap:clamp(.75rem,1.2vw,1rem); }
+    .perf-owner,
+    .perf-role,
+    .perf-sprint {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.92);
+      border-radius:22px;
+      box-shadow:var(--shadow-sm);
+      padding:clamp(.9rem,1.45vw,1.25rem);
+      color:var(--text);
+    }
+    .perf-owner { text-align:center; border-color:rgba(47,143,87,.25); background:linear-gradient(180deg,var(--paper-2),var(--tint)); }
+    .perf-owner i,
+    .perf-role i,
+    .perf-sprint i { color:var(--green-deep); font-size:1.35rem; margin-bottom:.55rem; display:block; }
+    .perf-owner small,
+    .perf-role small,
+    .perf-sprint small {
+      display:block;
+      font-family:var(--m);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--gold);
+      font-size:.62rem;
+      margin-bottom:.3rem;
+    }
+    .perf-owner b,
+    .perf-role b,
+    .perf-sprint b { display:block; color:var(--ink); font-family:var(--h); font-size:clamp(1rem,1.6vw,1.35rem); line-height:1.1; letter-spacing:-.025em; }
+    .perf-owner span,
+    .perf-role span,
+    .perf-sprint span { display:block; color:var(--soft); font-size:clamp(.78rem,.92vw,.9rem); line-height:1.38; margin-top:.48rem; }
+    .perf-lanes { display:grid; grid-template-columns:1fr 1fr; gap:clamp(.75rem,1.2vw,1rem); }
+    .perf-sprint { display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center; background:linear-gradient(180deg,var(--paper-2),#F8FAF6); }
+    .perf-sprint i { margin:0; width:44px; height:44px; display:grid; place-items:center; border-radius:14px; background:var(--tint); }
+    .perf-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:.55rem; }
+    .perf-steps span {
+      font-family:var(--m);
+      font-size:clamp(.62rem,.82vw,.72rem);
+      line-height:1.25;
+      color:var(--green-deep);
+      background:var(--paper-2);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:.65rem .55rem;
+      text-align:center;
+      box-shadow:var(--shadow-sm);
+    }
+    @media (max-width: 740px) {
+      .perf-lanes, .perf-steps { grid-template-columns:1fr; }
+      .perf-sprint { grid-template-columns:1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -1164,8 +1220,7 @@ body.modal-open { overflow:hidden; }
 
     <main class="case-stage" id="caseStage">
 
-      <article class="case-slide active" data-duration="75" data-label="Executive summary">
-        <div class="v7-slide-inner">
+      <article class="case-slide active" data-duration="75" data-label="Executive summary"><div class="v7-slide-inner">
           <section class="v7-copy">
             <div class="case-kicker">00:00–01:15 · executive summary</div>
             <h3><em>$5M+</em> manual operation → reusable AI accelerator.</h3>
@@ -1183,11 +1238,8 @@ body.modal-open { overflow:hidden; }
             <div class="proof-node n3 v7-hot enter d3"><i class="fas fa-people-arrows"></i><b>Reorged</b><span>manual tagging eliminated</span></div>
             <div class="proof-node n4 v7-hot enter d4"><i class="fas fa-arrows-spin"></i><b>Expanded</b><span>phase two + new pursuits</span></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="65" data-label="The accelerator thesis">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="65" data-label="The accelerator thesis"><div class="v7-slide-inner">
           <section class="v7-copy">
             <div class="case-kicker">01:15–02:20 · point of view</div>
             <h3>The winning model is <em>peer proof plus tailored delivery.</em></h3>
@@ -1199,11 +1251,8 @@ body.modal-open { overflow:hidden; }
             <div class="balance-side enter d2"><i class="fas fa-box-open"></i><b>Product only</b><span>Static functionality is easier to copy; advantage shifts to trust, implementation, and adaptation.</span></div>
             <div class="balance-track enter d3"><span></span></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="80" data-label="The problem">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="80" data-label="The problem"><div class="v7-slide-inner">
           <section class="v7-copy">
             <div class="case-kicker">02:20–03:40 · what the organization was trying to accomplish</div>
             <h3>The operating model was too manual to protect <em>advisor trust at scale.</em></h3>
@@ -1215,11 +1264,8 @@ body.modal-open { overflow:hidden; }
             <div class="problem-card enter d2 v7-hot"><i class="fas fa-file-lines"></i><b>Knowledge writers</b><span>30+ writers manually creating agent-assist articles.</span><strong>$2–3M / yr</strong></div>
             <div class="problem-total enter d3"><i class="fas fa-money-bill-trend-up"></i><b>$5M+ annual labor case</b><span>Service-cost pressure plus a strategic need to improve the advisor experience.</span></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="80" data-label="Success measures">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="80" data-label="Success measures"><div class="v7-slide-inner">
           <section class="v7-copy">
             <div class="case-kicker">03:40–05:00 · how success was measured</div>
             <h3>We separated <em>near-term proof</em> from long-term value capture.</h3>
@@ -1232,11 +1278,8 @@ body.modal-open { overflow:hidden; }
             <div class="measure-card enter d3 v7-hot"><i class="fas fa-heart-pulse"></i><small>Guardrail</small><b>Flat</b><span>CSAT held steady while automation increased</span></div>
             <div class="achieved-banner enter d4"><i class="fas fa-circle-check"></i><div><b>Near-term proof achieved</b><span>The contact-driver analytics team stopped manually tagging and shifted into AI experience operations using SIGNAL and the organizational chatbot.</span></div></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="80" data-label="Presales and North Star">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="80" data-label="Presales and North Star"><div class="v7-slide-inner">
           <section class="v7-copy">
             <div class="case-kicker">05:00–06:20 · presales, relationship, and alignment</div>
             <h3>I won the room by turning stakeholder language into a <em>North Star.</em></h3>
@@ -1252,13 +1295,10 @@ body.modal-open { overflow:hidden; }
               <span><i class="fas fa-clock"></i> 15-minute aggregate view</span><span><i class="fas fa-magnifying-glass-chart"></i> spike drilldown</span><span><i class="fas fa-tags"></i> auto-label drivers</span><span><i class="fas fa-pen-to-square"></i> signal → article</span>
             </div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="105" data-label="SIGNAL app prototype">
-        <div class="v7-slide-inner app-slide">
+        </div></article>
+<article class="case-slide" data-duration="95" data-label="SIGNAL app prototype"><div class="v7-slide-inner app-slide">
           <section class="v7-copy">
-            <div class="case-kicker">06:20–08:05 · what I built and why</div>
+            <div class="case-kicker">06:20–07:55 · what I built and why</div>
             <h3>The prototype made the strategy <em>feel real.</em></h3>
             <p>SIGNAL was a single-page app that ingested call transcripts, mapped calls to contact drivers, surfaced emerging issues every 15 minutes, detected knowledge gaps, and let leaders ask questions across structured and unstructured data.</p>
           </section>
@@ -1279,13 +1319,10 @@ body.modal-open { overflow:hidden; }
               </div>
             </div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="80" data-label="Technical architecture">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="80" data-label="Technical architecture"><div class="v7-slide-inner">
           <section class="v7-copy">
-            <div class="case-kicker">08:05–09:25 · technical depth</div>
+            <div class="case-kicker">07:55–09:15 · technical depth</div>
             <h3>Every call became a signal; every gap became <em>routable work.</em></h3>
             <p>The pattern was intentionally enterprise-ready: semantic search with confidence scoring, human review for low-confidence matches, knowledge-base lookup, gap flagging, and an analytics layer for proactive and reactive questions.</p>
           </section>
@@ -1298,13 +1335,10 @@ body.modal-open { overflow:hidden; }
             <div class="arch-node enter d5 v7-hot"><i class="fas fa-chart-column"></i><b>Analytics</b><span>dashboard + ask data</span></div>
             <svg class="arch-lines" viewBox="0 0 1000 420" preserveAspectRatio="none"><path d="M110 210 C230 60 350 60 470 210 S710 360 890 210"/><path d="M110 210 C260 360 360 360 470 210 S700 60 890 210"/></svg>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="75" data-label="Contracting and delivery plan">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="75" data-label="Contracting and delivery plan"><div class="v7-slide-inner">
           <section class="v7-copy">
-            <div class="case-kicker">09:25–10:40 · contracting and delivery leadership</div>
+            <div class="case-kicker">09:15–10:30 · contracting and delivery leadership</div>
             <h3>AI accelerated the artifact work; <em>scope judgment</em> protected delivery.</h3>
             <p>I used the prototype, meeting notes, MSA, SOW language, and prior change orders to draft scope quickly. Then I made the hard choices: non-prod first, production gated, explicit client dependencies, ARB and AI governance, and a lean delivery pod.</p>
           </section>
@@ -1315,13 +1349,10 @@ body.modal-open { overflow:hidden; }
             <div class="mile m3 enter d2 v7-hot"><i class="fas fa-vial-circle-check"></i><b>3 weeks</b><span>Testing + aftercare</span></div>
             <div class="scope-card enter d3"><i class="fas fa-lock"></i><b>Scoped safely</b><span>Non-prod, explicit assumptions, client dependencies, governance gates, and handoff designed in.</span></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="90" data-label="Transformation and readiness">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="90" data-label="Transformation and readiness"><div class="v7-slide-inner">
           <section class="v7-copy">
-            <div class="case-kicker">10:40–12:10 · organizational transformation and readiness</div>
+            <div class="case-kicker">10:30–12:00 · organizational transformation and readiness</div>
             <h3>The team moved from <em>manual reporting</em> to AI experience operations.</h3>
             <p>This was not a software handoff. The contact-driver analytics team stopped manually tagging calls and shifted into a higher-value operating role: using SIGNAL and chatbot logs to identify signals, tune prompts, adjust guardrails, and find the next automation opportunities.</p>
           </section>
@@ -1336,13 +1367,10 @@ body.modal-open { overflow:hidden; }
               <div class="v7-hot"><i class="fas fa-lightbulb"></i><b>Next automations</b><span>prioritize new agent workflows</span></div>
             </div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="75" data-label="Cadence and communication">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="70" data-label="Cadence and communication"><div class="v7-slide-inner">
           <section class="v7-copy">
-            <div class="case-kicker">12:10–13:25 · cadences and communication structure</div>
+            <div class="case-kicker">12:00–13:10 · cadences and communication structure</div>
             <h3>Cadence was not status theater. It was <em>altitude management.</em></h3>
             <p>Daily scrums kept the client and project team unblocked. Leadership check-ins escalated cross-functional dependencies. Monthly SteerCo connected delivery to call-abatement goals, AI-enabled transformation, and the next commercial opportunities.</p>
           </section>
@@ -1352,13 +1380,64 @@ body.modal-open { overflow:hidden; }
             <div class="cadence-card enter d2 v7-hot"><i class="fas fa-landmark"></i><small>Sponsor altitude</small><b>Monthly SteerCo</b><span>call abatement, operating-model change, C-suite alignment, expansion path.</span></div>
             <div class="unblock-card enter d3"><i class="fas fa-unlock-keyhole"></i><div><b>Example unblock</b><span>Architecture standards were unclear at the project level; I escalated through leadership, brought the right architecture team into daily scrum, and quickly aligned the app to enterprise standards.</span></div></div>
           </section>
-        </div>
-      </article>
+        </div></article>
 
-      <article class="case-slide" data-duration="80" data-label="Post-sales expansion">
-        <div class="v7-slide-inner">
+        <article class="case-slide" data-duration="75" data-label="Performance management">
+          <div class="v7-slide-inner">
+            <section class="v7-copy">
+              <div class="case-kicker">13:10–14:25 · performance management and accountability</div>
+              <h3>Delivery scaled because ownership was <em>designed into the team.</em></h3>
+              <p>I sourced and interviewed the technical and functional leads, set weekly performance connects, and used one-week Kanban-style sprints so team members owned tasks, leads owned workstreams, and I owned the outcome.</p>
+              <div class="case-points">
+                <div><b>Functional lead</b><span>Task flow, client coordination, blocker removal, and sprint hygiene.</span></div>
+                <div><b>Technical lead</b><span>Engineering execution, standards, accountability, and technical decisions.</span></div>
+                <div><b>Team members</b><span>Own tasks through one-week Kanban sprints and Friday retros.</span></div>
+                <div><b>Delivery lead</b><span>Owns outcome, coaching, escalation, stakeholder confidence, and account expansion.</span></div>
+              </div>
+            </section>
+            <section class="v7-visual perf-v19">
+              <div class="perf-stack enter">
+                <div class="perf-owner v7-hot">
+                  <i class="fas fa-bullseye"></i>
+                  <small>Delivery lead</small>
+                  <b>Owns the outcome</b>
+                  <span>Stakeholder trust, escalation, staffing judgment, coaching, and expansion path.</span>
+                </div>
+                <div class="perf-lanes">
+                  <div class="perf-role enter d1 v7-hot">
+                    <i class="fas fa-list-check"></i>
+                    <small>Functional lead</small>
+                    <b>Owns task flow</b>
+                    <span>Tracks work, unblocks client dependencies, and keeps the sprint moving.</span>
+                  </div>
+                  <div class="perf-role enter d2 v7-hot">
+                    <i class="fas fa-code-branch"></i>
+                    <small>Technical lead</small>
+                    <b>Owns technical execution</b>
+                    <span>Keeps engineers accountable, resolves technical decisions, and meets standards.</span>
+                  </div>
+                </div>
+                <div class="perf-sprint enter d3">
+                  <i class="fas fa-people-group"></i>
+                  <div>
+                    <small>Operating rhythm</small>
+                    <b>One-week Kanban sprints</b>
+                    <span>Team members pick tasks based on fit and interest; Friday retros reset the next week against the plan.</span>
+                  </div>
+                </div>
+                <div class="perf-steps enter d4">
+                  <span>01 · source leads</span>
+                  <span>02 · weekly coaching</span>
+                  <span>03 · biweekly connects</span>
+                  <span>04 · risks escalate early</span>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+<article class="case-slide" data-duration="70" data-label="Post-sales expansion"><div class="v7-slide-inner">
           <section class="v7-copy">
-            <div class="case-kicker">13:25–14:45 · post-sales expansion</div>
+            <div class="case-kicker">14:25–15:35 · post-sales expansion</div>
             <h3>The delivery win became a <em>growth flywheel.</em></h3>
             <p>Because SIGNAL was prebuilt in our AWS environment, delivery was smoother and the asset was reusable. The client relationship opened adjacent personalization and AEP work, while the accelerator created credibility in airline and bank pursuits.</p>
           </section>
@@ -1369,13 +1448,10 @@ body.modal-open { overflow:hidden; }
             <div class="fly f3 enter d3 v7-hot"><i class="fas fa-plane"></i><b>Airline RFP</b><span>won with asset proof</span></div>
             <div class="fly f4 enter d4 v7-hot"><i class="fas fa-building-columns"></i><b>Bank pursuit</b><span>implementation lead</span></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="95" data-label="AI-native leadership and upskilling">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="85" data-label="AI-native leadership and upskilling"><div class="v7-slide-inner">
           <section class="v7-copy">
-            <div class="case-kicker">14:45–16:20 · bringing it forward</div>
+            <div class="case-kicker">15:35–17:00 · bringing it forward</div>
             <h3>I use AI to accelerate the work — and <em>upskill teams by doing.</em></h3>
             <p><strong>I treat AI as a developer, product manager, project manager, and commercial acceleration partner — then teach teams by doing.</strong> At Deloitte, that became Claude training completed by 1,000+ practitioners. At PwC, it became sales and delivery standards for AI-age dealmaking, plus partner and Managing Director trainings anchored to real pursuits.</p>
           </section>
@@ -1386,13 +1462,10 @@ body.modal-open { overflow:hidden; }
             <div class="ai-role enter d3 v7-hot"><i class="fas fa-people-group"></i><b>Muscle building</b><span>I assign team members to own these motions so they learn by delivering, not by watching.</span></div>
             <div class="teach-banner enter d4"><i class="fas fa-chalkboard-user"></i><b>Scaled enablement</b><span>Deloitte: Claude training completed by 1,000+ practitioners. PwC: sales and delivery standards plus trainings for Partners and Managing Directors on strategy-anchored art-of-the-possible selling.</span></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="70" data-label="RFP innovation">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="60" data-label="RFP innovation"><div class="v7-slide-inner">
           <section class="v7-copy">
-            <div class="case-kicker">16:20–17:30 · commercial acceleration</div>
+            <div class="case-kicker">17:00–18:00 · commercial acceleration</div>
             <h3>We stopped only telling clients about AI. <em>We let them experience it.</em></h3>
             <p>I pioneered an RFP response pattern where the response includes an HTML experience embedded into the deck, partner letters beside it, and an inbound AI phone number with the full RFP context. It turns the proposal into a working demo of the capability we are selling.</p>
           </section>
@@ -1402,13 +1475,10 @@ body.modal-open { overflow:hidden; }
             <div class="rfp-stack enter d2 v7-hot"><i class="fas fa-phone-volume"></i><b>Inbound AI number</b><span>full RFP context over voice</span></div>
             <div class="win-rate enter d3"><small>Early pursuit results</small><div><span>~20%</span><i></i><b>~70%</b></div><em>win-rate improvement on deals using the experiential response model</em></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="70" data-label="Enterprise AI parallels">
-        <div class="v7-slide-inner">
+        </div></article>
+<article class="case-slide" data-duration="60" data-label="Enterprise AI parallels"><div class="v7-slide-inner">
           <section class="v7-copy">
-            <div class="case-kicker">17:30–18:40 · parallels and differences</div>
+            <div class="case-kicker">18:00–19:00 · parallels and differences</div>
             <h3>Same delivery muscles. <em>Different risk surface.</em></h3>
             <p>The same playbook applies to enterprise AI programs: find the business case, build a tangible prototype, govern the risk, drive adoption, and package the learning. Internal rewiring moves faster; customer-facing agents demand tighter evaluation, observability, rollback, and brand controls.</p>
           </section>
@@ -1417,13 +1487,10 @@ body.modal-open { overflow:hidden; }
             <div class="compare-card enter d1 v7-hot"><i class="fas fa-robot"></i><b>Customer-facing AI</b><span>Agents embedded into client applications and service experiences.</span><ul><li>evals and HITL</li><li>observability and rollback</li><li>trust and brand risk</li></ul></div>
             <div class="same-playbook enter d2"><i class="fas fa-infinity"></i><b>Same core playbook</b><span>value case → prototype → governed delivery → adoption → reusable capability</span></div>
           </section>
-        </div>
-      </article>
-
-      <article class="case-slide" data-duration="80" data-label="Questions and recap">
-        <div class="v7-slide-inner q-slide">
+        </div></article>
+<article class="case-slide" data-duration="60" data-label="Questions and recap"><div class="v7-slide-inner q-slide">
           <section class="v7-copy">
-            <div class="case-kicker">18:40–20:00 · questions</div>
+            <div class="case-kicker">19:00–20:00 · questions</div>
             <h3>Questions?</h3>
             <p>The point of the story: I can run enterprise delivery, build the technical system, transform the operating team, expand the account, and lead the accelerator-to-delivery model I have proven across PwC and Deloitte.</p>
           </section>
@@ -1433,8 +1500,7 @@ body.modal-open { overflow:hidden; }
             <div class="qa-card enter d2 v7-hot"><i class="fas fa-clipboard-check"></i><b>How I led</b><span>Presales, contracting, delivery, governance, readiness, cadence, and client ownership.</span></div>
             <div class="qa-card enter d3 v7-hot"><i class="fas fa-graduation-cap"></i><b>Why this scales</b><span>AI-native delivery plus enablement turns one solution into a repeatable accelerator-to-delivery model.</span></div>
           </section>
-        </div>
-      </article>
+        </div></article>
 
 
     </main>
