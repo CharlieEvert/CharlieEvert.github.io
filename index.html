@@ -896,6 +896,65 @@
 
     .foot-game { color: var(--sage); text-decoration: none; }
     .foot-game:hover { color: var(--green-deep); text-decoration: underline; }
+
+    /* ═══ editorial design layer ═══ */
+    /* ghost section numerals */
+    body { counter-reset: secnum; }
+    section:not(#egg):not(#contact) > .wrap { position: relative; }
+    section:not(#egg):not(#contact) > .wrap::before {
+      counter-increment: secnum;
+      content: "0" counter(secnum);
+      position: absolute; top: -2.2rem; right: -0.5rem;
+      font-family: var(--h); font-weight: 800;
+      font-size: clamp(5rem, 11vw, 9rem); line-height: 1;
+      color: rgba(18,40,28,0.045);
+      letter-spacing: -0.04em; pointer-events: none; user-select: none; z-index: 0;
+    }
+    section > .wrap > * { position: relative; z-index: 1; }
+
+    /* bento focus grid — vary card widths */
+    .focus-grid .gcard:nth-child(1),
+    .focus-grid .gcard:nth-child(4),
+    .focus-grid .gcard:nth-child(5) { grid-column: span 2; }
+    @media (max-width: 1020px) {
+      .focus-grid .gcard:nth-child(1),
+      .focus-grid .gcard:nth-child(4),
+      .focus-grid .gcard:nth-child(5) { grid-column: span 1; }
+    }
+    .gcard { transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
+    .gcard:hover { transform: translateY(-4px); }
+
+    /* hero stats: elevated card with gold accent */
+    .stats { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold-soft); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+
+    /* centered header variant for videos + recognition */
+    #videos .kicker, #recognition .kicker { justify-content: center; }
+    #videos .kicker::before, #recognition .kicker::before { display: none; }
+    #videos h2, #recognition h2 { margin-left: auto; margin-right: auto; text-align: center; }
+    #videos .lede, #recognition .lede { margin-left: auto; margin-right: auto; text-align: center; }
+
+    /* skills: alternating top accents */
+    .skill-block { border-top: 3px solid var(--green); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+    .skills-grid .skill-block:nth-child(2n) { border-top-color: var(--gold-soft); }
+    .skill-block:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+
+    /* publications: hover arrows + accent */
+    .pub { border-left: 2px solid transparent; transition: border-color 0.25s, background 0.25s, padding-left 0.25s; }
+    .pub:hover { border-left-color: var(--gold-soft); padding-left: 1.4rem; }
+
+    /* awards lift */
+    .award { transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s; }
+    .award:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+
+    /* egg: gradient frame so the game feels like a prize */
+    .egg-box { position: relative; border: 0 !important; background: var(--panel); }
+    .egg-box::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; background: linear-gradient(120deg, var(--green), var(--gold-soft), var(--green)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+
+    /* section rhythm: alternate breathing room */
+    #signal, #skills { padding-top: 6rem; }
+
+    /* story carousel: gold top accent to match stats */
+    .story { border-top: 3px solid var(--gold-soft); }
 </style>
 </head>
 <body>
@@ -1440,8 +1499,8 @@
 
     // ══════════════════════════════════════════════════════════════
     // ✏️ SET YOUR AI CONCIERGE NUMBER HERE (one place, used site-wide)
-    const ANGEL_PHONE = "+15555550123";            // tel: format
-    const ANGEL_PHONE_DISPLAY = "(555) 555-0123";  // what visitors see
+    const ANGEL_PHONE = "+16506293610";            // tel: format
+    const ANGEL_PHONE_DISPLAY = "1 (650) 629-3610";  // what visitors see
     // ══════════════════════════════════════════════════════════════
     document.querySelectorAll('[data-angel-tel]').forEach(a => a.href = 'tel:' + ANGEL_PHONE);
     document.querySelectorAll('[data-angel-num]').forEach(el => el.textContent = ANGEL_PHONE_DISPLAY);
