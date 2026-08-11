@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://charlieevert.github.io/sitemap.xml
