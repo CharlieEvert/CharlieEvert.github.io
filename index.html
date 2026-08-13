@@ -89,17 +89,53 @@
 [data-h="45"]:hover{color: #1A56B0 !important;}
 [data-h="46"]:hover{color: #1A56B0 !important;}
 [data-h="47"]:hover{color: #1A56B0 !important;}
+
+/* ---- mobile top bar ---- */
+@media (max-width: 720px){
+  /* drop the section links; the page is a single scroll anyway */
+  [data-h="2"], [data-h="3"], [data-h="4"],
+  [data-h="5"], [data-h="6"], [data-h="7"]{display: none !important;}
+
+  /* keep the bar on one row */
+  .topbar-inner{
+    padding: 9px 16px !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+  }
+  .topbar-brand{gap: 9px !important; min-width: 0 !important;}
+  .topbar-brand > a:first-child{font-size: 0.72rem !important;}
+
+  /* shrink the phone CTA so it still fits */
+  [data-h="1"]{
+    font-size: 0.56rem !important;
+    letter-spacing: 0.03em !important;
+    padding: 6px 9px !important;
+    gap: 5px !important;
+  }
+  [data-h="8"]{
+    font-size: 0.58rem !important;
+    padding: 6px 10px !important;
+    white-space: nowrap !important;
+  }
+
+  /* must match the real bar height or content hides underneath */
+  .page{padding-top: 51px !important;}
+}
+
+@media (max-width: 400px){
+  [data-h="8"]{display: none !important;}
+}
   </style>
 </head>
 <body>
-<div style="background: #FFFFFF; color: #4A5161; padding-top: 62px;">
+<div class="page" style="background: #FFFFFF; color: #4A5161; padding-top: 62px;">
 
   <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid #D7DBE2;">
     <div style="height: 3px; background: #EFF3F9;">
       <div id="progressBar" style="height: 3px; width: 0%; background: linear-gradient(90deg, #16305E, #1A56B0);"></div>
     </div>
-    <div style="max-width: 1180px; margin: 0 auto; padding: 11px 28px; display: flex; align-items: center; justify-content: space-between; gap: 14px 20px;">
-      <div style="display: flex; align-items: center; gap: 14px; flex: 0 0 auto;">
+    <div class="topbar-inner" style="max-width: 1180px; margin: 0 auto; padding: 11px 28px; display: flex; align-items: center; justify-content: space-between; gap: 14px 20px;">
+      <div class="topbar-brand" style="display: flex; align-items: center; gap: 14px; flex: 0 0 auto;">
         <a href="#top" style="font-weight: 700; font-size: 0.82rem; letter-spacing: 0.13em; text-transform: uppercase; color: #181B22;">Charlie Evert</a>
         <a href="tel:+16506293610" title="Charlie's AI concierge — ask it anything, 24/7" style="display: inline-flex; align-items: center; gap: 7px; background: #16305E; color: #FFFFFF; border-radius: 5px; padding: 7px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;" data-h="1">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: #7FE3B0; animation: pulse 2.4s ease-in-out infinite; flex: 0 0 auto;"></span>
