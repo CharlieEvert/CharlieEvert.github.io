@@ -1,0 +1,53 @@
+import {retrieve,groundedAnswer} from './chat-knowledge.js';
+const menu=document.getElementById('menu-toggle'),nav=document.getElementById('main-nav'),bar=document.getElementById('site-topbar');
+function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}
+menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';nav.classList.toggle('open',open);menu.setAttribute('aria-expanded',String(open));});
+nav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){closeMenu();menu.focus();}});
+document.addEventListener('click',e=>{if(!bar.contains(e.target))closeMenu();});
+new ResizeObserver(()=>document.documentElement.style.setProperty('--topbar-height',bar.offsetHeight+'px')).observe(bar);
+class CharlieChat extends HTMLElement {
+ connectedCallback(){
+  const r=this.attachShadow({mode:'open'});r.innerHTML=`<style>
+  :host{font:14px Archivo,system-ui,sans-serif;color:#16305e;position:relative;z-index:250}*{box-sizing:border-box}[hidden]{display:none!important}button,input,a{font:inherit}button{cursor:pointer}button:disabled{cursor:wait;opacity:.6}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #b7791f;outline-offset:2px}
+  .bubble{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));width:54px;height:54px;border:1px solid #fff;border-radius:50%;background:#16305e;color:#fff;box-shadow:0 5px 22px #16305e35;display:grid;place-items:center}.bubble svg{width:25px;height:25px}
+  .panel{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:82px;width:min(390px,calc(100vw - 24px));height:min(580px,calc(100dvh - 110px));background:white;border:1px solid #d7dbe2;border-radius:16px;box-shadow:0 12px 45px #16305e30;display:flex;flex-direction:column;overflow:hidden}.head{display:flex;justify-content:space-between;align-items:center;padding:16px;background:#16305e;color:white}.head small{display:block;margin-top:5px;color:#ceddf2}.head button{border:0;background:transparent;color:white;font-size:25px;width:40px;height:40px}.body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px}.intro{line-height:1.5;margin:0 0 12px}.fine{font-size:11px;line-height:1.5;color:#687387;margin:10px 0}.suggestions{display:flex;flex-wrap:wrap;gap:7px}.suggestions button{border:1px solid #c6d3e8;border-radius:18px;background:#eff3f9;color:#16305e;font-size:12px;padding:9px 11px}.message{line-height:1.55;white-space:pre-wrap;padding:12px;border-radius:10px;background:#eff3f9;margin:12px 0;overflow-wrap:anywhere}.user{margin-left:30px;background:#16305e;color:white}.sources{font-size:12px;line-height:1.5;border:1px solid #d7dbe2;padding:10px;border-radius:8px;margin:10px 0}.sources summary{cursor:pointer;font-weight:600}.sources p{margin:10px 0}.sources a{color:#1a56b0}.status{padding:0 16px;font-size:11px;line-height:1.5;color:#687387;min-height:18px}form{display:flex;gap:8px;padding:12px;border-top:1px solid #d7dbe2}input{min-width:0;width:100%;font-size:16px;padding:11px;border:1px solid #b8c7da;border-radius:7px}form button{padding:10px 14px;background:#1a56b0;color:white;border:0;border-radius:7px}.foot{display:flex;justify-content:space-between;gap:8px;padding:0 14px 12px;font-size:11px}.foot a{color:#1a56b0}.foot button{border:0;color:#687387;background:white;font-size:11px}
+  @media(max-width:600px){.panel{right:12px;bottom:max(12px,env(safe-area-inset-bottom));height:min(620px,calc(var(--chat-vh,100dvh) - 24px));max-height:calc(var(--chat-vh,100dvh) - 24px)}:host([open]) .bubble{display:none}.bubble{width:48px;height:48px;right:12px}}
+  </style>
+  <button class="bubble" id="toggle" aria-label="Ask about Charlie’s experience" aria-expanded="false" aria-controls="panel" title="Ask about Charlie"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8H5l-4 3V11.5a9.5 9.5 0 1 1 19 0Z"/><path d="M6 10h10M6 14h6"/></svg></button>
+  <section class="panel" id="panel" role="dialog" aria-label="Ask about Charlie" hidden>
+   <div class="head"><div><b>Ask about Charlie</b><small>Experience, leadership &amp; results</small></div><button id="close" aria-label="Close chat">×</button></div>
+   <div class="body" id="body"><p class="intro">What would you like to know? Ask about Charlie’s delivery experience, teams, or business impact.</p><div class="suggestions"><button>What makes Charlie different?</button><button>What budgets has he managed?</button><button>Tell me about his team leadership</button></div><p class="fine">Open-source AI runs on your device. The first answer downloads a model (about 400 MB) and may take a few minutes. Answers can be imperfect; check the source notes. Your questions are not sent to an AI service.</p><div id="messages"></div></div>
+   <p class="status" id="status" role="status">Ready when you are.</p><form id="form"><input id="question" aria-label="Your question about Charlie" placeholder="Ask about his experience…" maxlength="600" autocomplete="off" required><button id="send">Send</button><button id="stop" type="button" hidden>Stop</button></form>
+   <div class="foot"><a href="./Charlie-Evert-Resume.pdf" target="_blank" rel="noopener">Read résumé ↗</a><a href="mailto:charlieevert@gmail.com">Contact Charlie</a><button id="clear">Clear chat</button></div>
+  </section>`;
+  this.el=Object.fromEntries([...r.querySelectorAll('[id]')].map(e=>[e.id,e]));this.busy=false;this.records=null;this.history=[];
+  this.el.toggle.onclick=()=>this.show(this.el.panel.hidden);this.el.close.onclick=()=>this.show(false);
+  this.el.form.onsubmit=e=>{e.preventDefault();this.ask(this.el.question.value);};
+  r.querySelectorAll('.suggestions button').forEach(b=>b.onclick=()=>this.ask(b.textContent));
+  this.el.stop.onclick=()=>this.stop();this.el.clear.onclick=()=>{this.stop();this.el.messages.replaceChildren();this.history=[];this.el.status.textContent='Chat cleared.';};
+  r.addEventListener('keydown',e=>{if(e.key==='Escape'){this.show(false);e.stopPropagation();}});
+  this.viewport=()=>{this.style.setProperty('--chat-vh',(window.visualViewport?.height||innerHeight)+'px');};window.visualViewport?.addEventListener('resize',this.viewport);this.viewport();
+ }
+ show(open){this.el.panel.hidden=!open;this.toggleAttribute('open',open);this.el.toggle.setAttribute('aria-expanded',String(open));if(open)this.el.close.focus({preventScroll:true});else{if(this.busy)this.stop();this.el.toggle.focus({preventScroll:true});}}
+ message(text,role){const el=document.createElement('div');el.className='message '+role;el.textContent=text;this.el.messages.append(el);this.scroll();return el;}
+ scroll(){this.el.body.scrollTop=this.el.body.scrollHeight;}
+ async ask(raw){const question=raw.trim();if(!question||this.busy)return;this.busy=true;const ticket=Symbol();this.ticket=ticket;this.el.send.disabled=true;this.el.stop.hidden=false;this.el.question.value='';this.answer=null;this.generated='';this.message(question,'user');this.el.status.textContent='Finding relevant portfolio notes…';
+  try{
+   if(!this.records){const r=await fetch(new URL('./experience.json',import.meta.url));if(!r.ok)throw Error();this.records=await r.json();}if(this.ticket!==ticket)return;
+   const search=question.length<50&&this.history.length?question+' '+this.history.at(-1):question;const records=retrieve(search,this.records);this.history.push(question);this.history=this.history.slice(-4);
+   if(!records.length){this.message('That isn’t covered in the portfolio. Ask about Charlie’s experience, teams, AI projects, or budgets, or contact him directly.','assistant');this.finish();return;}
+   this.answer=this.message('Loading the local AI…','assistant');const sources=document.createElement('details');sources.className='sources';sources.open=false;const summary=document.createElement('summary');summary.textContent='Portfolio source notes';sources.append(summary);
+   records.forEach(record=>{const p=document.createElement('p'),a=document.createElement('a');a.href=record.url;a.textContent=record.title;a.onclick=()=>this.show(false);p.append(a,document.createElement('br'),document.createTextNode(record.text));sources.append(p);});this.el.messages.append(sources);this.scroll();this.generated='';
+   if(!this.worker){this.worker=new Worker(new URL('./chat-worker.js',import.meta.url),{type:'module'});}
+   this.worker.onmessage=({data})=>{if(this.ticket!==ticket)return;if(data.type==='progress')this.el.status.textContent=data.text;if(data.type==='token'){this.generated+=data.text;this.answer.textContent='Writing an answer from the portfolio notes…';}if(data.type==='done'){const answer=groundedAnswer(this.generated,records,question);this.answer.textContent=answer.text;this.finish(answer.fromSource?'Using exact portfolio wording to preserve the facts.':'Answered on your device. Check source notes for exact figures.');this.scroll();}if(data.type==='error'){this.answer.textContent=data.text;this.stop('Source notes available. Try again or contact Charlie.');}};
+   this.worker.onerror=()=>{if(this.ticket!==ticket)return;this.answer.textContent='The AI couldn’t load. You can still read the matching portfolio notes below.';this.stop('AI unavailable on this device.');};
+   this.timer=setTimeout(()=>{if(this.ticket===ticket){this.answer.textContent='The AI is taking too long on this device. Here are the matching portfolio notes.';this.stop('Try again later or read the résumé.');}},180000);
+   this.worker.postMessage({question,records});
+  }catch(e){if(this.ticket!==ticket)return;this.message('I couldn’t load the experience notes. Please try again or use the résumé link.','assistant');this.finish('Could not load chat.');}
+ }
+ finish(status='Ready for another question.'){clearTimeout(this.timer);this.busy=false;this.el.send.disabled=false;this.el.stop.hidden=true;this.el.status.textContent=status;}
+ stop(status='Stopped. You can ask another question.'){this.ticket=null;this.worker?.terminate();this.worker=null;if(this.busy&&this.answer&&/Loading the local AI|Writing an answer/.test(this.answer.textContent))this.answer.textContent='AI response stopped. Matching source notes are below.';this.finish(status);}
+ disconnectedCallback(){this.stop();window.visualViewport?.removeEventListener('resize',this.viewport);}
+}
+customElements.define('charlie-chat',CharlieChat);

@@ -12,6 +12,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <script defer src="assets/site.js"></script>
+<link rel="stylesheet" href="assets/concierge.css">
+<script type="module" src="assets/concierge.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; background: #FFFFFF; -webkit-text-size-adjust: 100%; }
@@ -90,47 +92,12 @@
 [data-h="46"]:hover{color: #1A56B0 !important;}
 [data-h="47"]:hover{color: #1A56B0 !important;}
 
-/* ---- mobile top bar ---- */
-@media (max-width: 720px){
-  /* drop the section links; the page is a single scroll anyway */
-  [data-h="2"], [data-h="3"], [data-h="4"],
-  [data-h="5"], [data-h="6"], [data-h="7"]{display: none !important;}
-
-  /* keep the bar on one row */
-  .topbar-inner{
-    padding: 9px 16px !important;
-    flex-wrap: nowrap !important;
-    gap: 10px !important;
-  }
-  .topbar-brand{gap: 9px !important; min-width: 0 !important;}
-  .topbar-brand > a:first-child{font-size: 0.72rem !important;}
-
-  /* shrink the phone CTA so it still fits */
-  [data-h="1"]{
-    font-size: 0.56rem !important;
-    letter-spacing: 0.03em !important;
-    padding: 6px 9px !important;
-    gap: 5px !important;
-  }
-  [data-h="8"]{
-    font-size: 0.58rem !important;
-    padding: 6px 10px !important;
-    white-space: nowrap !important;
-  }
-
-  /* must match the real bar height or content hides underneath */
-  .page{padding-top: 51px !important;}
-}
-
-@media (max-width: 400px){
-  [data-h="8"]{display: none !important;}
-}
   </style>
 </head>
 <body>
 <div class="page" style="background: #FFFFFF; color: #4A5161; padding-top: 62px;">
 
-  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid #D7DBE2;">
+  <div id="site-topbar" style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid #D7DBE2;">
     <div style="height: 3px; background: #EFF3F9;">
       <div id="progressBar" style="height: 3px; width: 0%; background: linear-gradient(90deg, #16305E, #1A56B0);"></div>
     </div>
@@ -139,10 +106,11 @@
         <a href="#top" style="font-weight: 700; font-size: 0.82rem; letter-spacing: 0.13em; text-transform: uppercase; color: #181B22;">Charlie Evert</a>
         <a href="tel:+16506293610" title="Charlie's AI concierge — ask it anything, 24/7" style="display: inline-flex; align-items: center; gap: 7px; background: #16305E; color: #FFFFFF; border-radius: 5px; padding: 7px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;" data-h="1">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: #7FE3B0; animation: pulse 2.4s ease-in-out infinite; flex: 0 0 auto;"></span>
-          Talk to my AI · (650) 629-3610
+          <span class="phone-label">Talk to my AI</span><span class="phone-number"> · (650) 629-3610</span>
         </a>
       </div>
-      <nav style="display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 4px 15px;">
+      <button id="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
+      <nav id="main-nav" aria-label="Main navigation" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 4px 15px;">
         <a href="#summary" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="2">Summary</a>
         <a href="#origin" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="3">Arc</a>
         <a href="#pattern" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="4">Pattern</a>
@@ -189,16 +157,16 @@
         </div>
         <div style="flex: 1 1 540px; min-width: 280px;">
           <h2 style="font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.12; letter-spacing: -0.026em; color: #181B22; max-width: 26ch;">A working capability. A stronger team. Measurable business value.</h2>
-          <p style="font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; line-height: 1.66; color: #4A5161; max-width: 66ch; margin-top: 20px; text-wrap: pretty;">My differentiator is the ability to operate across business strategy, product, engineering, and delivery while remaining accountable for the client relationship and the economics. I use those perspectives together to make better investment decisions, build useful products, and develop leaders who can sustain and extend the results.</p>
-          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; line-height: 1.85; color: #16305E; margin-top: 22px; max-width: 70ch; border-left: 2px solid #1A56B0; padding-left: 18px;">The progression: built enterprise AI at J&amp;J/Kenvue · scaled products, teams, and partnerships at Deloitte · now own a $10M annual client transformation portfolio at PwC.</p>
+          <p style="font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; line-height: 1.66; color: #4A5161; max-width: 66ch; margin-top: 20px; text-wrap: pretty;">I connect business strategy, product, engineering, and ongoing operations with ownership of the client relationship, program economics, and team development. That breadth lets me turn an AI opportunity into a funded program, a working product, and an operating capability, then develop technical leads and AI product managers who can scale the results.</p>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; line-height: 1.85; color: #16305E; margin-top: 22px; max-width: 70ch; border-left: 2px solid #1A56B0; padding-left: 18px;">The progression: built enterprise AI at J&amp;J/Kenvue · scaled products, teams, and partnerships at Deloitte · manage annual portfolio/program budgets of up to $10M at PwC, including a personally originated, sole-source $5M engagement.</p>
         </div>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1px; padding: 1px; margin-top: 44px;">
         <div style="background: #FFFFFF; padding: 24px; box-shadow: 0 0 0 1px #D7DBE2;">
-          <p style="font-weight: 700; font-size: clamp(1.7rem, 2.8vw, 2.3rem); line-height: 1.1; color: #16305E;">$10M</p>
+          <p style="font-weight: 700; font-size: clamp(1.7rem, 2.8vw, 2.3rem); line-height: 1.1; color: #16305E;">Up to $10M</p>
           <h3 style="font-size: 0.95rem; color: #181B22; margin-top: 12px;">Commercial accountability</h3>
-          <p style="font-size: 0.85rem; color: #5B6270; margin-top: 8px; line-height: 1.55;">Annual client portfolio; personally originated and delivered a $5M engagement at 34% margin.</p>
+          <p style="font-size: 0.85rem; color: #5B6270; margin-top: 8px; line-height: 1.55;">Annual portfolio/program budgets at PwC, including a personally originated, sole-source $5M, 16-week engagement sold, staffed, delivered, and invoiced at 34% margin.</p>
         </div>
         <div style="background: #FFFFFF; padding: 24px; box-shadow: 0 0 0 1px #D7DBE2;">
           <p style="font-weight: 700; font-size: clamp(1.7rem, 2.8vw, 2.3rem); line-height: 1.1; color: #16305E;">1M+</p>
@@ -415,7 +383,7 @@
         </div>
         <div style="flex: 1 1 540px; min-width: 280px;">
           <h2 style="font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.12; letter-spacing: -0.026em; color: #FFFFFF; max-width: 28ch;">Accountable from investment through delivery.</h2>
-          <p style="font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; line-height: 1.68; color: #D6E2F2; max-width: 64ch; margin-top: 20px; text-wrap: pretty;">I lead $10M in annual client AI strategy and implementation engagements, owning client relationships, staffing, delivery, and P&amp;L. My largest personally originated engagement was $5M, delivered by seven specialists in four months at the target 34% margin. Across projects, I lead US/India teams up to 20, including Managers, Senior Managers, and a Director in an advisory SME capacity, alongside four formal direct reports.</p>
+          <p style="font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; line-height: 1.68; color: #D6E2F2; max-width: 64ch; margin-top: 20px; text-wrap: pretty;">I manage annual portfolio/program budgets of up to $10M at PwC across AI strategy and implementation engagements, owning client relationships, staffing, delivery, and P&amp;L. This includes a personally originated, sole-source $5M engagement I sold, staffed, delivered, and invoiced in 16 weeks at the target 34% margin with seven specialists. Across projects, I lead US/India teams up to 20, including Managers, Senior Managers, and a Director in an advisory SME capacity, alongside four formal direct reports.</p>
         </div>
         <figure style="flex: 0 1 240px; min-width: 200px;">
           <div style="aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; border: 1px solid rgba(214,226,242,0.3); background: rgba(255,255,255,0.06);">
@@ -879,7 +847,7 @@
   </footer>
 
   
-    <div style="position: fixed; right: 18px; bottom: 18px; z-index: 150; pointer-events: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: #5B6270; display: flex; align-items: center; gap: 8px; background: #FFFFFF; border: 1px solid #D7DBE2; border-radius: 4px; padding: 6px 10px 6px 8px; box-shadow: 0 4px 14px rgba(22,48,94,0.10);">
+    <div class="altimeter" style="position: fixed; right: 18px; bottom: 18px; z-index: 150; pointer-events: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: #5B6270; display: flex; align-items: center; gap: 8px; background: #FFFFFF; border: 1px solid #D7DBE2; border-radius: 4px; padding: 6px 10px 6px 8px; box-shadow: 0 4px 14px rgba(22,48,94,0.10);">
       <span style="width: 1px; height: 16px; background: #1A56B0; display: inline-block;"></span>
       <span id="altReadout">ALT 1,250 FT</span>
     </div>
@@ -890,5 +858,6 @@ function onScroll(){var h=document.documentElement.scrollHeight-innerHeight;var 
 if(bar)bar.style.width=(p*100).toFixed(2)+'%';
 if(alt){var a=Math.round((1-p)*1250);alt.textContent=a<=0?'TOUCHDOWN':'ALT '+a.toLocaleString()+' FT';}}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();})();</script>
+<charlie-chat></charlie-chat>
 </body>
 </html>

@@ -56,3 +56,11 @@ basis widths and `clamp()` type, no media queries.
 ## Deploy
 
 Commit to `main`. Pages picks it up; there is nothing to build.
+
+## Portfolio assistant and mobile navigation
+
+`assets/concierge.js` provides the responsive navigation and a compact, dismissible chat widget. `assets/experience.json` is the curated public knowledge base; update it when resume facts change. Source links point to the matching site sections. No personal conversation history, private client identities, or credentials belong in that file.
+
+The assistant retrieves relevant facts locally, then uses Apache-2.0 SmolLM2-360M-Instruct through Transformers.js 3.8.1 in a Web Worker. The model revision is pinned in `assets/chat-worker.js`; quantized WASM inference supports CPU execution without WebGPU. The first question downloads roughly 400 MB from Hugging Face plus the runtime from jsDelivr. Browser caching reduces later downloads where available. Nothing downloads until a visitor asks a question. Inference is local; prompts are not sent to an inference service. There is no API key or backend. Slow/unsupported devices retain the labeled source notes and direct contact links. Stop, close, clear, and a timeout terminate pending inference. A response check falls back to exact source wording when key budget qualifiers or amounts are dropped. These small-model answers remain fallible and should be checked against the displayed sources.
+
+`assets/concierge.css` controls the mobile menu, header offsets, and relocation of the decorative altitude indicator to keep it away from the chat launcher. The game and its navigation breadcrumb remain intact.
