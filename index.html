@@ -14,6 +14,7 @@
 <script defer src="assets/site.js"></script>
 <link rel="stylesheet" href="assets/concierge.css">
 <script defer src="assets/navigation.js"></script>
+<script defer src="assets/portfolio.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; background: #FFFFFF; -webkit-text-size-adjust: 100%; }
@@ -93,6 +94,7 @@
 [data-h="47"]:hover{color: #1A56B0 !important;}
 
   </style>
+<link rel="stylesheet" href="assets/portfolio.css?v=2">
 </head>
 <body>
 <div class="page" style="background: #FFFFFF; color: #4A5161; padding-top: 62px;">
@@ -111,50 +113,51 @@
       </div>
       <button id="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
       <nav id="main-nav" aria-label="Main navigation" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 4px 15px;">
-        <a href="#summary" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="2">Summary</a>
-        <a href="#origin" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="3">Arc</a>
-        <a href="#pattern" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="4">Pattern</a>
-        <a href="#receipts" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="5">Receipts</a>
-        <a href="#public" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="6">Teaching</a>
-        <a href="#life" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270;" data-h="7">Life</a>
-        <a href="./Charlie-Evert-Resume.pdf" target="_blank" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5B6270; border: 1px solid #D7DBE2; padding: 7px 14px; border-radius: 5px;" data-h="8">Résumé</a>
+        <a href="#work">Selected work</a><a href="#origin">My story</a><a href="#receipts">Research</a><a href="#public">Watch &amp; learn</a><a href="#westie">WESTIE ↗</a><a href="./Charlie-Evert-Resume.pdf" target="_blank" class="nav-resume">Résumé ↓</a>
       </nav>
     </div>
   </div>
 
-  <header id="top" style="max-width: 1180px; margin: 0 auto; padding: clamp(44px, 7vw, 88px) 28px clamp(40px, 6vw, 72px);">
-    <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
-      <div style="flex: 1 1 480px; min-width: 300px; animation: rise 0.8s cubic-bezier(0.22,1,0.36,1) both;">
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: #1A56B0; display: flex; align-items: center; gap: 12px;">
-          <span style="width: 34px; height: 1px; background: #1A56B0; display: inline-block;"></span>
-          Ralph Charles Evert IV
-        </p>
-        <h1 style="font-weight: 700; font-size: clamp(2.1rem, 4.6vw, 3.3rem); line-height: 1.04; letter-spacing: -0.032em; color: #181B22; margin-top: 22px; text-wrap: balance;">Hi, I’m Charlie.<br /><span style="color: #1A56B0;">I build things, and the teams behind them.</span></h1>
-        <p style="font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(1.08rem, 1.6vw, 1.28rem); line-height: 1.6; color: #4A5161; max-width: 54ch; margin-top: 24px; text-wrap: pretty;">At J&amp;J/Kenvue, I started GenAI Hub as a side project. It became the company’s enterprise AI platform, and my work grew from building software to helping people use it, deciding what to build next, and keeping it running.</p>
-        <p style="font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(1.08rem, 1.6vw, 1.28rem); line-height: 1.6; color: #4A5161; max-width: 54ch; margin-top: 16px; text-wrap: pretty;">That experience shaped how I lead. At Deloitte and now PwC, I’ve built products, led client programs, and helped engineers grow into technical leads and product leaders. I still get hands-on, but I also want the team to have the judgment and confidence to carry the work forward.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px;">
-          <a href="mailto:charlieevert@gmail.com" style="display: inline-flex; align-items: center; gap: 9px; background: #16305E; color: #FFFFFF; font-weight: 600; font-size: 0.88rem; padding: 13px 22px; border-radius: 6px; transition: background 0.25s, transform 0.25s;" data-h="9">charlieevert@gmail.com</a>
-          <a href="tel:+16506293610" style="display: inline-flex; align-items: center; gap: 9px; border: 1px solid #1A56B0; color: #1A56B0; font-weight: 600; font-size: 0.88rem; padding: 13px 22px; border-radius: 6px; transition: background 0.25s, transform 0.25s;" data-h="10">Talk to my AI · (650) 629-3610</a>
-          <a href="https://www.linkedin.com/in/ralphcharlesevertiv" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; border: 1px solid #D7DBE2; color: #181B22; font-weight: 600; font-size: 0.88rem; padding: 13px 22px; border-radius: 6px; transition: border-color 0.25s, transform 0.25s;" data-h="11">LinkedIn</a>
-        </div>
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8A909C; margin-top: 26px; line-height: 1.9;">
-          Miami Beach, FL · AI transformation · Business value · Team development<br />US Army veteran · Active US Secret clearance · MBA + MS Analytics
-        </p>
-      </div>
-      <div style="flex: 0 1 330px; min-width: 240px; animation: rise 0.9s cubic-bezier(0.22,1,0.36,1) 0.12s both;">
-        <div style="aspect-ratio: 2 / 3; border-radius: 10px; overflow: hidden; border: 1px solid #D7DBE2; background: #EFF3F9;">
-          <img src="images/charlie-beach.jpg" alt="Charlie Evert on the water in Miami" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-        </div>
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: #8A909C; margin-top: 12px;">Biscayne Bay — the natural habitat</p>
-      </div>
+  <header id="top" class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot"></span> Applied AI leadership · Miami Beach</p>
+      <h1>Hi, I’m Charlie.<br>I build AI.<br><em>And the teams<br>that take it further.</em></h1>
+      <p class="hero-intro">At J&amp;J/Kenvue, a chatbot I started became an enterprise AI platform. That changed how I think about building: the product is only the beginning.</p>
+      <p class="hero-follow">Today, I connect strategy, engineering, and commercial ownership, and develop the leaders who keep the work moving. Still hands-on. Always accountable for what happens next.</p>
+      <div class="hero-actions"><a class="button primary" href="#work">Explore my work <span>↘</span></a><a class="button secondary" href="./Charlie-Evert-Resume.pdf" target="_blank">Read my résumé ↗</a></div>
+      <p class="hero-note">US Army veteran <span>·</span> MBA + MS Analytics <span>·</span> Builder, operator, mentor</p>
+    </div>
+    <div class="hero-portrait">
+      <div class="portrait-frame"><img src="images/charlie-beach.jpg" alt="Charlie on the water in Miami" fetchpriority="high" width="660" height="990"><span class="portrait-coordinate">25.76° N / 80.19° W</span></div>
+      <div class="portrait-caption"><span>Outside the meeting room.</span><span>Biscayne Bay ↗</span></div>
+      <a class="hero-westie" href="#westie"><img src="images/westie.webp" alt="" width="48" height="48"><span><small>Something just for fun</small><strong>Meet WESTIE. Blame Terry. ↗</strong></span></a>
     </div>
   </header>
+  <div class="career-strip"><span>Built across</span><b>Johnson &amp; Johnson / Kenvue</b><i>→</i><b>Deloitte</b><i>→</i><b>PwC</b><a href="#origin">The story behind the work ↗</a></div>
+  <section id="work" class="selected-work">
+    <div class="work-heading"><div><p class="eyebrow">Selected work / Real operating responsibility</p><h2>From possibility<br>to production.</h2></div><p>Three examples of the same commitment: build something useful, make it work at scale, and leave a stronger team behind.</p></div>
+    <div class="work-grid">
+      <article class="work-card enterprise">
+        <div class="work-visual" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-core">AI</div><span class="orbit-node node-a">R&amp;D</span><span class="orbit-node node-b">Supply chain</span><span class="orbit-node node-c">Marketing</span></div>
+        <div class="work-body"><p class="eyebrow">01 / Enterprise capability</p><h3>A side project.<br>An enterprise platform.</h3><p>Originated GenAI Hub at J&amp;J/Kenvue and led the governance, adoption, and operations that made it an enterprise capability.</p><div class="work-metric"><strong>22,000</strong><span>employees with access<br>10,000 peak monthly active users</span></div><details><summary>Inside the work <span>+</span></summary><p>Partnered with OpenAI and the Azure OpenAI team. Owned the initial release and six months of features, cost monitoring, incidents, and executive usage reporting.</p><a href="#turn">Read the J&amp;J / Kenvue chapter ↗</a></details></div>
+      </article>
+      <article class="work-card delivery">
+        <div class="work-visual" aria-hidden="true"><div class="signal-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="visual-caption">BUILD → EVALUATE → RELEASE</span></div>
+        <div class="work-body"><p class="eyebrow">02 / Production delivery</p><h3>AI at scale.<br>Ownership after launch.</h3><p>Led a nonprofit client’s AI CoE and production platform at Deloitte, guiding priorities and a distributed engineering team.</p><div class="work-metric"><strong>1M+</strong><span>monthly users served<br>one year of release ownership</span></div><details><summary>Inside the work <span>+</span></summary><p>Led Deloitte and Credera engineers across AWS Bedrock, Palantir Foundry, and Salesforce Einstein. Built evaluation, human review, and alerting into ongoing operations.</p><a href="#scale">Read the Deloitte chapter ↗</a></details></div>
+      </article>
+      <article class="work-card ownership">
+        <div class="work-visual" aria-hidden="true"><div class="value-steps"><span>ORIGINATE</span><span>BUILD</span><span>DELIVER</span></div><span class="visual-caption">CLIENT TRUST → COMMERCIAL RESULTS</span></div>
+        <div class="work-body"><p class="eyebrow">03 / Commercial ownership</p><h3>See the opportunity.<br>Own the outcome.</h3><p>Personally originated a sole-source PwC engagement, then sold, staffed, delivered, and invoiced it in 16 weeks.</p><div class="work-metric"><strong>$5M</strong><span>engagement delivered<br>34% margin achieved</span></div><details><summary>Inside the work <span>+</span></summary><p>The largest engagement within annual portfolio/program budgets up to $10M. Owned the client relationship, staffing and travel allocation, and a seven-person delivery team.</p><a href="#now">Read the PwC chapter ↗</a></details></div>
+      </article>
+    </div>
+    <div class="explore-paths"><span>Keep exploring</span><a href="#summary">Leadership &amp; impact ↗</a><a href="#public">Watch me build ↗</a><a href="#westie">WESTIE art project ↗</a><a href="#jump">Take the 30-second jump ↗</a></div>
+  </section>
 
   <section id="summary" style="scroll-margin-top: 118px; background: #EFF3F9; border-top: 1px solid #D7DBE2; border-bottom: 1px solid #D7DBE2;">
     <div style="max-width: 1180px; margin: 0 auto; padding: clamp(56px, 7vw, 92px) 28px;">
       <div style="display: flex; flex-wrap: wrap; gap: 44px;">
         <div style="flex: 0 1 190px; min-width: 180px;">
-          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: #1A56B0;">00 / Executive summary</p>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: #1A56B0;">Leadership / The bigger picture</p>
         </div>
         <div style="flex: 1 1 540px; min-width: 280px;">
           <h2 style="font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.12; letter-spacing: -0.026em; color: #181B22; max-width: 26ch;">A working capability. A stronger team. Measurable business value.</h2>
@@ -181,46 +184,9 @@
         </div>
       </div>
 
-      <div style="margin-top: 44px; background: #FFFFFF; border: 1px solid #D7DBE2; border-radius: 10px; overflow: hidden;">
-        <div style="padding: 20px 24px; border-bottom: 1px solid #D7DBE2; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; justify-content: space-between;">
-          <h3 style="font-weight: 700; font-size: 1.06rem; color: #181B22; letter-spacing: -0.01em;">How to read this page</h3>
-          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8A909C;">Pick your budget</p>
-        </div>
-        <a href="#pattern" style="display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; padding: 18px 24px; border-bottom: 1px solid #EFF3F9; transition: background 0.2s;" data-h="12">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1A56B0; flex: 0 0 108px;">30 seconds</span>
-          <span style="flex: 1 1 260px; font-size: 0.95rem; color: #181B22; font-weight: 600;">The four patterns — what repeats, not what happened once</span>
-          <span style="font-size: 0.86rem; color: #5B6270; flex: 1 1 200px;">Function-building, lab partnerships, speed, firsts.</span>
-        </a>
-        <a href="#life" style="display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; padding: 18px 24px; border-bottom: 1px solid #EFF3F9; transition: background 0.2s;" data-h="13">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1A56B0; flex: 0 0 108px;">1 minute</span>
-          <span style="flex: 1 1 260px; font-size: 0.95rem; color: #181B22; font-weight: 600;">Off the clock — Julie, two dogs, and the water</span>
-          <span style="font-size: 0.86rem; color: #5B6270; flex: 1 1 200px;">The part that is not on the résumé.</span>
-        </a>
-        <a href="#origin" style="display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; padding: 18px 24px; border-bottom: 1px solid #EFF3F9; transition: background 0.2s;" data-h="14">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1A56B0; flex: 0 0 108px;">2 minutes</span>
-          <span style="flex: 1 1 260px; font-size: 0.95rem; color: #181B22; font-weight: 600;">The arc, 2015 to now</span>
-          <span style="font-size: 0.86rem; color: #5B6270; flex: 1 1 200px;">Airborne infantry → research → J&amp;J → Deloitte → PwC.</span>
-        </a>
-        <a href="#receipts" style="display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; padding: 18px 24px; border-bottom: 1px solid #EFF3F9; transition: background 0.2s;" data-h="15">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1A56B0; flex: 0 0 108px;">5 minutes</span>
-          <span style="flex: 1 1 260px; font-size: 0.95rem; color: #181B22; font-weight: 600;">Receipts — patent, papers, books, awards</span>
-          <span style="font-size: 0.86rem; color: #5B6270; flex: 1 1 200px;">Every item links out to the source.</span>
-        </a>
-        <a href="tel:+16506293610" style="display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; padding: 18px 24px; border-bottom: 1px solid #EFF3F9; transition: background 0.2s;" data-h="16">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1A56B0; flex: 0 0 108px;">No reading</span>
-          <span style="flex: 1 1 260px; font-size: 0.95rem; color: #181B22; font-weight: 600;">Interrogate my AI concierge instead</span>
-          <span style="font-size: 0.86rem; color: #5B6270; flex: 1 1 200px;">Top-right of every screen, 24/7. It will also book time with me.</span>
-        </a>
-        <a href="#jump" style="display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; padding: 18px 24px; transition: background 0.2s;" data-h="17">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1A56B0; flex: 0 0 108px;">Bored</span>
-          <span style="flex: 1 1 260px; font-size: 0.95rem; color: #181B22; font-weight: 600;">Take a first-person parachute jump</span>
-          <span style="font-size: 0.86rem; color: #5B6270; flex: 1 1 200px;">One jump. Thirty seconds. Stick the landing, send the offer.</span>
-        </a>
-      </div>
-
       <div style="margin-top: 22px; background: #FFFFFF; border: 1px solid #D7DBE2; border-radius: 10px; overflow: hidden;">
         <div style="padding: 20px 24px; border-bottom: 1px solid #D7DBE2; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; justify-content: space-between;">
-          <h3 style="font-weight: 700; font-size: 1.06rem; color: #181B22; letter-spacing: -0.01em;">The arc, in twenty-nine seconds</h3>
+          <h3 style="font-weight: 700; font-size: 1.06rem; color: #181B22; letter-spacing: -0.01em;">The story, in under a minute</h3>
           <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8A909C;">Plays once · jump to any chapter</p>
         </div>
         <div style="padding: 18px;">
@@ -718,7 +684,7 @@
           <p style="font-size: 0.85rem; color: #8A909C; margin-top: 12px; line-height: 1.6;">Miami Beach · one wife, two dogs, and water whenever possible.</p>
         </div>
         <div style="flex: 1 1 400px; min-width: 280px;">
-          <h2 style="font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.12; letter-spacing: -0.026em; color: #181B22; max-width: 22ch;">The part that is not on the résumé.</h2>
+          <h2 style="font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.12; letter-spacing: -0.026em; color: #181B22; max-width: 22ch;">Life beyond the work.</h2>
           <p style="font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; line-height: 1.68; color: #4A5161; max-width: 58ch; margin-top: 20px; text-wrap: pretty;">
             My wife Julie and I live in Miami Beach with two very small, very opinionated dogs. We got married on the beach at Cape Florida, which is about as close to St. Thomas as the mainland gets.
           </p>
