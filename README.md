@@ -10,7 +10,7 @@ Static, no build step, no framework, no dependencies. GitHub Pages serves the ro
 | `index.html` | The entire site — markup and inline styles. |
 | `assets/site.js` | Scroll reveals, count-up stats, scroll-spy nav, photo lightbox, right-click-to-copy email. |
 | `assets/arc-film.js` | `<arc-film>` — the animated career film in the executive summary. Canvas, six chapters, scrubbable. |
-| `assets/jump-game.js` | `<jump-game>` — land three paratroopers on the drop zone; three for three reveals the prize. |
+| `assets/jump-game.js` | `<jump-game>` — a 30-second first-person parachute landing, with an in-game win message and job-offer link. |
 | `images/` | Eight photos: beach, jump, dress uniform, Infantry School graduation, NASA, Wall Street, Julie and the dogs, newsletter cover. |
 | `Charlie-Evert-Resume.pdf` | Linked from the Résumé button. Replace the file, keep the name. |
 | `favicon.svg`, `robots.txt`, `sitemap.xml` | Icon and indexing. |
@@ -41,7 +41,7 @@ aspect box, so any reasonably centered crop works.
 duration, tag, title, subtitle, optional counter, and the `key` naming the scene drawn beneath
 the trace. Add a chapter by adding an entry and a matching draw method.
 
-**The game** — `assets/jump-game.js`. `PASSES` sets the number of jumps; winning all of them
+**The game** — `assets/jump-game.js`. `DURATION` sets the flight time and `RADIUS` the landing tolerance; landing on target
 reveals the mailto that asks for a job offer.
 
 **Analytics** — Google tag `G-ZRR3DZ2JKE` in `<head>`, carried over from the previous site.
