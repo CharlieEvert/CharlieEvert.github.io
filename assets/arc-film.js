@@ -9,7 +9,7 @@
     { d: 6.0, key: 'grid',    tag: '2022 · Johnson & Johnson', title: 'First enterprise GenAI platform',     sub: 'Built unprompted, then scaled across the enterprise.', metric: { to: 22000, fmt: 'int', label: 'employees with access' } },
     { d: 6.0, key: 'net',     tag: '2023 · Deloitte',          title: 'Anthropic Alliance, founded',         sub: 'Zero to 250+ practitioners in six months, 100 deployed into delivery.', metric: { to: 250, fmt: 'plus', label: 'practitioners' } },
     { d: 6.0, key: 'factory', tag: '2025 · PwC',               title: 'Agentic AI Customer Service CoE', sub: 'Reusable agents, MCP tools, evaluation harnesses. Every build starts from assets.', metric: { to: 100, fmt: 'plus', label: 'professionals upskilled' } },
-    { d: 5.0, key: 'end',     tag: 'Now',                      title: 'Still writes the first version.',     sub: 'Evaluation before deployment. Requirements before prompting. Then jump.' }
+    { d: 5.0, key: 'end',     tag: 'Now',                      title: 'Business results. Teams that sustain them.',     sub: 'Connect strategy, product, engineering, and client ownership. Develop leaders who carry it forward.' }
   ];
   let acc = 0;
   for (const s of SCENES) { s.t0 = acc; acc += s.d; s.t1 = acc; }
