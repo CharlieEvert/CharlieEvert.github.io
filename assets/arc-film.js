@@ -6,9 +6,9 @@
   const SCENES = [
     { d: 5.5, key: 'island',  tag: '18°20′N 64°56′W',          title: 'St. Thomas, USVI',                    sub: 'Small island, big water. You learn to fix what is in front of you.' },
     { d: 6.5, key: 'jump',    tag: '2015 · Fort Benning',      title: 'Airborne Infantry, 11B',              sub: 'Rehearse it. Check the man in front of you. Go when the light turns green.' },
-    { d: 6.0, key: 'grid',    tag: '2022 · Johnson & Johnson', title: 'First enterprise GenAI platform',     sub: 'Built unprompted, then scaled across the enterprise.', metric: { to: 22000, fmt: 'int', label: 'users' } },
+    { d: 6.0, key: 'grid',    tag: '2022 · Johnson & Johnson', title: 'First enterprise GenAI platform',     sub: 'Built unprompted, then scaled across the enterprise.', metric: { to: 22000, fmt: 'int', label: 'employees with access' } },
     { d: 6.0, key: 'net',     tag: '2023 · Deloitte',          title: 'Anthropic Alliance, founded',         sub: 'Zero to 250+ practitioners in six months, 100 deployed into delivery.', metric: { to: 250, fmt: 'plus', label: 'practitioners' } },
-    { d: 6.0, key: 'factory', tag: '2025 · PwC',               title: 'Agentic AI Customer Service Factory', sub: 'Reusable agents, MCP tools, evaluation harnesses. Every build starts from assets.', metric: { to: 1.35, fmt: 'bn', label: 'qualified pipeline' } },
+    { d: 6.0, key: 'factory', tag: '2025 · PwC',               title: 'Agentic AI Customer Service CoE', sub: 'Reusable agents, MCP tools, evaluation harnesses. Every build starts from assets.', metric: { to: 100, fmt: 'plus', label: 'professionals upskilled' } },
     { d: 5.0, key: 'end',     tag: 'Now',                      title: 'Still writes the first version.',     sub: 'Evaluation before deployment. Requirements before prompting. Then jump.' }
   ];
   let acc = 0;
