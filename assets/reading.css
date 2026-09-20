@@ -92,3 +92,6 @@
 @media(max-width:760px){.people-examples,.live-builds-grid {grid-template-columns:1fr!important;gap:24px!important;}}
 
 .people-examples article p {border-top:0;padding-top:0;}
+
+.leadership-reference {display:inline-block;margin-top:14px;font-size:.82rem;font-weight:600;color:#1a56b0;text-decoration:underline;text-underline-offset:3px;}
+.westie-build-mascot {float:right;width:84px;height:84px;object-fit:contain;margin:0 0 12px 20px;border-radius:12px;}
