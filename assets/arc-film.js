@@ -6,7 +6,7 @@
   const SCENES = [
     { d: 5, key: 'island', tag: 'St. Thomas · U.S. Virgin Islands', title: 'Where my story starts.', sub: 'I grew up in St. Thomas. The next chapter took me from an island in the Caribbean to the U.S. Army.' },
     { d: 7, key: 'jump', tag: 'U.S. Army · Airborne Infantry', title: 'Face the fear. Give everything.', sub: 'Airborne infantry taught me to act despite fear and give my full effort. When others depend on you, preparation and follow-through matter.' },
-    { d: 10, key: 'grid', tag: 'J&J / Kenvue · Create the capability', title: 'A chatbot became enterprise AI.', sub: 'I led the R&D GenAI squad. The CEO and CTDO first used our Composer chatbot; we then built a React/FastAPI platform on AWS and scaled it enterprise-wide with OpenAI and Azure OpenAI.', metric: { text: '22,000', label: 'employees given access' } },
+    { d: 10, key: 'grid', tag: 'Johnson & Johnson Consumer Health → Kenvue', title: 'A chatbot became enterprise AI.', sub: 'I led the R&D GenAI squad. The CEO and CTDO first used our Composer chatbot; we then built a React/FastAPI platform on AWS and scaled it enterprise-wide with OpenAI and Azure OpenAI.', metric: { text: '22,000', label: 'employees given access' } },
     { d: 10, key: 'net', tag: 'Deloitte · Multiply the impact', title: 'Build. Deliver. Develop leaders.', sub: 'Anthropic provided API access and funded credits. I turned that starting point into an alliance of 250 practitioners, led 10+ GenAI builds and deployments, and developed engineers into technical leads.', metric: { text: '$1B+', label: 'Anthropic-related pipeline · from zero' } },
     { d: 10, key: 'coe', tag: 'PwC · Own the business outcome', title: 'Make the capability repeatable.', sub: 'Originate, sell, staff, deliver, and own the economics. Build leaders, expand accounts, and turn delivery lessons into reusable capabilities through the Agentic AI Customer Service CoE.', metric: { text: 'Up to $10M', label: 'annual portfolio / program budget' } },
     { d: 6, key: 'end', tag: 'What’s next?', title: 'Build what the business becomes.', sub: 'My next chapter brings these experiences together: shaping where AI creates value, owning the path into operations, and building leaders who can take it further. What could we build together?' }
@@ -101,7 +101,7 @@
 
       SCENES.forEach((s, i) => {
         const b = document.createElement('button');
-        b.className = 'chip'; b.type = 'button'; b.textContent = ['USVI','Army','J&J','Deloitte','PwC','Next'][i]; b.setAttribute('aria-label',s.tag+': '+s.title);
+        b.className = 'chip'; b.type = 'button'; b.textContent = ['USVI','Army','J&J → Kenvue','Deloitte','PwC','Next'][i]; b.setAttribute('aria-label',s.tag+': '+s.title);
         b.addEventListener('click', () => { this.t = s.t0 + 0.01; this.setPlaying(true); });
         chipWrap.appendChild(b);
         const tick = document.createElement('div');

@@ -1,19 +1,104 @@
 [
- {"title":"Leadership and value proposition","url":"#summary","tags":"director executive strategy value fit overview background who leadership different differentiator strengths","text":"Charlie Evert connects AI strategy, product, hands-on engineering, delivery, operating-model change, client relationships, and team development to measurable business value. He builds technical leads and AI product managers who can own and sustain delivery. US Army veteran; MBA and MS Analytics; based in Miami Beach and open to relocation."},
- {"title":"PwC portfolio and $5M engagement","url":"#now","tags":"budget revenue money financial commercial pnl p&l sold sales portfolio program 10m 5m margin invoicing","text":"At PwC, Charlie manages annual portfolio/program budgets of up to $10M during his year there, spanning multiple engagements. This INCLUDES a $5M, 16-week engagement he personally originated as a sole-source deal, sold, staffed, delivered, and invoiced at the target 34% margin. It was his largest individually originated engagement, not his entire portfolio. He owned the client relationship, SOW, pricing, staffing and travel budgets, and seven-person delivery team."},
- {"title":"Deloitte–Anthropic Alliance","url":"#scale","tags":"anthropic alliance partnership pipeline commercial billion 1b 250 growth","text":"Charlie originated and led Deloitte's Anthropic Alliance, growing it from zero to 250 practitioners in six months and from $0 to $1B+ in Anthropic-related pipeline. He deployed 100 practitioners into product, advisory, and delivery roles. Pipeline is potential business, not booked revenue. At PwC he also originated the SpaceXAI alliance and led the agreement to signature."},
- {"title":"Nonprofit client AI platform","url":"#scale","tags":"million 1m nonprofit users bedrock foundry einstein production releases scale sentiment renewals","text":"At Deloitte, Charlie led a nonprofit client's AI CoE and platform serving 1M+ monthly users. AWS ProServe validated it as the largest Bedrock deployment globally by token usage at launch. He led internal and Credera engineers and owned a year of releases, including an early Bedrock, Palantir Foundry, and Salesforce Einstein integration. Negative sentiment fell from 90% to 30%; renewals grew 10% relative in three months. He implemented AI evaluations, human review, and threshold alerts."},
- {"title":"People leadership","url":"#now","tags":"people team direct reports promotions manager coaching mentoring hiring leadership","text":"Charlie leads project teams of up to 20. PwC teams include Managers, Senior Managers, and a Director in an advisory SME capacity, across the US and India. Four formal direct reports are additional to project staffing. He owns performance reviews and hiring interviews, and supported three Senior Associate-to-Manager and two Associate-to-Senior Associate promotions. At Deloitte he supported intern conversions and progression through Senior Consultant, developed tech leads, and led 20 interns for two months to build a natural-language PowerPoint application adopted internally."},
- {"title":"Operating model and customer service","url":"#now","tags":"operating model automation contact center customer service coe agents transformation","text":"Charlie redesigned a client's AI operating model by embedding engineering and product resources directly in business teams, removing centralized delivery bottlenecks. He founded PwC's Agentic AI Customer Service CoE, upskilled 100+ colleagues from Associate to Partner, and led reusable AWS, Azure, and GCP assets into client delivery. He chairs monthly client steering committees with executive data, AI, and contact-center stakeholders."},
- {"title":"Contact-driver analytics","url":"#now","tags":"analytics contact driver transcripts knowledge management 1.5m 700k accelerator hours savings","text":"Charlie won and delivered a $1.5M change order in 16 weeks with five people. The solution combined GenAI transcript tagging, human review, knowledge-gap detection, knowledge-management workflows, natural-language SQL, hybrid search, and forecasting. Eight of 10 contact-driver staff moved to AI experience roles, representing about $800K annual capacity. A plan to halve a $10M/year knowledge workload represented $5M projected annual capacity, not realized savings. The $700K accelerator sold to two more clients through RFPs."},
- {"title":"Vendor savings","url":"#now","tags":"vendor savings rag prototype bedrock cost 2m deflection","text":"At PwC, Charlie led a one-week Bedrock Knowledge Bases prototype that enabled a client to replace an existing SaaS vendor, eliminating $2M in annual fees. He prioritized AI-agent use cases targeting a projected 20% reduction in service-center labor costs, and led architecture, process design, and implementation planning."},
- {"title":"J&J / Kenvue GenAI Hub","url":"#turn","tags":"kenvue jnj johnson pharma healthcare enterprise hub adoption 10000 22000 life sciences","text":"At J&J/Kenvue, Charlie originated GenAI Hub and built it into an enterprise platform available to 22,000 employees, reaching 10,000 peak monthly active users. He owned governance, executive rollout, training, releases, budget monitoring, incidents, backlogs, and adoption reporting for six months. The CEO and Chief Technology & Data Officer sponsored the function; the VP owned funding. He coordinated R&D, supply-chain, and cyber-risk teams."},
- {"title":"Governance and technology selection","url":"#turn","tags":"governance risk cyber policy ciso ctdo vendors legal pinecone openai databricks security gxp validation","text":"At Kenvue, Charlie co-wrote AI cyber and enterprise policy with the CTDO, CISO, Legal, and Cyber teams, securing approval in two months. He originated an OpenAI partnership and led vendor evaluation and Azure OpenAI/Pinecone whitelisting. He negotiated a written Pinecone quote 50% below list, entering contracting when he left. His experience includes AI evaluations, adversarial tests, human review, and incident alerts; he has not claimed GxP system validation experience."},
- {"title":"Document and supplier automation","url":"#turn","tags":"ocr documents extraction 18m supply chain cas pdfplumber","text":"Charlie replaced an $18M Azure Form Recognizer proposal with distributed pdfplumber extraction on Databricks. The $18M was proposed, not approved spend or realized cash savings. He found 87% supplier chemical-identifier transcription errors through full-dataset CAS.org checks and led an AI extraction pilot projecting 10,000 hours saved annually. The business team owned subsequent scaling."},
- {"title":"RocketWriter and FDA","url":"#scale","tags":"rocketwriter fda federal government space reports fedramp production sow","text":"Charlie led RocketWriter for an anonymized space agency client from prototype to Deloitte's first government GenAI production deployment in four months versus 11 planned, on FedRAMP High AWS. He staffed and managed SOW delivery; automated 100+ page report drafts and enabled seven of 10 staff to be reallocated. He originated the FDA CDEROne adaptation; its pilot validated a 50% reduction in report preparation/review from two weeks to one, followed by code and Terraform handoff for deployment. Do not claim agency-wide savings from the pilot."},
- {"title":"Army Recruit360","url":"#scale","tags":"army recruit360 recruiting military leads conversion 15% 20m","text":"Charlie led Army Recruit360 from idea to a 12-week MVP: 100 times more prospects and 15% relative lead-capture growth in tests at seven recruitment stations. He prototyped AI voice outreach and Amazon Connect agent assist, supporting a $20M+ extension. Fifteen percent is relative growth, not percentage points."},
- {"title":"Research and trustworthy AI","url":"#receipts","tags":"research publications ieee uva university virginia judge evaluation metrics ragas sentiment vader","text":"Charlie secured funding, established a University of Virginia partnership, and originated and sponsored IEEE-published research comparing LLM-as-judge with traditional NLP metrics. He turned the research into a Government & Public Services AI evaluation playbook required at architecture review subject to client restrictions, including context relevancy, faithfulness, and VADER sentiment. He authored GenAI in Production: A Practical Guide to Evaluation and Optimization."},
- {"title":"Technology and delivery","url":"#pattern","tags":"technical engineering stack python sql react fastapi cloud aws azure gcp fde software","text":"Charlie was technical lead on 10+ Deloitte GenAI builds and production deployments and led forward-deployed engineering teams. His stack includes Python, SQL, React, FastAPI, Terraform, AWS Bedrock, Azure OpenAI, GCP Vertex AI, Databricks, Palantir Foundry, RAG, vector search, and AI evaluation. He combines hands-on building with strategy, product ownership, staffing, and client accountability."},
- {"title":"Contact Charlie","url":"mailto:charlieevert@gmail.com","tags":"contact email hire offer availability relocate relocation phone resume cv","text":"Email Charlie at charlieevert@gmail.com. His AI phone concierge is +1 (650) 629-3610. His resume is linked on this site. He is based in Miami Beach and open to relocation. Contact him directly to confirm current availability, role preferences, or compensation; do not invent those details."},
- {"title":"Teaching, service and recognition","url":"#public","tags":"volunteer veterans hire heroes teaching workshops awards amplify impact books youtube prompthub","text":"Charlie is a Hire Heroes USA Volunteer Advisory Board Member, has mentored 50+ veterans, and led two salary-negotiation workshops with up to 30 attendees. He runs PromptHub on YouTube and co-created the scope of the Deloitte–Anthropic certification program. PwC's Advisory CEO selected him for the Amplify Impact Award, one of 10 among 36,000 US Advisory practitioners."}
+  {
+    "title": "Leadership and value proposition",
+    "url": "#summary",
+    "tags": "director executive strategy value fit overview background who leadership different differentiator strengths",
+    "text": "Charlie Evert connects AI strategy, product, hands-on engineering, delivery, operating-model change, client relationships, and team development to measurable business value. He builds technical leads and AI product managers who can own and sustain delivery. US Army veteran; MBA and MS Analytics; based in Miami Beach and open to relocation."
+  },
+  {
+    "title": "PwC portfolio and $5M engagement",
+    "url": "#now",
+    "tags": "budget revenue money financial commercial pnl p&l sold sales portfolio program 10m 5m margin invoicing",
+    "text": "At PwC, Charlie manages annual portfolio/program budgets of up to $10M during his year there, spanning multiple engagements. This INCLUDES a $5M, 16-week engagement he personally originated as a sole-source deal, sold, staffed, delivered, and invoiced at the target 34% margin. It was his largest individually originated engagement, not his entire portfolio. He owned the client relationship, SOW, pricing, staffing and travel budgets, and seven-person delivery team."
+  },
+  {
+    "title": "Deloitte–Anthropic Alliance",
+    "url": "#scale",
+    "tags": "anthropic alliance partnership pipeline commercial billion 1b 250 growth",
+    "text": "Charlie originated and led Deloitte's Anthropic Alliance, growing it from zero to 250 practitioners in six months and from $0 to $1B+ in Anthropic-related pipeline. He deployed 100 practitioners into product, advisory, and delivery roles. Pipeline is potential business, not booked revenue. At PwC he also originated the SpaceXAI alliance and led the agreement to signature."
+  },
+  {
+    "title": "Nonprofit client AI platform",
+    "url": "#scale",
+    "tags": "million 1m nonprofit users bedrock foundry einstein production releases scale sentiment renewals",
+    "text": "At Deloitte, Charlie led a nonprofit client's AI CoE and platform serving 1M+ monthly users. AWS ProServe validated it as the largest Bedrock deployment globally by token usage at launch. He led internal and Credera engineers and owned a year of releases, including an early Bedrock, Palantir Foundry, and Salesforce Einstein integration. Negative sentiment fell from 90% to 30%; renewals grew 10% relative in three months. He implemented AI evaluations, human review, and threshold alerts."
+  },
+  {
+    "title": "People leadership",
+    "url": "#now",
+    "tags": "people team direct reports promotions manager coaching mentoring hiring leadership",
+    "text": "Charlie leads project teams of up to 20. PwC teams include Managers, Senior Managers, and a Director in an advisory SME capacity, across the US and India. Four formal direct reports are additional to project staffing. He owns performance reviews and hiring interviews, and supported three Senior Associate-to-Manager and two Associate-to-Senior Associate promotions. At Deloitte he supported intern conversions and progression through Senior Consultant, developed tech leads, and led 20 interns for two months to build a natural-language PowerPoint application adopted internally."
+  },
+  {
+    "title": "Operating model and customer service",
+    "url": "#now",
+    "tags": "operating model automation contact center customer service coe agents transformation",
+    "text": "Charlie redesigned a client's AI operating model by embedding engineering and product resources directly in business teams, removing centralized delivery bottlenecks. He founded PwC's Agentic AI Customer Service CoE, upskilled 100+ colleagues from Associate to Partner, and led reusable AWS, Azure, and GCP assets into client delivery. He chairs monthly client steering committees with executive data, AI, and contact-center stakeholders."
+  },
+  {
+    "title": "Contact intelligence: the same $5M engagement",
+    "url": "#now",
+    "tags": "analytics contact driver transcripts knowledge management 5m 700k accelerator hours savings",
+    "text": "This is the same sole-source $5M engagement included in Charlie’s annual portfolio, not a separate $1.5M engagement. He delivered it in 16 weeks with seven specialists at 34% margin after discovery uncovered manual tagging and a fragmented knowledge process. Call-spike analysis fell from 1–2 weeks to minutes. The solution combined GenAI transcript tagging, human review, knowledge-gap detection, knowledge-management workflows, natural-language SQL, hybrid search, and forecasting. Eight of 10 contact-driver staff moved to AI experience roles, representing about $800K annual capacity. A plan to halve a $10M/year knowledge workload represented $5M projected annual capacity, not realized savings. The $700K accelerator sold to two more clients through RFPs."
+  },
+  {
+    "title": "Vendor savings",
+    "url": "#now",
+    "tags": "vendor savings rag prototype bedrock cost 2m deflection",
+    "text": "At PwC, Charlie led a one-week Bedrock Knowledge Bases prototype that enabled a client to replace an existing SaaS vendor, eliminating $2M in annual fees. He prioritized AI-agent use cases targeting a projected 20% reduction in service-center labor costs, and led architecture, process design, and implementation planning."
+  },
+  {
+    "title": "Johnson & Johnson Consumer Health / Kenvue GenAI Hub",
+    "url": "#turn",
+    "tags": "kenvue jnj johnson pharma healthcare enterprise hub adoption 10000 22000 life sciences",
+    "text": "At Johnson & Johnson Consumer Health, which became Kenvue, Charlie originated GenAI Hub and built it into an enterprise platform available to 22,000 employees, reaching 10,000 peak monthly active users. He owned governance, executive rollout, training, releases, budget monitoring, incidents, backlogs, and adoption reporting for six months. The CEO and Chief Technology & Data Officer sponsored the function; the VP owned funding. He coordinated R&D, supply-chain, and cyber-risk teams."
+  },
+  {
+    "title": "Governance and technology selection",
+    "url": "#turn",
+    "tags": "governance risk cyber policy ciso ctdo vendors legal pinecone openai databricks security gxp validation",
+    "text": "At Kenvue, Charlie co-wrote AI cyber and enterprise policy with the CTDO, CISO, Legal, and Cyber teams, securing approval in two months. He originated an OpenAI partnership and led vendor evaluation and Azure OpenAI/Pinecone whitelisting. He negotiated a written Pinecone quote 50% below list, entering contracting when he left. His experience includes AI evaluations, adversarial tests, human review, and incident alerts; he has not claimed GxP system validation experience."
+  },
+  {
+    "title": "Document and supplier automation",
+    "url": "#turn",
+    "tags": "ocr documents extraction 18m supply chain cas pdfplumber",
+    "text": "Charlie replaced an $18M Azure Form Recognizer proposal with distributed pdfplumber extraction on Databricks. The $18M was proposed, not approved spend or realized cash savings. He found 87% supplier chemical-identifier transcription errors through full-dataset CAS.org checks and led an AI extraction pilot projecting 10,000 hours saved annually. The business team owned subsequent scaling."
+  },
+  {
+    "title": "RocketWriter and FDA",
+    "url": "#scale",
+    "tags": "rocketwriter fda federal government space reports fedramp production sow",
+    "text": "Charlie led RocketWriter for an anonymized space agency client from prototype to Deloitte's first government GenAI production deployment in four months versus 11 planned, on FedRAMP High AWS. He staffed and managed SOW delivery; automated 100+ page report drafts and enabled seven of 10 staff to be reallocated. He originated the FDA CDEROne adaptation; its pilot validated a 50% reduction in report preparation/review from two weeks to one, followed by code and Terraform handoff for deployment. Do not claim agency-wide savings from the pilot."
+  },
+  {
+    "title": "Army Recruit360",
+    "url": "#scale",
+    "tags": "army recruit360 recruiting military leads conversion 15% 20m",
+    "text": "Charlie led Army Recruit360 from idea to a 12-week MVP: 100 times more prospects and 15% relative lead-capture growth in tests at seven recruitment stations. He prototyped AI voice outreach and Amazon Connect agent assist, supporting a $20M+ extension. Fifteen percent is relative growth, not percentage points."
+  },
+  {
+    "title": "Research and trustworthy AI",
+    "url": "#receipts",
+    "tags": "research publications ieee uva university virginia judge evaluation metrics ragas sentiment vader",
+    "text": "Charlie secured funding, established a University of Virginia partnership, and originated and sponsored IEEE-published research comparing LLM-as-judge with traditional NLP metrics. He turned the research into a Government & Public Services AI evaluation playbook required at architecture review subject to client restrictions, including context relevancy, faithfulness, and VADER sentiment. He authored GenAI in Production: A Practical Guide to Evaluation and Optimization."
+  },
+  {
+    "title": "Technology and delivery",
+    "url": "#pattern",
+    "tags": "technical engineering stack python sql react fastapi cloud aws azure gcp fde software",
+    "text": "Charlie was technical lead on 10+ Deloitte GenAI builds and production deployments and led forward-deployed engineering teams. His stack includes Python, SQL, React, FastAPI, Terraform, AWS Bedrock, Azure OpenAI, GCP Vertex AI, Databricks, Palantir Foundry, RAG, vector search, and AI evaluation. He combines hands-on building with strategy, product ownership, staffing, and client accountability."
+  },
+  {
+    "title": "Contact Charlie",
+    "url": "mailto:charlieevert@gmail.com",
+    "tags": "contact email hire offer availability relocate relocation phone resume cv",
+    "text": "Email Charlie at charlieevert@gmail.com. His AI phone concierge is +1 (650) 629-3610. His resume is linked on this site. He is based in Miami Beach and open to relocation. Contact him directly to confirm current availability, role preferences, or compensation; do not invent those details."
+  },
+  {
+    "title": "Teaching, service and recognition",
+    "url": "#public",
+    "tags": "volunteer veterans hire heroes teaching workshops awards amplify impact books youtube prompthub",
+    "text": "Charlie is a Hire Heroes USA Volunteer Advisory Board Member, has mentored 50+ veterans, and led two salary-negotiation workshops with up to 30 attendees. He runs PromptHub on YouTube and co-created the scope of the Deloitte–Anthropic certification program. PwC's Advisory CEO selected him for the Amplify Impact Award, one of 10 among 36,000 US Advisory practitioners."
+  }
 ]
