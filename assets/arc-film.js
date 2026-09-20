@@ -5,11 +5,11 @@
 
   const SCENES = [
     { d: 5, key: 'island', tag: 'St. Thomas · U.S. Virgin Islands', title: 'Where my story starts.', sub: 'I grew up in St. Thomas. The next chapter took me from an island in the Caribbean to the U.S. Army.' },
-    { d: 8, key: 'jump', tag: 'U.S. Army · Airborne Infantry', title: 'Face the fear. Give everything.', sub: 'Airborne infantry taught me to act despite fear and bring my full effort every time. When the stakes are high and others depend on you, preparation, accountability, and follow-through matter.' },
-    { d: 13, key: 'grid', tag: 'J&J / Kenvue · Create the capability', title: 'A chatbot became enterprise AI.', sub: 'Within a month of ChatGPT’s launch, I built a pilot on our team’s existing chatbot work. We used ChatGPT to finish the build, then worked with OpenAI to add API-driven SQL queries. A month later, the CEO and CTDO were using it. I helped scale enterprise AI with OpenAI and the Azure OpenAI team.', metric: { text: '22,000', label: 'employees given access' } },
-    { d: 12, key: 'net', tag: 'Deloitte · Multiply the impact', title: 'Build. Deliver. Develop leaders.', sub: 'An Anthropic API key and credits became the starting point for an alliance I originated and led: 250 practitioners and $1B+ in pipeline. Alongside hands-on delivery across more than a dozen accounts and dozens of programs, I developed engineers into technical leads who could carry the work further.', metric: { text: '$1B+', label: 'Anthropic-related pipeline · from zero' } },
-    { d: 12, key: 'coe', tag: 'PwC · Own the business outcome', title: 'Make the capability repeatable.', sub: 'I own the commercial path: originate, sell, staff, deliver, and protect margin. That includes a personally originated, sole-source $5M engagement delivered at 34% margin. Through our Agentic AI Customer Service CoE, I turn delivery lessons into reusable products, develop leads and managers, and expand client relationships.', metric: { text: 'Up to $10M', label: 'annual portfolio / program budget' } },
-    { d: 7, key: 'end', tag: 'What’s next?', title: 'Build what the business becomes.', sub: 'My next chapter brings these experiences together: shaping where AI creates value, owning the path into operations, and building leaders who can take it further. What could we build together?' }
+    { d: 7, key: 'jump', tag: 'U.S. Army · Airborne Infantry', title: 'Face the fear. Give everything.', sub: 'Airborne infantry taught me to act despite fear and give my full effort. When others depend on you, preparation and follow-through matter.' },
+    { d: 10, key: 'grid', tag: 'J&J / Kenvue · Create the capability', title: 'A chatbot became enterprise AI.', sub: 'A pilot within a month of ChatGPT’s launch. CEO and CTDO adoption a month later. Then enterprise scale, in partnership with OpenAI and the Azure OpenAI team.', metric: { text: '22,000', label: 'employees given access' } },
+    { d: 10, key: 'net', tag: 'Deloitte · Multiply the impact', title: 'Build. Deliver. Develop leaders.', sub: 'An API key and credits became an alliance with 250 practitioners. I scaled delivery across accounts and developed engineers into technical leads who could take it further.', metric: { text: '$1B+', label: 'Anthropic-related pipeline · from zero' } },
+    { d: 10, key: 'coe', tag: 'PwC · Own the business outcome', title: 'Make the capability repeatable.', sub: 'Originate, sell, staff, deliver, and own the economics. Build leaders, expand accounts, and turn delivery lessons into reusable capabilities through the Agentic AI Customer Service CoE.', metric: { text: 'Up to $10M', label: 'annual portfolio / program budget' } },
+    { d: 6, key: 'end', tag: 'What’s next?', title: 'Build what the business becomes.', sub: 'My next chapter brings these experiences together: shaping where AI creates value, owning the path into operations, and building leaders who can take it further. What could we build together?' }
   ];
   let acc = 0;
   for (const s of SCENES) { s.t0 = acc; acc += s.d; s.t1 = acc; }
@@ -32,7 +32,7 @@
           :host { display: block; }
           .shell { border: 1px solid ${LINE}; border-radius: 10px; overflow: hidden; background: ${WHITE}; }
           .stage { position: relative; }
-          .caption { display:grid; grid-template-columns:minmax(0,1fr) 185px; gap:24px; align-items:start; padding:26px 30px; min-height:245px; box-sizing:border-box; background:#FBFDFF; border-bottom:1px solid #E4EAF2; }
+          .caption { display:grid; grid-template-columns:minmax(0,1fr) 185px; gap:24px; align-items:start; padding:26px 30px; min-height:190px; box-sizing:border-box; background:#FBFDFF; border-bottom:1px solid #E4EAF2; }
           .caption-copy { min-width:0; }
           .tag { color:${BLUE}; font:500 11px/1.5 'IBM Plex Mono',monospace; letter-spacing:.08em; text-transform:uppercase; margin:0 0 10px; }
           h3 { font:700 clamp(21px,2.6vw,30px)/1.16 Archivo,system-ui,sans-serif; color:${INK}; margin:0; overflow-wrap:break-word; }
@@ -42,7 +42,7 @@
           .stat span { display:block; color:${BODY}; font:500 10px/1.5 'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.04em; margin-top:8px; }
           .stat[hidden] { visibility:hidden; display:block; }
           @media(max-width:600px) {
-            .caption { grid-template-columns:1fr; gap:16px; padding:22px 20px; min-height:365px; }
+            .caption { grid-template-columns:1fr; gap:16px; padding:22px 20px; min-height:300px; }
             h3 { font-size:23px; }.subtitle{font-size:13px;line-height:1.5;margin-top:10px;}
             .stat { border-left:0;border-top:1px solid ${LINE};padding:12px 0 0;display:flex;gap:12px;align-items:center;align-self:end;min-height:42px; }
             .stat b {font-size:28px;}.stat span{margin:0;max-width:150px;}
@@ -83,7 +83,7 @@
             <div class="chips" id="chips"></div>
             <div class="ctrl">
               <span class="hint">Space · ← →</span>
-              <span class="time" id="time">0:00 / 0:57</span>
+              <span class="time" id="time">0:00 / 0:48</span>
               <button class="play" id="play">Play</button>
             </div>
           </div>
@@ -151,11 +151,11 @@
       this.io = new IntersectionObserver((es) => {
         for (const e of es) {
           this._focus = e.isIntersecting;
-          if (e.isIntersecting && !this._seen && !reduce) { this._seen = true; this.setPlaying(true); }
+          if (e.isIntersecting && e.intersectionRatio >= 0.5 && !this._seen && !reduce) { this._seen = true; this.setPlaying(true); }
           else if (!e.isIntersecting && this.playing) this.setPlaying(false);
         }
-      }, { threshold: 0.3 });
-      this.io.observe(this);
+      }, { threshold: [0, 0.5] });
+      this.io.observe(this.cv);
       this.render();
     }
 
