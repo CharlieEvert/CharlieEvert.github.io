@@ -10,8 +10,12 @@ export function groundedAnswer(answer, records, question) {
   const source=records[0]?.text||'';
   const money=text=>[...text.matchAll(/\$\s*([\d,.]+)\s*(billion|million|thousand|[bmk])?/gi)].map(m=>Number(m[1].replaceAll(',',''))*({b:1e9,billion:1e9,m:1e6,million:1e6,k:1e3,thousand:1e3}[m[2]?.toLowerCase()]||1));
   const allowed=money(records.map(r=>r.text).join(' '));
-  let valid=answer.trim().length>35&&money(answer).every(v=>allowed.includes(v));
-  if(records[0]?.title.includes('PwC portfolio'))valid=valid&&money(answer).includes(1e7)&&money(answer).includes(5e6)&&/up to/i.test(answer)&&/includ/i.test(answer);
+  const numberWords={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,sixteen:16,twenty:20};
+  const figures=text=>(text.toLowerCase().replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|sixteen|twenty)\b/g,w=>numberWords[w]).match(/\d+(?:[,.]\d+)*/g)||[]).map(v=>Number(v.replaceAll(',','')));
+  const sourceFigures=figures(source);
+  let valid=answer.trim().length>35&&money(answer).every(v=>allowed.includes(v))&&figures(answer).every(v=>sourceFigures.includes(v));
+  // Budget scope, deal provenance and timelines must use the approved wording verbatim.
+  if(records[0]?.title.includes('PwC portfolio'))valid=false;
   if(/pipeline/i.test(source)&&/\$1B/.test(source))valid=valid&&/pipeline/i.test(answer);
   if(/projected|projecting/i.test(source)&&/sav|cost|hour/i.test(question))valid=valid&&/project|pilot/i.test(answer);
   return {text:valid?answer.trim():source,fromSource:!valid};
