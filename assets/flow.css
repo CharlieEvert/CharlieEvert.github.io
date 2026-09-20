@@ -1,0 +1,54 @@
+/* Keep the original palette, typography, photography and chapter structure. */
+.story-flow { --flow-ease:cubic-bezier(.22,1,.36,1); }
+.story-flow section, .story-flow header { scroll-margin-top:calc(var(--topbar-height,72px) + 24px)!important; }
+.story-flow .eyebrow {font:500 .67rem/1.6 'IBM Plex Mono',monospace;letter-spacing:.17em;text-transform:uppercase;color:#1A56B0;}
+.story-flow #summary > div {padding-top:34px!important;padding-bottom:34px!important;}
+.impact-strip {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:24px;}
+.impact-card {padding-right:24px;border-right:1px solid #cbd4e1;}
+.impact-card:last-child {border:0;padding-right:0;}
+.story-shortcuts {display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:26px;font-size:.82rem;}
+.story-shortcuts a {padding:7px 0;border-bottom:1px solid #bdcadb;}
+.arc-wrap {margin-top:46px;background:white;border:1px solid #d7dbe2;border-radius:10px;overflow:hidden;}
+.chapter-layout {align-items:flex-start;}
+.chapter-note {position:sticky;top:calc(var(--topbar-height,72px) + 32px);padding-left:18px;border-left:2px solid #d7dbe2;transition:border-color .6s;}
+.chapter-current .chapter-note {border-color:#1A56B0;}
+#now.chapter-current .chapter-note {border-color:#91baff;}
+.project-list {display:grid;gap:0;margin-top:24px;}
+.project-entry {position:relative;padding:22px 0;border-top:1px solid #d7dbe2;min-width:0;}
+.project-entry h4 {font-size:1.05rem;letter-spacing:-.015em;color:#16305E;line-height:1.35;margin-bottom:10px;}
+.project-entry p {font-size:.94rem;line-height:1.7;color:#4A5161;}
+.featured-build {margin:12px 0;padding:26px!important;border:1px solid #d7e0ec;background:linear-gradient(130deg,#f2f6fc,#fff);border-radius:10px;box-shadow:0 8px 24px #16305e06;transition:box-shadow .35s,border-color .35s;}
+.featured-build:hover {border-color:#9bb2d2;box-shadow:0 12px 34px #16305e0d;}
+.featured-build h4 {font-size:1.28rem;}
+.people-section {max-width:1180px;margin:auto;padding:clamp(60px,8vw,100px) 28px;}
+.people-section h2 {font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.15;letter-spacing:-.026em;color:#181b22;max-width:25ch;margin-top:18px;}
+.people-intro {font:1.1rem/1.7 'Source Serif 4',Georgia,serif;max-width:70ch;margin-top:22px;}
+.people-examples {display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:30px;}
+.people-examples p {font-size:.94rem;line-height:1.7;border-top:1px solid #d7dbe2;padding-top:20px;}
+.people-examples strong {display:block;color:#16305e;margin-bottom:8px;}
+.flow-pending {opacity:0;transform:translate3d(0,30px,0);}
+.flow-pending[data-flow=left] {transform:translate3d(-28px,0,0);}
+.flow-ready {transition:opacity .85s var(--flow-ease),transform .85s var(--flow-ease);}
+.flow-visible {opacity:1;transform:none;}
+.story-flow figure img {transition:object-position .2s linear;}
+.story-flow h2 {text-wrap:balance;}
+.story-flow #top h1 {text-wrap:balance;}
+.story-flow a {text-underline-offset:4px;}
+@media(min-width:900px) { .story-flow #top {min-height:calc(92svh - 72px);display:flex;align-items:center;} }
+@media(max-width:760px) {
+ .chapter-note {position:static;padding-left:12px;}
+ .impact-strip {grid-template-columns:1fr;gap:20px;}
+ .impact-card {border-right:0;border-bottom:1px solid #cbd4e1;padding:0 0 20px;}
+ .people-examples {grid-template-columns:1fr;gap:22px;}
+ .story-flow section>div, .story-flow #top, .people-section {padding-left:22px!important;padding-right:22px!important;}
+ .story-flow [style*="min-width: 280px"],.story-flow [style*="min-width: 300px"] {min-width:0!important;}
+ .story-flow [style*="minmax(258px"],.story-flow [style*="minmax(260px"],.story-flow [style*="minmax(262px"],.story-flow [style*="minmax(290px"] {grid-template-columns:1fr!important;}
+ .featured-build {padding:20px!important;}
+ .flow-pending[data-flow=left] {transform:translate3d(0,22px,0);}
+ .story-flow #altimeter {display:none!important;}
+}
+@media(prefers-reduced-motion:reduce) {
+ html {scroll-behavior:auto!important;}
+ .story-flow *, .story-flow *::before, .story-flow *::after {animation:none!important;transition:none!important;}
+ .flow-pending,.flow-visible {opacity:1!important;transform:none!important;}
+}

@@ -14,6 +14,7 @@
   }, { threshold: 0.06, rootMargin: '0px 0px -6% 0px' });
 
   function reveals() {
+    if (document.body?.classList.contains('story-flow')) return;
     if (reduce) return;
     document.querySelectorAll('section > div > *').forEach((el, i) => {
       if (el.dataset.rv) return;
