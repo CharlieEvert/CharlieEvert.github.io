@@ -79,3 +79,18 @@
 #award-shelf>a {min-height:220px;border:1px solid #d7dbe2;border-radius:10px;box-shadow:none!important;}
 .shelf-status {font-size:.65rem;color:#5b6270;}
 @media(prefers-reduced-motion:reduce){.shelf.shelf-user-motion {scroll-behavior:auto;}}
+/* Full, readable editorial columns. No hidden text, flipping or card controls. */
+.shelf>.project-column {flex-basis:440px;min-width:0;padding:5px 30px 12px 2px;border-right:1px solid #cad5e4;background:transparent;border-radius:0;box-shadow:none;}
+.project-column h3 {font-size:1.24rem;line-height:1.3;letter-spacing:-.018em;color:#16305e;margin:0 0 16px;}
+.project-number {font:500 .66rem 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#6c85a6;margin:0 0 15px;}
+.project-copy {font-size:.92rem;line-height:1.72;}
+.project-copy>p {font-size:inherit!important;line-height:inherit!important;color:inherit!important;margin:0 0 18px!important;max-width:none!important;}
+.project-copy a {text-decoration:underline;text-underline-offset:3px;}
+#now .project-column {border-color:#4b6384;color:#d6e2f2;}
+#now .project-column h3 {color:#fff;}
+#now .project-number {color:#9fbee7;}
+.shelf>.publication-card,#award-shelf>a {border:0!important;border-right:1px solid #cad5e4!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;}
+#youtube-videos>article {border:0!important;border-radius:0!important;background:transparent!important;}
+#youtube-videos [data-video-player] {border-radius:6px;overflow:hidden;}
+#youtube-videos>article>div:last-child {padding:18px 12px 8px 0!important;}
+@media(max-width:760px){.shelf>.project-column {flex-basis:90%;padding-right:22px;}.project-copy {font-size:.9rem;line-height:1.65;}}
