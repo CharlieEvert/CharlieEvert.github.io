@@ -61,3 +61,9 @@
 }
 @media(prefers-reduced-motion:reduce){.detail-body,.card-body {animation:none!important;}}
 @media print {.shelf {display:block!important;overflow:visible;}.shelf>* {margin:12px 0;}.shelf-controls {display:none;}}
+/* Visible rows drift gently, while all manual controls remain available. */
+.shelf.shelf-auto-enabled {scroll-snap-type:none;}
+.shelf-controls .shelf-auto-toggle {width:auto;min-width:54px;padding:0 10px;border-radius:20px;font:500 11px 'IBM Plex Mono',monospace;}
+#origin .arc-wrap {margin-top:30px;}
+.game-stage-visible {max-width:940px;}
+@media(max-width:420px){.shelf-toolbar {flex-wrap:wrap;}.shelf-toolbar>p {max-width:100%;}.shelf-controls {margin-left:auto;}}
