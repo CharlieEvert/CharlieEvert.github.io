@@ -1,4 +1,4 @@
-/* <arc-film> — animated career film. One continuous trace; each chapter stages its own scene. */
+/* <arc-film> — animated career film. One playback timeline; each chapter illustrates a specific part of the career. */
 (function () {
   const NAVY = '#16305E', BLUE = '#1A56B0', INK = '#181B22', BODY = '#4A5161',
         FAINT = '#8A909C', LINE = '#D7DBE2', TINT = '#EFF3F9', WHITE = '#FFFFFF';
@@ -7,7 +7,7 @@
     { d: 5, key: 'island', tag: 'St. Thomas · U.S. Virgin Islands', title: 'Where my story starts.', sub: 'I grew up in St. Thomas. The next chapter took me from an island in the Caribbean to the U.S. Army.' },
     { d: 7, key: 'jump', tag: 'U.S. Army · Airborne Infantry', title: 'Face the fear. Give everything.', sub: 'Airborne infantry taught me to act despite fear and give my full effort. When others depend on you, preparation and follow-through matter.' },
     { d: 10, key: 'grid', tag: 'J&J / Kenvue · Create the capability', title: 'A chatbot became enterprise AI.', sub: 'A pilot within a month of ChatGPT’s launch. CEO and CTDO adoption a month later. Then enterprise scale, in partnership with OpenAI and the Azure OpenAI team.', metric: { text: '22,000', label: 'employees given access' } },
-    { d: 10, key: 'net', tag: 'Deloitte · Multiply the impact', title: 'Build. Deliver. Develop leaders.', sub: 'An API key and credits became an alliance with 250 practitioners. I scaled delivery across accounts and developed engineers into technical leads who could take it further.', metric: { text: '$1B+', label: 'Anthropic-related pipeline · from zero' } },
+    { d: 10, key: 'net', tag: 'Deloitte · Multiply the impact', title: 'Build. Deliver. Develop leaders.', sub: 'Anthropic provided API access and funded credits. I turned that starting point into an alliance of 250 practitioners, led 10+ GenAI builds and deployments, and developed engineers into technical leads.', metric: { text: '$1B+', label: 'Anthropic-related pipeline · from zero' } },
     { d: 10, key: 'coe', tag: 'PwC · Own the business outcome', title: 'Make the capability repeatable.', sub: 'Originate, sell, staff, deliver, and own the economics. Build leaders, expand accounts, and turn delivery lessons into reusable capabilities through the Agentic AI Customer Service CoE.', metric: { text: 'Up to $10M', label: 'annual portfolio / program budget' } },
     { d: 6, key: 'end', tag: 'What’s next?', title: 'Build what the business becomes.', sub: 'My next chapter brings these experiences together: shaping where AI creates value, owning the path into operations, and building leaders who can take it further. What could we build together?' }
   ];
@@ -135,7 +135,7 @@
 
       this.resize = () => {
         const w = Math.max(1, this.clientWidth || 720);
-        const h = Math.round(Math.min(300, Math.max(210, w * 0.32)));
+        const h = Math.round(Math.min(320, Math.max(260, w * 0.34)));
         const dpr = Math.min(2, devicePixelRatio || 1);
         this.cv.width = w * dpr; this.cv.height = h * dpr;
         this.cv.style.height = h + 'px';
@@ -212,8 +212,6 @@
       // Fade through the clear background; never paint two chapters on top of each other.
       const fade = Math.min(clamp01(k / 0.08), sc.key==='end'?1:1-clamp01((k-0.94)/0.06));
       c.save(); c.globalAlpha = fade; this.scene(sc.key, k, gy, t); c.restore();
-      // Keep the career trace in its own lane, below each scene.
-      this.trace(t, gy);
       this.caption(sc, k, t);
       this.metric(sc, k);
       this.vignette();
@@ -248,34 +246,6 @@
       c.fillStyle = g; c.fillRect(0, 0, w, h);
     }
 
-    traceY(x) { return this.h - 15 - Math.sin(x * Math.PI) * 5; }
-
-    trace(t, gy) {
-      const c = this.ctx, w = this.w, p = t / DUR;
-      const X = x => w * (0.05 + x * 0.90);
-      c.save();
-      c.lineCap = 'round'; c.lineJoin = 'round';
-      c.strokeStyle = 'rgba(26,86,176,0.20)'; c.lineWidth = 1.3; c.setLineDash([2, 6]);
-      c.beginPath();
-      for (let i = 0; i <= 120; i++) { const x = i / 120; i ? c.lineTo(X(x), this.traceY(x)) : c.moveTo(X(x), this.traceY(x)); }
-      c.stroke(); c.setLineDash([]);
-
-      const steps = Math.max(1, Math.round(p * 120));
-      const grad = c.createLinearGradient(X(0), 0, X(1), 0);
-      grad.addColorStop(0, 'rgba(22,48,94,0.35)'); grad.addColorStop(1, BLUE);
-      c.strokeStyle = grad; c.lineWidth = 2.2;
-      c.beginPath();
-      for (let i = 0; i <= steps; i++) { const x = i / 120; i ? c.lineTo(X(x), this.traceY(x)) : c.moveTo(X(x), this.traceY(x)); }
-      c.stroke();
-
-      const mx = X(p), my = this.traceY(p);
-      const pulse = 8 + Math.sin(t * 3.4) * 2.2;
-      c.strokeStyle = 'rgba(26,86,176,0.30)'; c.lineWidth = 1;
-      c.beginPath(); c.arc(mx, my, pulse, 0, Math.PI * 2); c.stroke();
-      c.fillStyle = NAVY; c.beginPath(); c.arc(mx, my, 4.4, 0, Math.PI * 2); c.fill();
-      c.restore();
-    }
-
     jumper(x, y, k, t) {
       if (k <= 0) return;
       const c = this.ctx, r = 17 * overshoot(k), sway = Math.sin(t * 1.5) * 0.10;
@@ -286,7 +256,10 @@
       c.beginPath();
       c.moveTo(-r, -14); c.lineTo(-2, -3); c.moveTo(r, -14); c.lineTo(2, -3);
       c.moveTo(-r * 0.4, -15); c.lineTo(-1, -3); c.moveTo(r * 0.4, -15); c.lineTo(1, -3);
-      c.stroke(); c.restore();
+      c.stroke();
+      c.fillStyle=NAVY;c.beginPath();c.arc(0,0,3,0,Math.PI*2);c.fill();
+      c.beginPath();c.moveTo(0,3);c.lineTo(0,12);c.moveTo(-6,-3);c.lineTo(0,5);c.lineTo(6,-3);c.moveTo(0,12);c.lineTo(-5,19);c.moveTo(0,12);c.lineTo(5,19);c.stroke();
+      c.restore();
     }
 
     caption(sc) {
@@ -406,65 +379,85 @@
       }
     }
 
-    // Three distinct stages: one idea becomes a capability, then multiplies through people.
-    journey(c, w, h, k, t, labels, note, people) {
-      const xs=[w*.18,w*.5,w*.82], y=h*.31, bw=w*.27;
+    // Staged illustrations have readable labels; playback progress lives only below the canvas.
+    icon(c, name, x, y, color) {
+      c.save();c.translate(x,y);c.strokeStyle=color;c.fillStyle=color;c.lineWidth=1.8;
+      if(name==='key') {
+        c.beginPath();c.arc(-7,-2,6,0,Math.PI*2);c.stroke();
+        c.beginPath();c.moveTo(-1,-2);c.lineTo(14,-2);c.lineTo(14,4);c.moveTo(8,-2);c.lineTo(8,3);c.stroke();
+      } else if(name==='people') {
+        [-11,0,11].forEach((x,i)=>{const y=i===1?-4:0;c.beginPath();c.arc(x,y-4,3,0,Math.PI*2);c.fill();c.beginPath();c.moveTo(x-4,y+9);c.lineTo(x-4,y+4);c.quadraticCurveTo(x,y,x+4,y+4);c.lineTo(x+4,y+9);c.stroke();});
+      } else if(name==='chat') {
+        c.beginPath();c.roundRect(-15,-11,30,20,4);c.stroke();c.beginPath();c.moveTo(-8,9);c.lineTo(-8,14);c.lineTo(-2,9);c.stroke();
+        [-7,0,7].forEach(x=>{c.beginPath();c.arc(x,-1,1.5,0,Math.PI*2);c.fill();});
+      } else if(name==='product') {
+        c.beginPath();c.roundRect(-15,-11,30,24,3);c.stroke();c.beginPath();c.moveTo(-15,-4);c.lineTo(15,-4);c.stroke();
+        c.beginPath();c.moveTo(-8,4);c.lineTo(-3,8);c.lineTo(8,0);c.stroke();
+      } else if(name==='deal') {
+        c.beginPath();c.roundRect(-13,-10,26,22,3);c.stroke();c.beginPath();c.moveTo(-6,-10);c.lineTo(-6,-15);c.lineTo(6,-15);c.lineTo(6,-10);c.moveTo(-13,0);c.lineTo(13,0);c.stroke();
+      } else {
+        c.beginPath();c.arc(0,0,13,0,Math.PI*2);c.stroke();c.beginPath();c.moveTo(-7,0);c.lineTo(-1,6);c.lineTo(9,-7);c.stroke();
+      }
+      c.restore();
+    }
+
+    journey(c,w,h,k,t,stages,note) {
+      const margin=w<450?12:34,gap=w<450?12:26,bw=(w-2*margin-2*gap)/3;
+      const top=36,bh=150, xs=stages.map((_,i)=>margin+bw/2+i*(bw+gap));
       c.textAlign='center';
-      for(let i=0;i<3;i++) {
-        const p=easeOut(clamp01((k-i*.19)/.22));
-        if(i<2) {
-          c.strokeStyle=LINE;c.lineWidth=2;c.beginPath();c.moveTo(xs[i]+bw/2,y);c.lineTo(xs[i+1]-bw/2,y);c.stroke();
-          const flow=(t*.5)%1;
-          c.fillStyle=BLUE;c.beginPath();c.arc(xs[i]+bw/2+(xs[i+1]-xs[i]-bw)*flow,y,2.5,0,Math.PI*2);c.fill();
+      stages.forEach((stage,i)=>{
+        const reveal=easeOut(clamp01((k-i*.17)/.18));
+        const x=xs[i];
+        if(i<2){
+          const ax=x+bw/2+3,bx=xs[i+1]-bw/2-3,y=top+bh/2;
+          c.strokeStyle='#A6BCD9';c.lineWidth=1.5;c.beginPath();c.moveTo(ax,y);c.lineTo(bx,y);c.lineTo(bx-3,y-3);c.moveTo(bx,y);c.lineTo(bx-3,y+3);c.stroke();
         }
-        c.save();c.globalAlpha*=.25+.75*p;
-        c.fillStyle=i===2?NAVY:WHITE;c.strokeStyle=BLUE;c.lineWidth=1.3;
-        c.beginPath();c.roundRect(xs[i]-bw/2,y-29,bw,58,8);c.fill();c.stroke();
-        c.fillStyle=i===2?WHITE:BLUE;c.font="600 10px 'IBM Plex Mono',monospace";c.fillText('0'+(i+1),xs[i],y-9);
-        c.font="600 "+(w<400?10:12)+"px Archivo,system-ui";c.fillText(labels[i],xs[i],y+12);
+        c.save();c.translate(0,(1-reveal)*8);
+        c.fillStyle=i===2?'#E5EDF9':WHITE;c.strokeStyle=reveal>.95?BLUE:LINE;c.lineWidth=1.2;
+        c.shadowColor='rgba(22,48,94,.06)';c.shadowBlur=12;c.shadowOffsetY=4;
+        c.beginPath();c.roundRect(x-bw/2,top,bw,bh,10);c.fill();c.shadowBlur=0;c.shadowOffsetY=0;c.stroke();
+        this.icon(c,stage.icon,x,top+29,reveal>.95?BLUE:'#7890AD');
+        c.fillStyle=NAVY;c.font="600 "+(w<450?11:14)+"px Archivo,system-ui";
+        this.wrap(stage.title,x,top+63,bw-12,w<450?14:17);
+        c.fillStyle=BODY;c.font="400 "+(w<450?10:12)+"px Archivo,system-ui";
+        stage.lines.forEach((line,j)=>c.fillText(line,x,top+99+j*16));
         c.restore();
-      }
-      const n=people, gap=Math.min(24,(w-48)/n), left=w/2-(n-1)*gap/2;
-      for(let i=0;i<n;i++) {
-        const p=easeOut(clamp01((k-.25-i/n*.35)/.2));
-        c.save();c.globalAlpha*=.12+.88*p;
-        const x=left+i*gap,y=h*.65;
-        c.fillStyle=i%4===0?NAVY:BLUE;c.beginPath();c.arc(x,y-8,3.5,0,Math.PI*2);c.fill();
-        c.strokeStyle=i%4===0?NAVY:BLUE;c.lineWidth=3;c.beginPath();c.moveTo(x,y);c.lineTo(x,y+8);c.stroke();c.restore();
-      }
-      c.fillStyle=BODY;c.font="500 "+(w<400?10:12)+"px Archivo,system-ui";
-      c.fillText(note,w/2,h*.83);c.textAlign='left';
+      });
+      c.fillStyle=BODY;c.font="500 "+(w<450?11:13)+"px Archivo,system-ui";
+      this.wrap(note,w/2,h-38,w-36,16);
+      c.textAlign='left';
     }
 
     grid(c,w,h,gy,k,t) {
-      this.journey(c,w,h,k,t,['Pilot','CEO + CTDO','Enterprise'],'OpenAI + Azure OpenAI partnership',18);
+      this.journey(c,w,h,k,t,[
+        {icon:'chat',title:'Chatbot pilot',lines:['Within 1 month','ChatGPT launch']},
+        {icon:'people',title:'Executive use',lines:['CEO + CTDO','the next month']},
+        {icon:'product',title:'GenAI Hub',lines:['10K peak users','per month']}
+      ],'Built and scaled with OpenAI + Azure OpenAI');
     }
 
     net(c,w,h,gy,k,t) {
-      this.journey(c,w,h,k,t,['API key','Alliance','Delivery'],'Develop people. Multiply delivery.',24);
+      this.journey(c,w,h,k,t,[
+        {icon:'key',title:'Anthropic',lines:['API access +','funded credits']},
+        {icon:'people',title:'Alliance',lines:['250 people','in six months']},
+        {icon:'product',title:'Client delivery',lines:['10+ GenAI','deployments']}
+      ],'Develop engineers into technical leads. Scale across accounts.');
     }
 
     coe(c,w,h,gy,k,t) {
-      // A center of excellence connects people, products and client outcomes.
-      const cx=w*.5,cy=h*.43,r=Math.min(34,w*.10);
-      const nodes=[{x:w*.18,y:cy,label:'PEOPLE'},{x:w*.82,y:cy,label:'PRODUCTS'},{x:cx,y:h*.76,label:'CLIENT VALUE'}];
-      c.textAlign='center';
-      nodes.forEach((n,i)=>{
-        const p=easeOut(clamp01((k-i*.15)/.3));
-        c.save();c.globalAlpha*=.2+.8*p;
-        c.strokeStyle='#A6BCD9';c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(n.x,n.y);c.stroke();
-        const q=(t*.4+i*.3)%1;c.fillStyle=BLUE;c.beginPath();c.arc(cx+(n.x-cx)*q,cy+(n.y-cy)*q,3,0,Math.PI*2);c.fill();
-        const width=i===2?110:Math.min(100,w*.27);
-        c.fillStyle=WHITE;c.strokeStyle=BLUE;c.beginPath();c.roundRect(n.x-width/2,n.y-17,width,34,7);c.fill();c.stroke();
-        c.fillStyle=NAVY;c.font="600 10px 'IBM Plex Mono',monospace";c.fillText(n.label,n.x,n.y+4);c.restore();
-      });
-      c.fillStyle=NAVY;c.beginPath();c.arc(cx,cy,r,0,Math.PI*2);c.fill();
-      c.fillStyle=WHITE;c.font="700 15px Archivo,system-ui";c.fillText('CoE',cx,cy+5);
-      c.fillStyle=BODY;c.font="500 11px Archivo,system-ui";c.fillText('Lead teams. Grow accounts. Own results.',cx,h*.14);c.textAlign='left';
+      this.journey(c,w,h,k,t,[
+        {icon:'deal',title:'Own delivery',lines:['Sole-source $5M','34% margin']},
+        {icon:'people',title:'Develop leaders',lines:['US + India','Managers + leads']},
+        {icon:'product',title:'Customer AI CoE',lines:['100+ upskilled','Reusable products']}
+      ],'Originate. Staff. Deliver. Build the next team’s capability.');
     }
 
     end(c,w,h,gy,k,t) {
-      this.journey(c,w,h,k,t,['Direction','Execution','Leaders'],'The next chapter is a conversation.',12);
+      this.journey(c,w,h,k,t,[
+        {icon:'check',title:'Set direction',lines:['Choose where AI','creates value']},
+        {icon:'product',title:'Build capability',lines:['Products that','work in practice']},
+        {icon:'people',title:'Grow leaders',lines:['Teams that own','what comes next']}
+      ],'What could we build together?');
     }
 
   }
