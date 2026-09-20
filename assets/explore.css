@@ -67,3 +67,15 @@
 #origin .arc-wrap {margin-top:30px;}
 .game-stage-visible {max-width:940px;}
 @media(max-width:420px){.shelf-toolbar {flex-wrap:wrap;}.shelf-toolbar>p {max-width:100%;}.shelf-controls {margin-left:auto;}}
+/* Supporting material is visible again; only long project stories expand. */
+.visible-extra {margin-top:28px;}
+.visible-extra>h3 {font-size:1rem;line-height:1.4;color:#16305e;margin-bottom:16px;}
+.visible-extra>figure {max-width:520px;margin:0!important;}
+.visible-extra>figure img {max-height:310px;object-fit:cover;}
+#now .visible-extra>h3 {color:white;}
+#youtube-videos .visible-extra {margin-top:10px;}
+#youtube-videos .visible-extra p {margin-bottom:10px;}
+#career-story {scroll-margin-top:90px;}
+#award-shelf>a {min-height:220px;border:1px solid #d7dbe2;border-radius:10px;box-shadow:none!important;}
+.shelf-status {font-size:.65rem;color:#5b6270;}
+@media(prefers-reduced-motion:reduce){.shelf.shelf-user-motion {scroll-behavior:auto;}}
