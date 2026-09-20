@@ -4,12 +4,12 @@
         FAINT = '#8A909C', LINE = '#D7DBE2', TINT = '#EFF3F9', WHITE = '#FFFFFF';
 
   const SCENES = [
-    { d: 5.5, key: 'island',  tag: '18°20′N 64°56′W',          title: 'St. Thomas, USVI',                    sub: 'Small island, big water. You learn to fix what is in front of you.' },
-    { d: 6.5, key: 'jump',    tag: '2015 · Fort Benning',      title: 'Airborne Infantry, 11B',              sub: 'Rehearse it. Check the man in front of you. Go when the light turns green.' },
-    { d: 6.0, key: 'grid',    tag: '2022 · Johnson & Johnson', title: 'First enterprise GenAI platform',     sub: 'Built unprompted, then scaled across the enterprise.', metric: { to: 22000, fmt: 'int', label: 'employees with access' } },
-    { d: 6.0, key: 'net',     tag: '2023 · Deloitte',          title: 'Anthropic Alliance, founded',         sub: 'Zero to 250+ practitioners in six months, 100 deployed into delivery.', metric: { to: 250, fmt: 'plus', label: 'practitioners' } },
-    { d: 6.0, key: 'factory', tag: '2025 · PwC',               title: 'Agentic AI Customer Service CoE', sub: 'Reusable agents, MCP tools, evaluation harnesses. Every build starts from assets.', metric: { to: 100, fmt: 'plus', label: 'professionals upskilled' } },
-    { d: 5.0, key: 'end',     tag: 'Now',                      title: 'Business results. Teams that sustain them.',     sub: 'Connect strategy, product, engineering, and client ownership. Develop leaders who carry it forward.' }
+    { d: 5, key: 'island', tag: 'St. Thomas · U.S. Virgin Islands', title: 'Where my story starts.', sub: 'I grew up in St. Thomas. The next chapter took me from an island in the Caribbean to the U.S. Army.' },
+    { d: 8, key: 'jump', tag: 'U.S. Army · Airborne Infantry', title: 'Face the fear. Give everything.', sub: 'Airborne infantry taught me to act despite fear and bring my full effort every time. When the stakes are high and others depend on you, preparation, accountability, and follow-through matter.' },
+    { d: 13, key: 'grid', tag: 'J&J / Kenvue · Create the capability', title: 'A chatbot became enterprise AI.', sub: 'Within a month of ChatGPT’s launch, I built a pilot on our team’s existing chatbot work. We used ChatGPT to finish the build, then worked with OpenAI to add API-driven SQL queries. A month later, the CEO and CTDO were using it. I helped scale enterprise AI with OpenAI and the Azure OpenAI team.', metric: { text: '22,000', label: 'employees given access' } },
+    { d: 12, key: 'net', tag: 'Deloitte · Multiply the impact', title: 'Build. Deliver. Develop leaders.', sub: 'An Anthropic API key and credits became the starting point for an alliance I originated and led: 250 practitioners and $1B+ in pipeline. Alongside hands-on delivery across more than a dozen accounts and dozens of programs, I developed engineers into technical leads who could carry the work further.', metric: { text: '$1B+', label: 'Anthropic-related pipeline · from zero' } },
+    { d: 12, key: 'coe', tag: 'PwC · Own the business outcome', title: 'Make the capability repeatable.', sub: 'I own the commercial path: originate, sell, staff, deliver, and protect margin. That includes a personally originated, sole-source $5M engagement delivered at 34% margin. Through our Agentic AI Customer Service CoE, I turn delivery lessons into reusable products, develop leads and managers, and expand client relationships.', metric: { text: 'Up to $10M', label: 'annual portfolio / program budget' } },
+    { d: 7, key: 'end', tag: 'What’s next?', title: 'Build what the business becomes.', sub: 'My next chapter brings these experiences together: shaping where AI creates value, owning the path into operations, and building leaders who can take it further. What could we build together?' }
   ];
   let acc = 0;
   for (const s of SCENES) { s.t0 = acc; acc += s.d; s.t1 = acc; }
@@ -32,17 +32,17 @@
           :host { display: block; }
           .shell { border: 1px solid ${LINE}; border-radius: 10px; overflow: hidden; background: ${WHITE}; }
           .stage { position: relative; }
-          .caption { display:grid; grid-template-columns:minmax(0,1fr) 185px; gap:24px; align-items:start; padding:26px 30px; min-height:190px; box-sizing:border-box; background:#FBFDFF; border-bottom:1px solid #E4EAF2; }
+          .caption { display:grid; grid-template-columns:minmax(0,1fr) 185px; gap:24px; align-items:start; padding:26px 30px; min-height:245px; box-sizing:border-box; background:#FBFDFF; border-bottom:1px solid #E4EAF2; }
           .caption-copy { min-width:0; }
           .tag { color:${BLUE}; font:500 11px/1.5 'IBM Plex Mono',monospace; letter-spacing:.08em; text-transform:uppercase; margin:0 0 10px; }
           h3 { font:700 clamp(21px,2.6vw,30px)/1.16 Archivo,system-ui,sans-serif; color:${INK}; margin:0; overflow-wrap:break-word; }
           .subtitle { font:400 14px/1.55 Archivo,system-ui,sans-serif; color:${BODY}; margin:12px 0 0; max-width:60ch; }
           .stat { border-left:1px solid ${LINE}; padding-left:22px; align-self:center; min-width:0; }
-          .stat b { display:block; color:${NAVY}; font:700 36px/1.15 Archivo,system-ui,sans-serif; font-variant-numeric:tabular-nums; }
+          .stat b { display:block; color:${NAVY}; font:700 30px/1.15 Archivo,system-ui,sans-serif; font-variant-numeric:tabular-nums; }
           .stat span { display:block; color:${BODY}; font:500 10px/1.5 'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.04em; margin-top:8px; }
           .stat[hidden] { visibility:hidden; display:block; }
           @media(max-width:600px) {
-            .caption { grid-template-columns:1fr; gap:16px; padding:22px 20px; min-height:285px; }
+            .caption { grid-template-columns:1fr; gap:16px; padding:22px 20px; min-height:365px; }
             h3 { font-size:23px; }.subtitle{font-size:13px;line-height:1.5;margin-top:10px;}
             .stat { border-left:0;border-top:1px solid ${LINE};padding:12px 0 0;display:flex;gap:12px;align-items:center;align-self:end;min-height:42px; }
             .stat b {font-size:28px;}.stat span{margin:0;max-width:150px;}
@@ -83,7 +83,7 @@
             <div class="chips" id="chips"></div>
             <div class="ctrl">
               <span class="hint">Space · ← →</span>
-              <span class="time" id="time">0:00 / 0:35</span>
+              <span class="time" id="time">0:00 / 0:57</span>
               <button class="play" id="play">Play</button>
             </div>
           </div>
@@ -101,7 +101,7 @@
 
       SCENES.forEach((s, i) => {
         const b = document.createElement('button');
-        b.className = 'chip'; b.type = 'button'; b.textContent = ['USVI','Army','J&J','Deloitte','PwC','Now'][i]; b.setAttribute('aria-label',s.tag+': '+s.title);
+        b.className = 'chip'; b.type = 'button'; b.textContent = ['USVI','Army','J&J','Deloitte','PwC','Next'][i]; b.setAttribute('aria-label',s.tag+': '+s.title);
         b.addEventListener('click', () => { this.t = s.t0 + 0.01; this.setPlaying(true); });
         chipWrap.appendChild(b);
         const tick = document.createElement('div');
@@ -210,8 +210,9 @@
       const gy = h * 0.76;
 
       // Fade through the clear background; never paint two chapters on top of each other.
-      const fade = Math.min(clamp01(k / 0.08), 1-clamp01((k-0.94)/0.06));
+      const fade = Math.min(clamp01(k / 0.08), sc.key==='end'?1:1-clamp01((k-0.94)/0.06));
       c.save(); c.globalAlpha = fade; this.scene(sc.key, k, gy, t); c.restore();
+      // Keep the career trace in its own lane, below each scene.
       this.trace(t, gy);
       this.caption(sc, k, t);
       this.metric(sc, k);
@@ -247,7 +248,7 @@
       c.fillStyle = g; c.fillRect(0, 0, w, h);
     }
 
-    traceY(x) { const h = this.h; return this.h * 0.76 - 40 - Math.sin(x * Math.PI * 0.94) * (h * 0.30) - x * (h * 0.05); }
+    traceY(x) { return this.h - 15 - Math.sin(x * Math.PI) * 5; }
 
     trace(t, gy) {
       const c = this.ctx, w = this.w, p = t / DUR;
@@ -268,7 +269,6 @@
       c.stroke();
 
       const mx = X(p), my = this.traceY(p);
-      if (p < 0.30) this.jumper(mx, my, clamp01((p - 0.14) / 0.06), t);
       const pulse = 8 + Math.sin(t * 3.4) * 2.2;
       c.strokeStyle = 'rgba(26,86,176,0.30)'; c.lineWidth = 1;
       c.beginPath(); c.arc(mx, my, pulse, 0, Math.PI * 2); c.stroke();
@@ -300,8 +300,8 @@
 
     metric(sc, k) {
       if(!sc.metric)return;
-      const m=sc.metric,p=easeInOut(clamp01((k-0.12)/0.62));
-      this.captionEls.metric.textContent=m.fmt==='int'?Math.round(p*m.to).toLocaleString():m.fmt==='plus'?Math.round(p*m.to)+'+':'$'+(p*m.to).toFixed(2)+'B';
+      const m=sc.metric;
+      this.captionEls.metric.textContent=m.text;
       this.captionEls['metric-label'].textContent=m.label;
     }
 
@@ -399,133 +399,74 @@
         c.restore();
       }
       const drop = clamp01((k - 0.34) / 0.5);
-      if (drop > 0 && drop < 1) {
+      if (drop > 0) {
         const jx = w * (-0.12 + 0.34 * 1.35) + drop * (dz - w * (-0.12 + 0.34 * 1.35)) * 0.92;
         const jy = py + drop * (dzy - py) * 0.86;
         c.globalAlpha = 0.9; this.jumper(jx, jy, clamp01((drop - 0.12) / 0.18), t); c.globalAlpha = 1;
       }
     }
 
-    grid(c, w, h, gy, k, t) {
-      c.strokeStyle = 'rgba(22,48,94,0.35)'; c.lineWidth = 1.3;
-      c.beginPath(); c.moveTo(0, gy + 14); c.lineTo(w, gy + 14); c.stroke();
-      const cols = 13, rows = 3, n = cols * rows;
-      let i = 0;
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const kk = easeOut(stagger(k, i, n, 0.55)); i++;
-          if (kk <= 0) continue;
-          const bw = w * 0.048, bh = (16 + ((col * 7 + row * 5) % 4) * 9) * kk;
-          const x = w * 0.075 + col * bw * 1.24, y = gy + 14 - row * 24;
-          c.fillStyle = 'rgba(26,86,176,' + (0.06 + kk * 0.12) + ')';
-          c.strokeStyle = 'rgba(26,86,176,' + (0.25 + kk * 0.4) + ')'; c.lineWidth = 1.2;
-          c.beginPath(); c.rect(x, y - bh, bw, bh); c.fill(); c.stroke();
-          for (let wy = 0; wy < 3; wy++) {
-            for (let wx = 0; wx < 2; wx++) {
-              const lit = ((col * 3 + row * 5 + wy * 2 + wx) % 5) < 2 && kk > 0.8 && Math.sin(t * 2 + col + wy) > -0.4;
-              if (!lit) continue;
-              const cw = bw * 0.22, ch = 3.4, ox = x + bw * (0.2 + wx * 0.42), oy = y - bh + 6 + wy * 8;
-              if (oy > y - 4) continue;
-              c.fillStyle = 'rgba(216,174,98,0.75)';
-              c.fillRect(ox, oy, cw, ch);
-            }
-          }
+    // Three distinct stages: one idea becomes a capability, then multiplies through people.
+    journey(c, w, h, k, t, labels, note, people) {
+      const xs=[w*.18,w*.5,w*.82], y=h*.31, bw=w*.27;
+      c.textAlign='center';
+      for(let i=0;i<3;i++) {
+        const p=easeOut(clamp01((k-i*.19)/.22));
+        if(i<2) {
+          c.strokeStyle=LINE;c.lineWidth=2;c.beginPath();c.moveTo(xs[i]+bw/2,y);c.lineTo(xs[i+1]-bw/2,y);c.stroke();
+          const flow=(t*.5)%1;
+          c.fillStyle=BLUE;c.beginPath();c.arc(xs[i]+bw/2+(xs[i+1]-xs[i]-bw)*flow,y,2.5,0,Math.PI*2);c.fill();
         }
+        c.save();c.globalAlpha*=.25+.75*p;
+        c.fillStyle=i===2?NAVY:WHITE;c.strokeStyle=BLUE;c.lineWidth=1.3;
+        c.beginPath();c.roundRect(xs[i]-bw/2,y-29,bw,58,8);c.fill();c.stroke();
+        c.fillStyle=i===2?WHITE:BLUE;c.font="600 10px 'IBM Plex Mono',monospace";c.fillText('0'+(i+1),xs[i],y-9);
+        c.font="600 "+(w<400?10:12)+"px Archivo,system-ui";c.fillText(labels[i],xs[i],y+12);
+        c.restore();
       }
+      const n=people, gap=Math.min(24,(w-48)/n), left=w/2-(n-1)*gap/2;
+      for(let i=0;i<n;i++) {
+        const p=easeOut(clamp01((k-.25-i/n*.35)/.2));
+        c.save();c.globalAlpha*=.12+.88*p;
+        const x=left+i*gap,y=h*.65;
+        c.fillStyle=i%4===0?NAVY:BLUE;c.beginPath();c.arc(x,y-8,3.5,0,Math.PI*2);c.fill();
+        c.strokeStyle=i%4===0?NAVY:BLUE;c.lineWidth=3;c.beginPath();c.moveTo(x,y);c.lineTo(x,y+8);c.stroke();c.restore();
+      }
+      c.fillStyle=BODY;c.font="500 "+(w<400?10:12)+"px Archivo,system-ui";
+      c.fillText(note,w/2,h*.83);c.textAlign='left';
     }
 
-    net(c, w, h, gy, k, t) {
-      const cx = w * 0.55, cy = gy - h * 0.16, N = 54;
-      const grow = easeInOut(clamp01(k / 0.72)) * N;
-      for (let i = 0; i < N; i++) {
-        const on = i < grow, kk = clamp01(grow - i);
-        if (!on) continue;
-        const a = (i / N) * Math.PI * 6.3 + i * 0.42;
-        const rr = (h * 0.055 + (i / N) * h * 0.20) * (0.9 + Math.sin(t * 0.8 + i) * 0.02);
-        const x = cx + Math.cos(a) * rr * 2.0, y = cy + Math.sin(a) * rr * 0.92;
-        if (i % 2 === 0) {
-          c.strokeStyle = 'rgba(26,86,176,' + (0.05 + kk * 0.16) + ')'; c.lineWidth = 1;
-          c.beginPath(); c.moveTo(cx, cy); c.lineTo(cx + (x - cx) * kk, cy + (y - cy) * kk); c.stroke();
-        }
-        c.fillStyle = i % 5 === 0 ? BLUE : 'rgba(26,86,176,0.55)';
-        c.beginPath(); c.arc(x, y, (i % 5 === 0 ? 4 : 2.6) * overshoot(kk), 0, Math.PI * 2); c.fill();
-      }
-      const ringP = (t * 0.5) % 1;
-      c.strokeStyle = 'rgba(26,86,176,' + (0.34 * (1 - ringP)) + ')'; c.lineWidth = 1.4;
-      c.beginPath(); c.ellipse(cx, cy, h * 0.5 * ringP, h * 0.23 * ringP, 0, 0, Math.PI * 2); c.stroke();
-      c.fillStyle = NAVY; c.beginPath(); c.arc(cx, cy, 7, 0, Math.PI * 2); c.fill();
-      c.fillStyle = WHITE; c.font = "700 8px 'IBM Plex Mono', ui-monospace, monospace"; c.textAlign = 'center';
-      c.fillText('A', cx, cy + 3); c.textAlign = 'left';
+    grid(c,w,h,gy,k,t) {
+      this.journey(c,w,h,k,t,['Pilot','CEO + CTDO','Enterprise'],'OpenAI + Azure OpenAI partnership',18);
     }
 
-    factory(c, w, h, gy, k, t) {
-      const beltY = gy + 16, x0 = w * 0.08, x1 = w * 0.92;
-      c.strokeStyle = 'rgba(22,48,94,0.45)'; c.lineWidth = 1.5;
-      c.beginPath(); c.moveTo(x0, beltY); c.lineTo(x1, beltY); c.stroke();
-      c.strokeStyle = 'rgba(22,48,94,0.22)'; c.lineWidth = 1;
-      for (let i = 0; i <= 22; i++) {
-        const off = ((i / 22) + (t * 0.09)) % 1;
-        const x = x0 + off * (x1 - x0);
-        c.beginPath(); c.moveTo(x, beltY); c.lineTo(x - 5, beltY + 8); c.stroke();
-      }
-      c.strokeStyle = 'rgba(22,48,94,0.4)'; c.lineWidth = 1.3;
-      for (const px of [x0, x1]) { c.beginPath(); c.arc(px, beltY + 5, 6, 0, Math.PI * 2); c.stroke(); }
+    net(c,w,h,gy,k,t) {
+      this.journey(c,w,h,k,t,['API key','Alliance','Delivery'],'Develop people. Multiply delivery.',24);
+    }
 
-      const armX = w * 0.30, armY = beltY - 66, swing = Math.sin(t * 2.6) * 0.34;
-      c.strokeStyle = 'rgba(22,48,94,0.55)'; c.lineWidth = 2.2;
-      c.beginPath(); c.moveTo(armX, armY - 16); c.lineTo(armX, armY + 6); c.stroke();
-      c.save(); c.translate(armX, armY + 6); c.rotate(swing);
-      c.beginPath(); c.moveTo(0, 0); c.lineTo(0, 30); c.stroke();
-      c.lineWidth = 1.6;
-      c.beginPath(); c.moveTo(-6, 30); c.lineTo(0, 38); c.lineTo(6, 30); c.stroke();
-      c.restore();
-
-      const count = 10;
-      for (let i = 0; i < count; i++) {
-        const off = ((t * 0.13) + i / count) % 1;
-        const x = x0 + off * (x1 - x0), s = 17;
-        const done = x > armX + 6;
-        c.fillStyle = done ? 'rgba(26,86,176,0.20)' : 'rgba(22,48,94,0.06)';
-        c.strokeStyle = done ? 'rgba(26,86,176,0.65)' : 'rgba(22,48,94,0.30)'; c.lineWidth = 1.3;
-        c.beginPath(); c.rect(x - s / 2, beltY - s, s, s); c.fill(); c.stroke();
-        if (done) {
-          c.strokeStyle = 'rgba(26,86,176,0.8)'; c.lineWidth = 1.4;
-          c.beginPath(); c.moveTo(x - 4, beltY - s / 2); c.lineTo(x - 1, beltY - s / 2 + 3.4); c.lineTo(x + 4.5, beltY - s / 2 - 3.6); c.stroke();
-        }
-      }
-      const labels = ['AGENTS', 'MCP TOOLS', 'EVALS'];
-      c.font = "500 9px 'IBM Plex Mono', ui-monospace, monospace";
-      labels.forEach((L, i) => {
-        const kk = easeOut(stagger(k, i, labels.length, 0.6));
-        if (kk <= 0) return;
-        const bx = w * (0.075 + i * 0.30), by = beltY - 96;
-        c.globalAlpha = kk;
-        c.strokeStyle = 'rgba(26,86,176,0.45)'; c.fillStyle = 'rgba(26,86,176,0.07)'; c.lineWidth = 1.2;
-        c.beginPath(); c.rect(bx, by, w * 0.25, 22); c.fill(); c.stroke();
-        c.fillStyle = NAVY; c.textAlign='center'; c.fillText(L, bx + w * 0.125, by + 14); c.textAlign='left';
-        c.strokeStyle = 'rgba(26,86,176,0.3)';
-        c.beginPath(); c.moveTo(bx + w * 0.125, by + 22); c.lineTo(bx + w * 0.125, beltY - 26); c.stroke();
-        c.globalAlpha = 1;
+    coe(c,w,h,gy,k,t) {
+      // A center of excellence connects people, products and client outcomes.
+      const cx=w*.5,cy=h*.43,r=Math.min(34,w*.10);
+      const nodes=[{x:w*.18,y:cy,label:'PEOPLE'},{x:w*.82,y:cy,label:'PRODUCTS'},{x:cx,y:h*.76,label:'CLIENT VALUE'}];
+      c.textAlign='center';
+      nodes.forEach((n,i)=>{
+        const p=easeOut(clamp01((k-i*.15)/.3));
+        c.save();c.globalAlpha*=.2+.8*p;
+        c.strokeStyle='#A6BCD9';c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(n.x,n.y);c.stroke();
+        const q=(t*.4+i*.3)%1;c.fillStyle=BLUE;c.beginPath();c.arc(cx+(n.x-cx)*q,cy+(n.y-cy)*q,3,0,Math.PI*2);c.fill();
+        const width=i===2?110:Math.min(100,w*.27);
+        c.fillStyle=WHITE;c.strokeStyle=BLUE;c.beginPath();c.roundRect(n.x-width/2,n.y-17,width,34,7);c.fill();c.stroke();
+        c.fillStyle=NAVY;c.font="600 10px 'IBM Plex Mono',monospace";c.fillText(n.label,n.x,n.y+4);c.restore();
       });
+      c.fillStyle=NAVY;c.beginPath();c.arc(cx,cy,r,0,Math.PI*2);c.fill();
+      c.fillStyle=WHITE;c.font="700 15px Archivo,system-ui";c.fillText('CoE',cx,cy+5);
+      c.fillStyle=BODY;c.font="500 11px Archivo,system-ui";c.fillText('Lead teams. Grow accounts. Own results.',cx,h*.14);c.textAlign='left';
     }
 
-    end(c, w, h, gy, k, t) {
-      const grow = easeOut(clamp01(k / 0.5));
-      c.strokeStyle = 'rgba(22,48,94,0.35)'; c.lineWidth = 1.4;
-      c.beginPath(); c.moveTo(w * 0.05, gy + 16); c.lineTo(w * (0.05 + 0.90 * grow), gy + 16); c.stroke();
-      const items = w<600?['USVI','ARMY','J&J','DELOITTE','PWC']:['ST. THOMAS','FORT BENNING','J&J','DELOITTE','PWC'];
-      c.font = "500 " + Math.max(8, w * 0.0115) + "px 'IBM Plex Mono', ui-monospace, monospace";
-      items.forEach((L, i) => {
-        const kk = easeOut(stagger(k, i, items.length, 0.62));
-        if (kk <= 0) return;
-        const x = w * (0.07 + i * 0.185), y = gy + 16;
-        c.globalAlpha = kk;
-        c.fillStyle = BLUE; c.beginPath(); c.arc(x, y, 3.6 * overshoot(kk), 0, Math.PI * 2); c.fill();
-        c.fillStyle = FAINT; c.fillText(L, x - 6, y + 20);
-        c.globalAlpha = 1;
-      });
-
+    end(c,w,h,gy,k,t) {
+      this.journey(c,w,h,k,t,['Direction','Execution','Leaders'],'The next chapter is a conversation.',12);
     }
+
   }
 
   if (!customElements.get('arc-film')) customElements.define('arc-film', ArcFilm);
