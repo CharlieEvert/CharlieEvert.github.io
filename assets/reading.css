@@ -28,7 +28,11 @@
 .visible-extra {margin-top:30px;}
 .visible-extra>h3 {font-size:1rem;line-height:1.4;color:#16305e;margin-bottom:16px;}
 .visible-extra>figure {max-width:520px;margin:0!important;}
-.visible-extra>figure img {max-height:310px;object-fit:cover;}
+.visible-extra>figure img {height:auto;max-height:none;object-fit:contain;}
+#now .visible-extra>figure {max-width:390px;}
+.role-highlight p+p {margin-top:12px;}
+.role-highlight p a {text-decoration:underline;text-underline-offset:3px;}
+#now .role-highlight p a {color:inherit;}
 #scale .visible-extra,#now .visible-extra {margin-left:234px;}
 #now .visible-extra>h3 {color:white;}
 .publication-lists {display:grid;grid-template-columns:1.5fr 1fr;gap:48px;margin-top:34px;}
@@ -59,3 +63,12 @@
  .publication-lists {gap:30px;}
 }
 @media print {.role-depth>.depth-content {display:block!important;} .role-depth>summary::after {display:none;}}
+
+/* Recognition is evidence attached to the role or accomplishment. */
+.role-recognition {font-size:.8rem!important;line-height:1.6!important;color:#52647c!important;margin-top:16px!important;}
+.role-recognition a {color:inherit;text-decoration:underline;text-decoration-color:#a8b9cd;text-underline-offset:3px;}
+.compact-chapter .role-highlights+.role-recognition {margin-top:20px;}
+#scale .chapter-intro~.role-recognition {margin-left:234px;max-width:820px;}
+#scale .role-recognition:has(+.role-highlights) {margin-left:234px;max-width:820px;}
+#now .role-recognition {color:#b9d2f1!important;}
+@media(max-width:900px){#scale .role-recognition:has(+.role-highlights),#scale .chapter-intro~.role-recognition {margin-left:0;}}
