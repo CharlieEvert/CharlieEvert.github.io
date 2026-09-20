@@ -32,6 +32,22 @@
           :host { display: block; }
           .shell { border: 1px solid ${LINE}; border-radius: 10px; overflow: hidden; background: ${WHITE}; }
           .stage { position: relative; }
+          .caption { display:grid; grid-template-columns:minmax(0,1fr) 185px; gap:24px; align-items:start; padding:26px 30px; min-height:190px; box-sizing:border-box; background:#FBFDFF; border-bottom:1px solid #E4EAF2; }
+          .caption-copy { min-width:0; }
+          .tag { color:${BLUE}; font:500 11px/1.5 'IBM Plex Mono',monospace; letter-spacing:.08em; text-transform:uppercase; margin:0 0 10px; }
+          h3 { font:700 clamp(21px,2.6vw,30px)/1.16 Archivo,system-ui,sans-serif; color:${INK}; margin:0; overflow-wrap:break-word; }
+          .subtitle { font:400 14px/1.55 Archivo,system-ui,sans-serif; color:${BODY}; margin:12px 0 0; max-width:60ch; }
+          .stat { border-left:1px solid ${LINE}; padding-left:22px; align-self:center; min-width:0; }
+          .stat b { display:block; color:${NAVY}; font:700 36px/1.15 Archivo,system-ui,sans-serif; font-variant-numeric:tabular-nums; }
+          .stat span { display:block; color:${BODY}; font:500 10px/1.5 'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.04em; margin-top:8px; }
+          .stat[hidden] { visibility:hidden; display:block; }
+          @media(max-width:600px) {
+            .caption { grid-template-columns:1fr; gap:16px; padding:22px 20px; min-height:285px; }
+            h3 { font-size:23px; }.subtitle{font-size:13px;line-height:1.5;margin-top:10px;}
+            .stat { border-left:0;border-top:1px solid ${LINE};padding:12px 0 0;display:flex;gap:12px;align-items:center;align-self:end;min-height:42px; }
+            .stat b {font-size:28px;}.stat span{margin:0;max-width:150px;}
+            .bar {gap:12px!important;padding:12px!important;}.chips {display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;}.chip{min-height:36px;padding:6px!important;}.ctrl{width:100%;justify-content:space-between;}
+          }
           canvas { display: block; width: 100%; height: auto; background: ${TINT}; cursor: pointer; }
           .track { position: relative; height: 22px; background: ${WHITE}; border-top: 1px solid ${LINE}; cursor: pointer; }
           .rail { position: absolute; left: 0; right: 0; top: 9px; height: 4px; background: ${TINT}; }
@@ -55,7 +71,11 @@
                   text-transform: uppercase; color: ${FAINT}; }
         </style>
         <div class="shell">
-          <div class="stage"><canvas id="cv"></canvas></div>
+          <div class="caption">
+            <div class="caption-copy"><p class="tag" id="tag"></p><h3 id="title"></h3><p class="subtitle" id="subtitle"></p></div>
+            <div class="stat" id="stat"><b id="metric"></b><span id="metric-label"></span></div>
+          </div>
+          <div class="stage"><canvas id="cv" tabindex="0" role="img" aria-label="Animated career journey. Use the chapter buttons below to navigate."></canvas></div>
           <div class="track" id="track">
             <div class="rail"></div><div class="fill" id="fill"></div><div class="head" id="head"></div>
           </div>
@@ -71,6 +91,7 @@
 
       this.cv = r.getElementById('cv');
       this.ctx = this.cv.getContext('2d');
+      this.captionEls = Object.fromEntries(['tag','title','subtitle','stat','metric','metric-label'].map(id=>[id,r.getElementById(id)]));
       this.fill = r.getElementById('fill');
       this.head = r.getElementById('head');
       this.track = r.getElementById('track');
@@ -78,9 +99,9 @@
       this.playBtn = r.getElementById('play');
       const chipWrap = r.getElementById('chips');
 
-      SCENES.forEach((s) => {
+      SCENES.forEach((s, i) => {
         const b = document.createElement('button');
-        b.className = 'chip'; b.type = 'button'; b.textContent = s.tag;
+        b.className = 'chip'; b.type = 'button'; b.textContent = ['USVI','Army','J&J','Deloitte','PwC','Now'][i]; b.setAttribute('aria-label',s.tag+': '+s.title);
         b.addEventListener('click', () => { this.t = s.t0 + 0.01; this.setPlaying(true); });
         chipWrap.appendChild(b);
         const tick = document.createElement('div');
@@ -100,19 +121,21 @@
       };
       this.track.addEventListener('pointerdown', (e) => { this.track.setPointerCapture(e.pointerId); this._scrub = true; this.setPlaying(false); scrub(e); });
       this.track.addEventListener('pointermove', (e) => { if (this._scrub) scrub(e); });
-      addEventListener('pointerup', () => { this._scrub = false; });
+      this.track.addEventListener('pointerup', () => { this._scrub = false; });
+      this.track.addEventListener('pointercancel', () => { this._scrub = false; });
 
       this.onKey = (e) => {
-        if (!this._focus) return;
+        if (!this.shadowRoot.activeElement) return;
+        if(e.key === ' ' && this.shadowRoot.activeElement.tagName === 'BUTTON') return;
         if (e.key === ' ') { e.preventDefault(); this.setPlaying(!this.playing); }
         else if (e.key === 'ArrowRight') { e.preventDefault(); this.skip(1); }
         else if (e.key === 'ArrowLeft') { e.preventDefault(); this.skip(-1); }
       };
-      addEventListener('keydown', this.onKey);
+      this.addEventListener('keydown', this.onKey);
 
       this.resize = () => {
-        const w = Math.max(320, this.clientWidth || 720);
-        const h = Math.round(Math.min(460, Math.max(250, w * 0.52)));
+        const w = Math.max(1, this.clientWidth || 720);
+        const h = Math.round(Math.min(300, Math.max(210, w * 0.32)));
         const dpr = Math.min(2, devicePixelRatio || 1);
         this.cv.width = w * dpr; this.cv.height = h * dpr;
         this.cv.style.height = h + 'px';
@@ -137,7 +160,7 @@
     }
 
     disconnectedCallback() {
-      removeEventListener('keydown', this.onKey);
+      this.removeEventListener('keydown', this.onKey);
       if (this.ro) this.ro.disconnect();
       if (this.io) this.io.disconnect();
       if (this.raf) cancelAnimationFrame(this.raf);
@@ -186,11 +209,9 @@
       this.sky(t);
       const gy = h * 0.76;
 
-      const prev = SCENES[idx - 1];
-      const fade = clamp01(k / 0.14);
-      if (prev && fade < 1) { c.save(); c.globalAlpha = 1 - fade; c.translate(-w * 0.06 * fade, 0); this.scene(prev.key, 1, gy, t); c.restore(); }
-      c.save(); c.globalAlpha = fade; c.translate(w * 0.05 * (1 - fade), 0); this.scene(sc.key, k, gy, t); c.restore();
-
+      // Fade through the clear background; never paint two chapters on top of each other.
+      const fade = Math.min(clamp01(k / 0.08), 1-clamp01((k-0.94)/0.06));
+      c.save(); c.globalAlpha = fade; this.scene(sc.key, k, gy, t); c.restore();
       this.trace(t, gy);
       this.caption(sc, k, t);
       this.metric(sc, k);
@@ -268,48 +289,20 @@
       c.stroke(); c.restore();
     }
 
-    caption(sc, k, t) {
-      const c = this.ctx, w = this.w, h = this.h;
-      const inA = easeOut(k / 0.12), outA = 1 - clamp01((k - 0.9) / 0.1);
-      const a = Math.min(inA, outA);
-      if (a <= 0) return;
-      c.save(); c.globalAlpha = a;
-      const x = w * 0.055, y = h * 0.15, lift = (1 - easeOut(k / 0.14)) * 14;
-      c.translate(0, lift);
-      c.fillStyle = BLUE;
-      c.font = "500 " + Math.max(9, w * 0.0132) + "px 'IBM Plex Mono', ui-monospace, monospace";
-      c.fillText(sc.tag.toUpperCase(), x, y);
-      c.strokeStyle = 'rgba(26,86,176,0.5)'; c.lineWidth = 1;
-      const tw = c.measureText(sc.tag.toUpperCase()).width;
-      c.beginPath(); c.moveTo(x, y + 7); c.lineTo(x + tw * easeOut((k - 0.05) / 0.25), y + 7); c.stroke();
-      c.fillStyle = INK;
-      c.font = "700 " + Math.max(17, w * 0.0355) + "px Archivo, system-ui, sans-serif";
-      c.fillText(sc.title, x, y + Math.max(28, w * 0.052));
-      c.fillStyle = BODY;
-      c.font = Math.max(11, w * 0.0172) + "px Archivo, system-ui, sans-serif";
-      this.wrap(sc.sub, x, y + Math.max(50, w * 0.083), w * 0.52, Math.max(15, w * 0.026));
-      c.restore();
+    caption(sc) {
+      if(this._captionKey===sc.key)return;
+      this._captionKey=sc.key;
+      this.captionEls.tag.textContent=sc.tag;
+      this.captionEls.title.textContent=sc.title;
+      this.captionEls.subtitle.textContent=sc.sub;
+      this.captionEls.stat.hidden=!sc.metric;
     }
 
     metric(sc, k) {
-      if (!sc.metric) return;
-      const c = this.ctx, w = this.w, h = this.h, m = sc.metric;
-      const p = easeInOut(clamp01((k - 0.12) / 0.62));
-      let txt;
-      if (m.fmt === 'int') txt = Math.round(p * m.to).toLocaleString();
-      else if (m.fmt === 'plus') txt = Math.round(p * m.to) + '+';
-      else txt = '$' + (p * m.to).toFixed(2) + 'B';
-      c.save();
-      c.globalAlpha = Math.min(1, easeOut(k / 0.16)) * (1 - clamp01((k - 0.92) / 0.08));
-      c.textAlign = 'right';
-      c.fillStyle = NAVY;
-      c.font = "700 " + Math.max(20, w * 0.048) + "px Archivo, system-ui, sans-serif";
-      c.fillText(txt, w * 0.945, h * 0.30);
-      c.fillStyle = FAINT;
-      c.font = "500 " + Math.max(9, w * 0.0125) + "px 'IBM Plex Mono', ui-monospace, monospace";
-      c.fillText(m.label.toUpperCase(), w * 0.945, h * 0.30 + Math.max(15, w * 0.026));
-      c.textAlign = 'left';
-      c.restore();
+      if(!sc.metric)return;
+      const m=sc.metric,p=easeInOut(clamp01((k-0.12)/0.62));
+      this.captionEls.metric.textContent=m.fmt==='int'?Math.round(p*m.to).toLocaleString():m.fmt==='plus'?Math.round(p*m.to)+'+':'$'+(p*m.to).toFixed(2)+'B';
+      this.captionEls['metric-label'].textContent=m.label;
     }
 
     wrap(text, x, y, maxW, lh) {
@@ -505,13 +498,13 @@
       labels.forEach((L, i) => {
         const kk = easeOut(stagger(k, i, labels.length, 0.6));
         if (kk <= 0) return;
-        const bx = w * (0.10 + i * 0.16), by = beltY - 96;
+        const bx = w * (0.075 + i * 0.30), by = beltY - 96;
         c.globalAlpha = kk;
         c.strokeStyle = 'rgba(26,86,176,0.45)'; c.fillStyle = 'rgba(26,86,176,0.07)'; c.lineWidth = 1.2;
-        c.beginPath(); c.rect(bx, by, w * 0.135, 22); c.fill(); c.stroke();
-        c.fillStyle = NAVY; c.fillText(L, bx + 8, by + 14);
+        c.beginPath(); c.rect(bx, by, w * 0.25, 22); c.fill(); c.stroke();
+        c.fillStyle = NAVY; c.textAlign='center'; c.fillText(L, bx + w * 0.125, by + 14); c.textAlign='left';
         c.strokeStyle = 'rgba(26,86,176,0.3)';
-        c.beginPath(); c.moveTo(bx + w * 0.067, by + 22); c.lineTo(bx + w * 0.067, beltY - 26); c.stroke();
+        c.beginPath(); c.moveTo(bx + w * 0.125, by + 22); c.lineTo(bx + w * 0.125, beltY - 26); c.stroke();
         c.globalAlpha = 1;
       });
     }
@@ -520,7 +513,7 @@
       const grow = easeOut(clamp01(k / 0.5));
       c.strokeStyle = 'rgba(22,48,94,0.35)'; c.lineWidth = 1.4;
       c.beginPath(); c.moveTo(w * 0.05, gy + 16); c.lineTo(w * (0.05 + 0.90 * grow), gy + 16); c.stroke();
-      const items = ['ST. THOMAS', 'FORT BENNING', 'J&J', 'DELOITTE', 'PWC'];
+      const items = w<600?['USVI','ARMY','J&J','DELOITTE','PWC']:['ST. THOMAS','FORT BENNING','J&J','DELOITTE','PWC'];
       c.font = "500 " + Math.max(8, w * 0.0115) + "px 'IBM Plex Mono', ui-monospace, monospace";
       items.forEach((L, i) => {
         const kk = easeOut(stagger(k, i, items.length, 0.62));
@@ -531,15 +524,7 @@
         c.fillStyle = FAINT; c.fillText(L, x - 6, y + 20);
         c.globalAlpha = 1;
       });
-      const a = easeOut(clamp01((k - 0.45) / 0.35));
-      c.globalAlpha = a; c.textAlign = 'right';
-      c.fillStyle = NAVY;
-      c.font = "700 " + Math.max(13, w * 0.026) + "px Archivo, system-ui, sans-serif";
-      c.fillText('charlieevert.github.io', w * 0.945, gy - 22);
-      c.fillStyle = FAINT;
-      c.font = "500 " + Math.max(9, w * 0.0125) + "px 'IBM Plex Mono', ui-monospace, monospace";
-      c.fillText('CHARLIEEVERT@GMAIL.COM', w * 0.945, gy - 4);
-      c.textAlign = 'left'; c.globalAlpha = 1;
+
     }
   }
 
