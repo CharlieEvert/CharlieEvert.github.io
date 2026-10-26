@@ -10,7 +10,7 @@ Static, no build step, no framework, no dependencies. GitHub Pages serves the ro
 | `index.html` | The entire site — markup and inline styles. |
 | `assets/site.js` | Scroll reveals, count-up stats, scroll-spy nav, photo lightbox, right-click-to-copy email. |
 | `assets/arc-film.js` | `<arc-film>` — the animated career film in the executive summary. Canvas, six chapters, scrubbable. |
-| `assets/jump-game.js` | `<jump-game>` — a 30-second first-person parachute landing, with an in-game win message and FDE-team contact link. |
+| `assets/jump-game.js` | `<jump-game>` — a 30-second first-person parachute landing, with an in-game win message and portfolio-projects link. |
 | `images/` | Eight photos: beach, jump, dress uniform, Infantry School graduation, NASA, Wall Street, Julie and the dogs, newsletter cover. |
 | `Charlie-Evert-Resume.pdf` | Linked from the Résumé button. Replace the file, keep the name. |
 | `favicon.svg`, `robots.txt`, `sitemap.xml` | Icon and indexing. |
@@ -22,7 +22,7 @@ is unused by this build and can be deleted.
 ## Page order
 
 Hero → 00 Executive summary (stats, how-to-read guide, animated film) → 01 Origin (St. Thomas,
-Fort Benning) → 02 The turn (Saint Joseph's, J&J) → 03 Scale (Deloitte) → 04 PwC → Alpha FMC (current role and FDE recruiting) →
+Fort Benning) → 02 The turn (Saint Joseph's, J&J) → 03 Scale (Deloitte) → 04 PwC → Alpha FMC (current role) →
 05 The pattern → 06 Receipts (patent, papers, SAGE cases, books, awards, certifications) →
 07 In public (newsletter, PromptHub) → 08 Off the clock → 09 The prize (game) → 10 Contact.
 
@@ -42,7 +42,7 @@ duration, tag, title, subtitle, optional counter, and the `key` naming the scene
 the trace. Add a chapter by adding an entry and a matching draw method.
 
 **The game** — `assets/jump-game.js`. `DURATION` sets the flight time and `RADIUS` the landing tolerance; landing on target
-reveals a mailto for people interested in joining the Alpha FMC FDE team.
+reveals a link to the portfolio’s live projects.
 
 **Analytics** — Google tag `G-ZRR3DZ2JKE` in `<head>`, carried over from the previous site.
 
