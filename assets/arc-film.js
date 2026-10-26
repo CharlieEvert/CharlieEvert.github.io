@@ -9,7 +9,7 @@
     { d: 10, key: 'grid', tag: 'Johnson & Johnson Consumer Health → Kenvue', title: 'A chatbot became enterprise AI.', sub: 'I led the R&D GenAI squad. The CEO and CTDO first used our Composer chatbot; we then built a React/FastAPI platform on AWS and scaled it enterprise-wide with OpenAI and Azure OpenAI.', metric: { text: '22,000', label: 'employees given access' } },
     { d: 10, key: 'net', tag: 'Deloitte · Multiply the impact', title: 'Build. Deliver. Develop leaders.', sub: 'Anthropic provided API access and funded credits. I turned that starting point into an alliance of 250 practitioners, led 10+ GenAI builds and deployments, and developed engineers into technical leads.', metric: { text: '$1B+', label: 'Anthropic-related pipeline · from zero' } },
     { d: 10, key: 'coe', tag: 'PwC · Own the business outcome', title: 'Make the capability repeatable.', sub: 'Originate, sell, staff, deliver, and own the economics. Build leaders, expand accounts, and turn delivery lessons into reusable capabilities through the Agentic AI Customer Service CoE.', metric: { text: 'Up to $10M', label: 'annual portfolio / program budget' } },
-    { d: 6, key: 'end', tag: 'What’s next?', title: 'Build what the business becomes.', sub: 'My next chapter brings these experiences together: shaping where AI creates value, owning the path into operations, and building leaders who can take it further. What could we build together?' }
+    { d: 6, key: 'end', tag: 'Alpha FMC · Forward Deployed Engineering', title: 'Build the FDE organization.', sub: 'As Sr Manager, Forward Deployed Engineering, I’m building the organization from scratch to embed teams across Alpha’s $300M+ ARR portfolio and deliver measurable AI outcomes. Interested in joining? Reach out.' }
   ];
   let acc = 0;
   for (const s of SCENES) { s.t0 = acc; acc += s.d; s.t1 = acc; }
@@ -101,7 +101,7 @@
 
       SCENES.forEach((s, i) => {
         const b = document.createElement('button');
-        b.className = 'chip'; b.type = 'button'; b.textContent = ['USVI','Army','J&J → Kenvue','Deloitte','PwC','Next'][i]; b.setAttribute('aria-label',s.tag+': '+s.title);
+        b.className = 'chip'; b.type = 'button'; b.textContent = ['USVI','Army','J&J → Kenvue','Deloitte','PwC','Alpha'][i]; b.setAttribute('aria-label',s.tag+': '+s.title);
         b.addEventListener('click', () => { this.t = s.t0 + 0.01; this.setPlaying(true); });
         chipWrap.appendChild(b);
         const tick = document.createElement('div');
@@ -495,9 +495,9 @@
         this.node(c,cx+Math.cos(a)*d,cy+Math.sin(a)*d*.75,1.4,BLUE,.25+q*.5);
       }
       c.strokeStyle='#8CACD6';c.lineWidth=1.2;c.beginPath();c.arc(cx,cy,r*(.8+.05*Math.sin(t)),0,Math.PI*2);c.stroke();
-      this.label(c,'What’s next?',cx,cy+6,w<450?23:32,NAVY);
-      this.label(c,'Strategy. Capability. Leaders.',cx,h*.79,w<450?15:20,NAVY);
-      this.label(c,'Let’s build the next chapter.',cx,h*.9,w<450?12:15,BODY);
+      this.label(c,'Alpha FMC',cx,cy+6,w<450?23:32,NAVY);
+      this.label(c,'Forward Deployed Engineering',cx,h*.79,w<450?15:20,NAVY);
+      this.label(c,'Building the team. Join us.',cx,h*.9,w<450?12:15,BODY);
     }
 
   }

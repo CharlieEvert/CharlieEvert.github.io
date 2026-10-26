@@ -26,7 +26,7 @@
             <h3 id="title">Stand in the door.</h3>
             <p id="description">You’re inside the aircraft. Green light, then jump. Steer toward the island. If you win, you will get a prize.</p>
             <button id="start" class="primary">Green light. Go! →</button>
-            <a id="offer" hidden href="mailto:charlieevert@gmail.com?subject=Your%20job%20offer%20just%20landed&body=Hi%20Charlie%2C%0A%0AI%20stuck%20the%20landing%20and%20opened%20the%20briefcase.%20I%27d%20love%20to%20talk%20about%20an%20opportunity%20with%20you.%0A%0ARole%3A%20%0ACompany%3A%20%0ABest%20time%20to%20connect%3A%20">Claim your prize →</a>
+            <a id="offer" hidden href="mailto:charlieevert@gmail.com?subject=Joining%20the%20Alpha%20FMC%20FDE%20team">Build with us →</a>
             <button id="again" class="again" hidden>Take another jump</button>
           </div></div>
         </div>
@@ -73,7 +73,7 @@
     land(){const s=this.s;s.phase=Math.abs(s.x)<=RADIUS?'won':'missed';s.effect=this.reduced?0:3;this.clearInput();const won=s.phase==='won';
       this.el.overlay.hidden=false;this.el.note.hidden=true;this.el.eyebrow.textContent=won?'Mission accomplished':'Another shot?';
       this.el.title.textContent=won?'Congrats—you won!':'Almost stuck it.';
-      this.el.description.textContent=won?'You reached the briefcase. Your prize? A JOB OFFER. Open it to draft an email to Charlie.':Math.abs(s.x)>.8?'Ocean view: excellent. Landing: a little wet. Counter the wind and keep the target centered.':'Solid effort. Wrong patch of island. Keep the target centered right through touchdown.';
+      this.el.description.textContent=won?'You reached the briefcase. Next mission: build with us. Reach out about the FDE team at Alpha FMC.':Math.abs(s.x)>.8?'Ocean view: excellent. Landing: a little wet. Counter the wind and keep the target centered.':'Solid effort. Wrong patch of island. Keep the target centered right through touchdown.';
       this.el.start.hidden=won;this.el.start.textContent='Try again →';this.el.offer.hidden=!won;this.el.again.hidden=!won;
       this.el.announcement.textContent=won?'Congrats, you won! Claim your prize to open an email draft.':'Missed the landing zone. Try again.';
       if(this.shadowRoot.activeElement)(won?this.el.offer:this.el.start).focus({preventScroll:true});
@@ -88,7 +88,7 @@
       c.strokeStyle='#55381d';c.lineWidth=Math.max(2,bw*.06);c.beginPath();c.roundRect(-bw*.16,-bh*.72,bw*.32,bh*.24,3);c.stroke();
       c.fillStyle='#563c27';c.fillRect(-bw*.3,-bh*.5,bw*.08,bh);c.fillRect(bw*.22,-bh*.5,bw*.08,bh);
       c.fillStyle='#f8d98c';c.fillRect(-bw*.055,-bh*.07,bw*.11,bh*.15);
-      if(p>.58){c.globalAlpha=clamp((p-.58)/.3,0,1);c.fillStyle='#fff7df';c.beginPath();c.roundRect(-bw*.4,bh*.09,bw*.8,bh*.29,2);c.fill();c.fillStyle='#49341f';c.font='bold '+Math.max(4,bw*.12)+'px ui-monospace,monospace';c.textAlign='center';c.textBaseline='middle';c.fillText('JOB OFFER',0,bh*.24);}
+      if(p>.58){c.globalAlpha=clamp((p-.58)/.3,0,1);c.fillStyle='#fff7df';c.beginPath();c.roundRect(-bw*.4,bh*.09,bw*.8,bh*.29,2);c.fill();c.fillStyle='#49341f';c.font='bold '+Math.max(4,bw*.12)+'px ui-monospace,monospace';c.textAlign='center';c.textBaseline='middle';c.fillText('JOIN US',0,bh*.24);}
       c.restore();
     }
     plane(c,w,h,s){

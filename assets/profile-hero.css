@@ -46,6 +46,13 @@
   max-width: 70ch;
 }
 .profile-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.profile-recruiting { margin-top: 16px; font-size: 1rem; line-height: 1.65; color: #4A5161; max-width: 70ch; }
+.team-nav { font: 600 .65rem/1.6 'IBM Plex Mono', monospace; color: #1A56B0; text-transform: uppercase; letter-spacing: .05em; }
+.alpha-section { background: #F6F8FC; border-bottom: 1px solid #D7DBE2; }
+.alpha-title { margin-top: 16px; font-size: 1rem; font-weight: 600; line-height: 1.5; color: #16305E; }
+.alpha-invitation { margin-top: 18px; font-size: 1rem; line-height: 1.7; max-width: 70ch; }
+.alpha-join { display: inline-block; margin-top: 24px; padding: 13px 20px; border-radius: 6px; background: #16305E; color: #fff; font-size: .9rem; font-weight: 600; }
+.alpha-join:hover { background: #1A56B0; color: #fff; }
 .profile-history {
   margin-top: 30px;
   padding-top: 24px;
